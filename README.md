@@ -9,7 +9,7 @@ This project for the PSoC5LP platform, developed using PSOC Creator 4.4, is a re
 - **Custom Hardware Interface**: Integrates PSoC5LP's unique hardware features for interactive gameplay.
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/swaroop929/ReversiBoardGame`
+1. Clone the repository: `git clone https://github.com/swaroop929/ReactionGame`
 2. Open the project in PSOC Creator 4.4.
 3. Configure according to PSoC5LP board specifications.
 
