@@ -1,0 +1,234 @@
+\doxysection{source/bsw/derivate.h File Reference}
+\hypertarget{derivate_8h}{}\label{derivate_8h}\index{source/bsw/derivate.h@{source/bsw/derivate.h}}
+
+
+Target Information.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{derivate_8h_a9716d06d2c51d8c662777b61caf95411}{ARCH\+\_\+\+PSOC}}~1
+\begin{DoxyCompactList}\small\item\em Target is a Cypress PSoC. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_aaa59fdef8c36bacd04c73a6c1e9d8ebd}{ARCH\+\_\+\+AURIX\+\_\+1G}}~2
+\begin{DoxyCompactList}\small\item\em Target is a Infineon AURIX Gernation 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_aedf597ca3d5a13431b6503f720161c24}{ARCH\+\_\+\+ESP32}}~3
+\begin{DoxyCompactList}\small\item\em Target is a Espressif ESP32. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_ab5f1dc2827542eeab8609adff652eefd}{TARGET\+\_\+\+PSOC5\+LP}}~25
+\begin{DoxyCompactList}\small\item\em PSoC 5 LP Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_ae6b8ab733f66ea99dc3ea740a900a539}{TARGET\+\_\+\+AURIX\+\_\+\+TC27xA}}~1271
+\begin{DoxyCompactList}\small\item\em AURIX 1G TC27x A-\/\+Step Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_a3a6596cfc97539cd7225c4dd9b5c20df}{TARGET\+\_\+\+AURIX\+\_\+\+TC27xB}}~1272
+\begin{DoxyCompactList}\small\item\em AURIX 1G TC27x B-\/\+Step Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_a9ec6ee76c7af447ae16cc195b969648d}{TARGET\+\_\+\+AURIX\+\_\+\+TC27xC}}~1273
+\begin{DoxyCompactList}\small\item\em AURIX 1G TC27x C-\/\+Step Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_aef8c823cd9dea0eb76241a144503c9bc}{TARGET\+\_\+\+AURIX\+\_\+\+TC27xD}}~1274
+\begin{DoxyCompactList}\small\item\em AURIX 1G TC27x D-\/\+Step Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_a4398722d52d5ebb38855e3bfd036f605}{TARGET\+\_\+\+AURIX\+\_\+\+TC29xA}}~1291
+\begin{DoxyCompactList}\small\item\em AURIX 1G TC29x A-\/\+Step Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_aa53a74d663d7d0d3c94cfad01f512cb5}{TARGET\+\_\+\+AURIX\+\_\+\+TC29xB}}~1292
+\begin{DoxyCompactList}\small\item\em AURIX 1G TC29x B-\/\+Step Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_a5a83d6bca750f2bdd57869f37f7f8747}{TARGET\+\_\+\+AURIX\+\_\+\+TC29xC}}~1293
+\begin{DoxyCompactList}\small\item\em AURIX 1G TC29x C-\/\+Step Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_ab25e722c9cc1de0bda36a622aef4b109}{TARGET\+\_\+\+ESP32}}~30
+\begin{DoxyCompactList}\small\item\em Target is a Espressif ESP32. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_a5b610c7857bb081bfdd3e7e9d6083210}{TARGET\+\_\+\+ID}}~\mbox{\hyperlink{derivate_8h_ab5f1dc2827542eeab8609adff652eefd}{TARGET\+\_\+\+PSOC5\+LP}}
+\begin{DoxyCompactList}\small\item\em Target selection by Identifier. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{derivate_8h_af9545418f4eeea2453c67180a9060fcd}{ARCHITECTURE}}~\mbox{\hyperlink{derivate_8h_a9716d06d2c51d8c662777b61caf95411}{ARCH\+\_\+\+PSOC}}
+\item 
+\#define \mbox{\hyperlink{derivate_8h_ab199a80cd218fec8ed6b0997a1e11e7f}{DERIVATE\+\_\+\+NAME}}~PSo\+C5\+LP
+\item 
+\#define \mbox{\hyperlink{derivate_8h_a60706dfbfce458b49213094e6c4dda24}{DERIVATE\+\_\+\+NUM\+\_\+\+CORES}}~1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Target Information. 
+
+\begin{DoxyAuthor}{Author}
+Thomas Barth Hochschule Darmstadt -\/ \href{mailto:thomas.barth@h-da.de}{\texttt{ thomas.\+barth@h-\/da.\+de}} 
+
+Prof. Fromm Hochschule Darmstadt -\/ \href{mailto:peter.fromm@h-da.de}{\texttt{ peter.\+fromm@h-\/da.\+de}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12.\+01.\+2017 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+3
+\end{DoxyVersion}
+
+
+This file provides information about the target, such as the architecture or the derivate.~\newline
+The goal is to provide the same environment on different platforms, where the target specific information only needs to be changed in this file.
+
+Changelog\+:
+\begin{DoxyItemize}
+\item 0.\+3 12.\+01.\+17 Barth
+\begin{DoxyItemize}
+\item Added Espressif ESP32
+\item changed TARGET to ARCHITECTURE
+\end{DoxyItemize}
+\item 0.\+2 02.\+07.\+16 Barth
+\begin{DoxyItemize}
+\item Introduced the concept of \doxylink{derivate_8h_a5b610c7857bb081bfdd3e7e9d6083210}{TARGET\+\_\+\+ID} to allow a flexible and easy configuration-\/set selection.
+\item Added AURIX frequency definitions and timing constraints from the TC29xB Data Sheet V 1.\+1
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\begin{DoxyCopyright}{Copyright}
+Copyright ©2016 Department of electrical engineering and information technology, Hochschule Darmstadt -\/ University of applied sciences (h\+\_\+da). All Rights Reserved. Permission to use, copy, modify, and distribute this software and its documentation for educational, and research purposes in the context of non-\/commercial (unless permitted by h\+\_\+da) and official h\+\_\+da projects, is hereby granted for enrolled students of h\+\_\+da, provided that the above copyright notice, this paragraph and the following paragraph appear in all copies, modifications, and distributions. Contact Prof.\+Dr.-\/Ing. Peter Fromm, \href{mailto:peter.fromm@h-da.de}{\texttt{ peter.\+fromm@h-\/da.\+de}}, Birkenweg 8 64295 Darmstadt -\/ GERMANY for commercial requests.
+\end{DoxyCopyright}
+\begin{DoxyWarning}{Warning}
+This software is a PROTOTYPE version and is not designed or intended for use in production, especially not for safety-\/critical applications! The user represents and warrants that it will NOT use or redistribute the Software for such purposes. This prototype is for research purposes only. This software is provided "{}\+AS IS,"{} without a warranty of any kind. 
+\end{DoxyWarning}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{derivate_8h_aaa59fdef8c36bacd04c73a6c1e9d8ebd}\label{derivate_8h_aaa59fdef8c36bacd04c73a6c1e9d8ebd} 
+\index{derivate.h@{derivate.h}!ARCH\_AURIX\_1G@{ARCH\_AURIX\_1G}}
+\index{ARCH\_AURIX\_1G@{ARCH\_AURIX\_1G}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{ARCH\_AURIX\_1G}{ARCH\_AURIX\_1G}}
+{\footnotesize\ttfamily \#define ARCH\+\_\+\+AURIX\+\_\+1G~2}
+
+
+
+Target is a Infineon AURIX Gernation 1. 
+
+\Hypertarget{derivate_8h_aedf597ca3d5a13431b6503f720161c24}\label{derivate_8h_aedf597ca3d5a13431b6503f720161c24} 
+\index{derivate.h@{derivate.h}!ARCH\_ESP32@{ARCH\_ESP32}}
+\index{ARCH\_ESP32@{ARCH\_ESP32}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{ARCH\_ESP32}{ARCH\_ESP32}}
+{\footnotesize\ttfamily \#define ARCH\+\_\+\+ESP32~3}
+
+
+
+Target is a Espressif ESP32. 
+
+\Hypertarget{derivate_8h_a9716d06d2c51d8c662777b61caf95411}\label{derivate_8h_a9716d06d2c51d8c662777b61caf95411} 
+\index{derivate.h@{derivate.h}!ARCH\_PSOC@{ARCH\_PSOC}}
+\index{ARCH\_PSOC@{ARCH\_PSOC}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{ARCH\_PSOC}{ARCH\_PSOC}}
+{\footnotesize\ttfamily \#define ARCH\+\_\+\+PSOC~1}
+
+
+
+Target is a Cypress PSoC. 
+
+\Hypertarget{derivate_8h_af9545418f4eeea2453c67180a9060fcd}\label{derivate_8h_af9545418f4eeea2453c67180a9060fcd} 
+\index{derivate.h@{derivate.h}!ARCHITECTURE@{ARCHITECTURE}}
+\index{ARCHITECTURE@{ARCHITECTURE}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{ARCHITECTURE}{ARCHITECTURE}}
+{\footnotesize\ttfamily \#define ARCHITECTURE~\mbox{\hyperlink{derivate_8h_a9716d06d2c51d8c662777b61caf95411}{ARCH\+\_\+\+PSOC}}}
+
+\Hypertarget{derivate_8h_ab199a80cd218fec8ed6b0997a1e11e7f}\label{derivate_8h_ab199a80cd218fec8ed6b0997a1e11e7f} 
+\index{derivate.h@{derivate.h}!DERIVATE\_NAME@{DERIVATE\_NAME}}
+\index{DERIVATE\_NAME@{DERIVATE\_NAME}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{DERIVATE\_NAME}{DERIVATE\_NAME}}
+{\footnotesize\ttfamily \#define DERIVATE\+\_\+\+NAME~PSo\+C5\+LP}
+
+\Hypertarget{derivate_8h_a60706dfbfce458b49213094e6c4dda24}\label{derivate_8h_a60706dfbfce458b49213094e6c4dda24} 
+\index{derivate.h@{derivate.h}!DERIVATE\_NUM\_CORES@{DERIVATE\_NUM\_CORES}}
+\index{DERIVATE\_NUM\_CORES@{DERIVATE\_NUM\_CORES}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{DERIVATE\_NUM\_CORES}{DERIVATE\_NUM\_CORES}}
+{\footnotesize\ttfamily \#define DERIVATE\+\_\+\+NUM\+\_\+\+CORES~1}
+
+\Hypertarget{derivate_8h_ae6b8ab733f66ea99dc3ea740a900a539}\label{derivate_8h_ae6b8ab733f66ea99dc3ea740a900a539} 
+\index{derivate.h@{derivate.h}!TARGET\_AURIX\_TC27xA@{TARGET\_AURIX\_TC27xA}}
+\index{TARGET\_AURIX\_TC27xA@{TARGET\_AURIX\_TC27xA}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_AURIX\_TC27xA}{TARGET\_AURIX\_TC27xA}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+AURIX\+\_\+\+TC27xA~1271}
+
+
+
+AURIX 1G TC27x A-\/\+Step Identifier. 
+
+\Hypertarget{derivate_8h_a3a6596cfc97539cd7225c4dd9b5c20df}\label{derivate_8h_a3a6596cfc97539cd7225c4dd9b5c20df} 
+\index{derivate.h@{derivate.h}!TARGET\_AURIX\_TC27xB@{TARGET\_AURIX\_TC27xB}}
+\index{TARGET\_AURIX\_TC27xB@{TARGET\_AURIX\_TC27xB}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_AURIX\_TC27xB}{TARGET\_AURIX\_TC27xB}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+AURIX\+\_\+\+TC27xB~1272}
+
+
+
+AURIX 1G TC27x B-\/\+Step Identifier. 
+
+\Hypertarget{derivate_8h_a9ec6ee76c7af447ae16cc195b969648d}\label{derivate_8h_a9ec6ee76c7af447ae16cc195b969648d} 
+\index{derivate.h@{derivate.h}!TARGET\_AURIX\_TC27xC@{TARGET\_AURIX\_TC27xC}}
+\index{TARGET\_AURIX\_TC27xC@{TARGET\_AURIX\_TC27xC}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_AURIX\_TC27xC}{TARGET\_AURIX\_TC27xC}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+AURIX\+\_\+\+TC27xC~1273}
+
+
+
+AURIX 1G TC27x C-\/\+Step Identifier. 
+
+\Hypertarget{derivate_8h_aef8c823cd9dea0eb76241a144503c9bc}\label{derivate_8h_aef8c823cd9dea0eb76241a144503c9bc} 
+\index{derivate.h@{derivate.h}!TARGET\_AURIX\_TC27xD@{TARGET\_AURIX\_TC27xD}}
+\index{TARGET\_AURIX\_TC27xD@{TARGET\_AURIX\_TC27xD}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_AURIX\_TC27xD}{TARGET\_AURIX\_TC27xD}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+AURIX\+\_\+\+TC27xD~1274}
+
+
+
+AURIX 1G TC27x D-\/\+Step Identifier. 
+
+\Hypertarget{derivate_8h_a4398722d52d5ebb38855e3bfd036f605}\label{derivate_8h_a4398722d52d5ebb38855e3bfd036f605} 
+\index{derivate.h@{derivate.h}!TARGET\_AURIX\_TC29xA@{TARGET\_AURIX\_TC29xA}}
+\index{TARGET\_AURIX\_TC29xA@{TARGET\_AURIX\_TC29xA}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_AURIX\_TC29xA}{TARGET\_AURIX\_TC29xA}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+AURIX\+\_\+\+TC29xA~1291}
+
+
+
+AURIX 1G TC29x A-\/\+Step Identifier. 
+
+\Hypertarget{derivate_8h_aa53a74d663d7d0d3c94cfad01f512cb5}\label{derivate_8h_aa53a74d663d7d0d3c94cfad01f512cb5} 
+\index{derivate.h@{derivate.h}!TARGET\_AURIX\_TC29xB@{TARGET\_AURIX\_TC29xB}}
+\index{TARGET\_AURIX\_TC29xB@{TARGET\_AURIX\_TC29xB}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_AURIX\_TC29xB}{TARGET\_AURIX\_TC29xB}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+AURIX\+\_\+\+TC29xB~1292}
+
+
+
+AURIX 1G TC29x B-\/\+Step Identifier. 
+
+\Hypertarget{derivate_8h_a5a83d6bca750f2bdd57869f37f7f8747}\label{derivate_8h_a5a83d6bca750f2bdd57869f37f7f8747} 
+\index{derivate.h@{derivate.h}!TARGET\_AURIX\_TC29xC@{TARGET\_AURIX\_TC29xC}}
+\index{TARGET\_AURIX\_TC29xC@{TARGET\_AURIX\_TC29xC}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_AURIX\_TC29xC}{TARGET\_AURIX\_TC29xC}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+AURIX\+\_\+\+TC29xC~1293}
+
+
+
+AURIX 1G TC29x C-\/\+Step Identifier. 
+
+\Hypertarget{derivate_8h_ab25e722c9cc1de0bda36a622aef4b109}\label{derivate_8h_ab25e722c9cc1de0bda36a622aef4b109} 
+\index{derivate.h@{derivate.h}!TARGET\_ESP32@{TARGET\_ESP32}}
+\index{TARGET\_ESP32@{TARGET\_ESP32}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_ESP32}{TARGET\_ESP32}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+ESP32~30}
+
+
+
+Target is a Espressif ESP32. 
+
+\Hypertarget{derivate_8h_a5b610c7857bb081bfdd3e7e9d6083210}\label{derivate_8h_a5b610c7857bb081bfdd3e7e9d6083210} 
+\index{derivate.h@{derivate.h}!TARGET\_ID@{TARGET\_ID}}
+\index{TARGET\_ID@{TARGET\_ID}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_ID}{TARGET\_ID}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+ID~\mbox{\hyperlink{derivate_8h_ab5f1dc2827542eeab8609adff652eefd}{TARGET\+\_\+\+PSOC5\+LP}}}
+
+
+
+Target selection by Identifier. 
+
+\Hypertarget{derivate_8h_ab5f1dc2827542eeab8609adff652eefd}\label{derivate_8h_ab5f1dc2827542eeab8609adff652eefd} 
+\index{derivate.h@{derivate.h}!TARGET\_PSOC5LP@{TARGET\_PSOC5LP}}
+\index{TARGET\_PSOC5LP@{TARGET\_PSOC5LP}!derivate.h@{derivate.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_PSOC5LP}{TARGET\_PSOC5LP}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+PSOC5\+LP~25}
+
+
+
+PSoC 5 LP Identifier. 
+

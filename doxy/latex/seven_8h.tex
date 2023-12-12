@@ -1,0 +1,131 @@
+\doxysection{source/bsw/seven.h File Reference}
+\hypertarget{seven_8h}{}\label{seven_8h}\index{source/bsw/seven.h@{source/bsw/seven.h}}
+{\ttfamily \#include "{}global.\+h"{}}\newline
+{\ttfamily \#include "{}Pin\+\_\+7\+\_\+seg\+\_\+\+A\+\_\+aliases.\+h"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \mbox{\hyperlink{seven_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}} \{ \mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46ea5f866189c8a6b784e466657ef78aa307}{SEVEN\+\_\+\+DISPLAY\+\_\+\+LEFT}}
+, \mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46ead3c4e1925aa70513663792913ceecc90}{SEVEN\+\_\+\+DISPLAY\+\_\+\+RIGHT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8h_a48a8ddcc683400403f1c004664c89d47}{Seven\+\_\+init}} ()
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8h_af2952c0238f865557fd449dffbfd43e2}{Seven\+\_\+\+Write}} (\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}} display, \mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}} value)
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8h_a523d295219fe9b7885ea81b6b68bbe24}{Seven\+\_\+\+Write\+\_\+\+Hex}} (\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}} value)
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8h_ae3bb3a0b69a7f4973b03892588a78572}{Seven\+\_\+\+Write\+\_\+\+Dp}} (\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}} display)
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8h_aa56d60f55c0589e0367308d709835007}{Seven\+\_\+\+Clear}} (\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}} display)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{seven_8h_aba7bc1797add20fe3efdf37ced1182c5}\label{seven_8h_aba7bc1797add20fe3efdf37ced1182c5} 
+\index{seven.h@{seven.h}!uint8\_t@{uint8\_t}}
+\index{uint8\_t@{uint8\_t}!seven.h@{seven.h}}
+\doxysubsubsection{\texorpdfstring{uint8\_t}{uint8\_t}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}\label{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e} 
+\index{seven.h@{seven.h}!Seven\_Display\_t@{Seven\_Display\_t}}
+\index{Seven\_Display\_t@{Seven\_Display\_t}!seven.h@{seven.h}}
+\doxysubsubsection{\texorpdfstring{Seven\_Display\_t}{Seven\_Display\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}}}
+
+Enum to store the left and right 7 seg displays
+
+Detailed explaination of the enumeration. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SEVEN\_DISPLAY\_LEFT@{SEVEN\_DISPLAY\_LEFT}!seven.h@{seven.h}}\index{seven.h@{seven.h}!SEVEN\_DISPLAY\_LEFT@{SEVEN\_DISPLAY\_LEFT}}}\Hypertarget{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46ea5f866189c8a6b784e466657ef78aa307}\label{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46ea5f866189c8a6b784e466657ef78aa307} 
+SEVEN\+\_\+\+DISPLAY\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SEVEN\_DISPLAY\_RIGHT@{SEVEN\_DISPLAY\_RIGHT}!seven.h@{seven.h}}\index{seven.h@{seven.h}!SEVEN\_DISPLAY\_RIGHT@{SEVEN\_DISPLAY\_RIGHT}}}\Hypertarget{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46ead3c4e1925aa70513663792913ceecc90}\label{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46ead3c4e1925aa70513663792913ceecc90} 
+SEVEN\+\_\+\+DISPLAY\+\_\+\+RIGHT&0 -\/ Left 7 segment display. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{seven_8h_aa56d60f55c0589e0367308d709835007}\label{seven_8h_aa56d60f55c0589e0367308d709835007} 
+\index{seven.h@{seven.h}!Seven\_Clear@{Seven\_Clear}}
+\index{Seven\_Clear@{Seven\_Clear}!seven.h@{seven.h}}
+\doxysubsubsection{\texorpdfstring{Seven\_Clear()}{Seven\_Clear()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}}}]{display }\end{DoxyParamCaption})}
+
+To clear one of the 7 segement displays 
+\begin{DoxyParams}{Parameters}
+{\em Seven\+\_\+\+Display\+\_\+t} & display \+: Left or Right display selector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8h_a48a8ddcc683400403f1c004664c89d47}\label{seven_8h_a48a8ddcc683400403f1c004664c89d47} 
+\index{seven.h@{seven.h}!Seven\_init@{Seven\_init}}
+\index{Seven\_init@{Seven\_init}!seven.h@{seven.h}}
+\doxysubsubsection{\texorpdfstring{Seven\_init()}{Seven\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+To initalise the 7 seg with 0
+
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8h_af2952c0238f865557fd449dffbfd43e2}\label{seven_8h_af2952c0238f865557fd449dffbfd43e2} 
+\index{seven.h@{seven.h}!Seven\_Write@{Seven\_Write}}
+\index{Seven\_Write@{Seven\_Write}!seven.h@{seven.h}}
+\doxysubsubsection{\texorpdfstring{Seven\_Write()}{Seven\_Write()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}}}]{display,  }\item[{\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}}]{value }\end{DoxyParamCaption})}
+
+To write into one of the 7 segement displays with a value from 0x00 to 0x\+FF 
+\begin{DoxyParams}{Parameters}
+{\em Seven\+\_\+\+Display\+\_\+t} & display \+: Left or Right display selector \\
+\hline
+{\em uint8} & value \+: Value that is to be displayed on the 7 seg \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8h_ae3bb3a0b69a7f4973b03892588a78572}\label{seven_8h_ae3bb3a0b69a7f4973b03892588a78572} 
+\index{seven.h@{seven.h}!Seven\_Write\_Dp@{Seven\_Write\_Dp}}
+\index{Seven\_Write\_Dp@{Seven\_Write\_Dp}!seven.h@{seven.h}}
+\doxysubsubsection{\texorpdfstring{Seven\_Write\_Dp()}{Seven\_Write\_Dp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Write\+\_\+\+Dp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}}}]{display }\end{DoxyParamCaption})}
+
+To write into one of the 7 segement displays decimal pointer 
+\begin{DoxyParams}{Parameters}
+{\em Seven\+\_\+\+Display\+\_\+t} & display \+: Left or Right display selector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8h_a523d295219fe9b7885ea81b6b68bbe24}\label{seven_8h_a523d295219fe9b7885ea81b6b68bbe24} 
+\index{seven.h@{seven.h}!Seven\_Write\_Hex@{Seven\_Write\_Hex}}
+\index{Seven\_Write\_Hex@{Seven\_Write\_Hex}!seven.h@{seven.h}}
+\doxysubsubsection{\texorpdfstring{Seven\_Write\_Hex()}{Seven\_Write\_Hex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Write\+\_\+\+Hex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}}]{value }\end{DoxyParamCaption})}
+
+To write into one of the 7 segement displays in the Hex value 
+\begin{DoxyParams}{Parameters}
+{\em uint8} & value \+: Value that is to be displayed on the 7 seg, this value is passed to write fucntion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}

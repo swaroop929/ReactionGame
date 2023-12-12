@@ -1,0 +1,2056 @@
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Arcadian.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Functsk_arcadian,"ax",%progbits
+  20              		.align	2
+  21              		.global	Functsk_arcadian
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Functsk_arcadian, %function
+  25              	Functsk_arcadian:
+  26              	.LFB110:
+  27              		.file 1 "source\\asw\\Arcadian.c"
+   1:source\asw/Arcadian.c **** /* ========================================
+   2:source\asw/Arcadian.c ****  *
+   3:source\asw/Arcadian.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:source\asw/Arcadian.c ****  * All Rights Reserved
+   5:source\asw/Arcadian.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:source\asw/Arcadian.c ****  *
+   7:source\asw/Arcadian.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:source\asw/Arcadian.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:source\asw/Arcadian.c ****  *
+  10:source\asw/Arcadian.c ****  * ========================================
+  11:source\asw/Arcadian.c **** */
+  12:source\asw/Arcadian.c **** 
+  13:source\asw/Arcadian.c **** /* [] END OF FILE */
+  14:source\asw/Arcadian.c **** 
+  15:source\asw/Arcadian.c **** #include "Arcadian.h"
+  16:source\asw/Arcadian.c **** 
+  17:source\asw/Arcadian.c **** static int RedHigh_GreenLow = 1;
+  18:source\asw/Arcadian.c **** static int YellowHigh_RedLow = 0;
+  19:source\asw/Arcadian.c **** static int GreenHigh_RedLow = 0;
+  20:source\asw/Arcadian.c **** static int count = 0;
+  21:source\asw/Arcadian.c **** static int curr_index = 0;
+  22:source\asw/Arcadian.c **** static int total_index = 9;
+  23:source\asw/Arcadian.c **** 
+  24:source\asw/Arcadian.c **** typedef struct
+  25:source\asw/Arcadian.c **** {
+  26:source\asw/Arcadian.c ****     uint8_t Red;
+  27:source\asw/Arcadian.c ****     uint8_t Green;
+  28:source\asw/Arcadian.c ****     uint8_t Blue;
+  29:source\asw/Arcadian.c ****     uint16_t time;
+  30:source\asw/Arcadian.c **** }RG__Glow_t;
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 2
+
+
+  31:source\asw/Arcadian.c **** 
+  32:source\asw/Arcadian.c **** const RG__Glow_t RG_glowtable_1[] = {
+  33:source\asw/Arcadian.c **** //Red Green Blue TimeInMS
+  34:source\asw/Arcadian.c **** {255, 0, 0, 500},
+  35:source\asw/Arcadian.c **** {0, 255, 0, 500},
+  36:source\asw/Arcadian.c **** {0, 0, 255, 500},
+  37:source\asw/Arcadian.c **** {0, 0, 0, 100},
+  38:source\asw/Arcadian.c **** {255, 255, 255, 100},
+  39:source\asw/Arcadian.c **** {0, 0, 0, 100},
+  40:source\asw/Arcadian.c **** {255, 255, 255, 100},
+  41:source\asw/Arcadian.c **** {0, 0, 0, 100},
+  42:source\asw/Arcadian.c **** {255, 255, 255, 100}
+  43:source\asw/Arcadian.c **** };
+  44:source\asw/Arcadian.c **** 
+  45:source\asw/Arcadian.c **** /** 
+  46:source\asw/Arcadian.c ****  * \brief This task is activated by alrm_22ms cyclically
+  47:source\asw/Arcadian.c ****  * This task has lower priority than the tsk_game and the tsk_game can preempt this task
+  48:source\asw/Arcadian.c ****  * tsk_arcadian will make the Red, Yellow and Green LEDs glow in form of a travelling light and
+  49:source\asw/Arcadian.c ****  * will make the RGB light glow in a particular sequence defined in the array RG_glowtable_1[]
+  50:source\asw/Arcadian.c **** */
+  51:source\asw/Arcadian.c **** TASK(tsk_arcadian)
+  52:source\asw/Arcadian.c **** {
+  28              		.loc 1 52 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 3, -16
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 14, -4
+  53:source\asw/Arcadian.c ****     count++;
+  38              		.loc 1 53 0
+  39 0002 464A     		ldr	r2, .L8
+  40 0004 1368     		ldr	r3, [r2]
+  41 0006 0133     		adds	r3, r3, #1
+  42 0008 1360     		str	r3, [r2]
+  54:source\asw/Arcadian.c ****     
+  55:source\asw/Arcadian.c ****     //Fader
+  56:source\asw/Arcadian.c ****     if(RedHigh_GreenLow == 1)
+  43              		.loc 1 56 0
+  44 000a 454B     		ldr	r3, .L8+4
+  45 000c 1B68     		ldr	r3, [r3]
+  46 000e 012B     		cmp	r3, #1
+  47 0010 19D1     		bne	.L2
+  57:source\asw/Arcadian.c ****     {
+  58:source\asw/Arcadian.c ****         PWM_Red_WriteCompare(PWM_Red_ReadCompare()+5);
+  48              		.loc 1 58 0
+  49 0012 FFF7FEFF 		bl	PWM_Red_ReadCompare
+  50              	.LVL0:
+  51 0016 0530     		adds	r0, r0, #5
+  52 0018 C0B2     		uxtb	r0, r0
+  53 001a FFF7FEFF 		bl	PWM_Red_WriteCompare
+  54              	.LVL1:
+  59:source\asw/Arcadian.c ****         PWM_Green_WriteCompare(PWM_Green_ReadCompare()-5);
+  55              		.loc 1 59 0
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 3
+
+
+  56 001e FFF7FEFF 		bl	PWM_Green_ReadCompare
+  57              	.LVL2:
+  58 0022 0538     		subs	r0, r0, #5
+  59 0024 C0B2     		uxtb	r0, r0
+  60 0026 FFF7FEFF 		bl	PWM_Green_WriteCompare
+  61              	.LVL3:
+  60:source\asw/Arcadian.c ****         if(PWM_Red_ReadCompare() == PWM_Red_ReadPeriod())
+  62              		.loc 1 60 0
+  63 002a FFF7FEFF 		bl	PWM_Red_ReadCompare
+  64              	.LVL4:
+  65 002e 0446     		mov	r4, r0
+  66 0030 FFF7FEFF 		bl	PWM_Red_ReadPeriod
+  67              	.LVL5:
+  68 0034 8442     		cmp	r4, r0
+  69 0036 40D1     		bne	.L3
+  61:source\asw/Arcadian.c ****         {
+  62:source\asw/Arcadian.c ****             RedHigh_GreenLow = 0;
+  70              		.loc 1 62 0
+  71 0038 0022     		movs	r2, #0
+  72 003a 394B     		ldr	r3, .L8+4
+  73 003c 1A60     		str	r2, [r3]
+  63:source\asw/Arcadian.c ****             YellowHigh_RedLow = 1;
+  74              		.loc 1 63 0
+  75 003e 0122     		movs	r2, #1
+  76 0040 364B     		ldr	r3, .L8
+  77 0042 5A60     		str	r2, [r3, #4]
+  78 0044 39E0     		b	.L3
+  79              	.L2:
+  64:source\asw/Arcadian.c ****         }
+  65:source\asw/Arcadian.c ****     }
+  66:source\asw/Arcadian.c ****     else if(YellowHigh_RedLow == 1)
+  80              		.loc 1 66 0
+  81 0046 354B     		ldr	r3, .L8
+  82 0048 5B68     		ldr	r3, [r3, #4]
+  83 004a 012B     		cmp	r3, #1
+  84 004c 18D1     		bne	.L4
+  67:source\asw/Arcadian.c ****     {
+  68:source\asw/Arcadian.c ****         PWM_Red_WriteCompare(PWM_Red_ReadCompare()-5);
+  85              		.loc 1 68 0
+  86 004e FFF7FEFF 		bl	PWM_Red_ReadCompare
+  87              	.LVL6:
+  88 0052 0538     		subs	r0, r0, #5
+  89 0054 C0B2     		uxtb	r0, r0
+  90 0056 FFF7FEFF 		bl	PWM_Red_WriteCompare
+  91              	.LVL7:
+  69:source\asw/Arcadian.c ****         PWM_Yellow_WriteCompare(PWM_Yellow_ReadCompare()+5);
+  92              		.loc 1 69 0
+  93 005a FFF7FEFF 		bl	PWM_Yellow_ReadCompare
+  94              	.LVL8:
+  95 005e 0530     		adds	r0, r0, #5
+  96 0060 C0B2     		uxtb	r0, r0
+  97 0062 FFF7FEFF 		bl	PWM_Yellow_WriteCompare
+  98              	.LVL9:
+  70:source\asw/Arcadian.c ****         if(PWM_Yellow_ReadCompare() == PWM_Yellow_ReadPeriod())
+  99              		.loc 1 70 0
+ 100 0066 FFF7FEFF 		bl	PWM_Yellow_ReadCompare
+ 101              	.LVL10:
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 4
+
+
+ 102 006a 0446     		mov	r4, r0
+ 103 006c FFF7FEFF 		bl	PWM_Yellow_ReadPeriod
+ 104              	.LVL11:
+ 105 0070 8442     		cmp	r4, r0
+ 106 0072 22D1     		bne	.L3
+  71:source\asw/Arcadian.c ****         {
+  72:source\asw/Arcadian.c ****             YellowHigh_RedLow = 0;
+ 107              		.loc 1 72 0
+ 108 0074 294B     		ldr	r3, .L8
+ 109 0076 0022     		movs	r2, #0
+ 110 0078 5A60     		str	r2, [r3, #4]
+  73:source\asw/Arcadian.c ****             GreenHigh_RedLow = 1;
+ 111              		.loc 1 73 0
+ 112 007a 0122     		movs	r2, #1
+ 113 007c 9A60     		str	r2, [r3, #8]
+ 114 007e 1CE0     		b	.L3
+ 115              	.L4:
+  74:source\asw/Arcadian.c ****         }
+  75:source\asw/Arcadian.c ****     }
+  76:source\asw/Arcadian.c ****     else if(GreenHigh_RedLow == 1)
+ 116              		.loc 1 76 0
+ 117 0080 264B     		ldr	r3, .L8
+ 118 0082 9B68     		ldr	r3, [r3, #8]
+ 119 0084 012B     		cmp	r3, #1
+ 120 0086 18D1     		bne	.L3
+  77:source\asw/Arcadian.c ****     {
+  78:source\asw/Arcadian.c ****         PWM_Green_WriteCompare(PWM_Green_ReadCompare()+5);
+ 121              		.loc 1 78 0
+ 122 0088 FFF7FEFF 		bl	PWM_Green_ReadCompare
+ 123              	.LVL12:
+ 124 008c 0530     		adds	r0, r0, #5
+ 125 008e C0B2     		uxtb	r0, r0
+ 126 0090 FFF7FEFF 		bl	PWM_Green_WriteCompare
+ 127              	.LVL13:
+  79:source\asw/Arcadian.c ****         PWM_Yellow_WriteCompare(PWM_Yellow_ReadCompare()-5);
+ 128              		.loc 1 79 0
+ 129 0094 FFF7FEFF 		bl	PWM_Yellow_ReadCompare
+ 130              	.LVL14:
+ 131 0098 0538     		subs	r0, r0, #5
+ 132 009a C0B2     		uxtb	r0, r0
+ 133 009c FFF7FEFF 		bl	PWM_Yellow_WriteCompare
+ 134              	.LVL15:
+  80:source\asw/Arcadian.c ****         if(PWM_Green_ReadCompare() == PWM_Green_ReadPeriod())
+ 135              		.loc 1 80 0
+ 136 00a0 FFF7FEFF 		bl	PWM_Green_ReadCompare
+ 137              	.LVL16:
+ 138 00a4 0446     		mov	r4, r0
+ 139 00a6 FFF7FEFF 		bl	PWM_Green_ReadPeriod
+ 140              	.LVL17:
+ 141 00aa 8442     		cmp	r4, r0
+ 142 00ac 05D1     		bne	.L3
+  81:source\asw/Arcadian.c ****         {
+  82:source\asw/Arcadian.c ****             RedHigh_GreenLow = 1;
+ 143              		.loc 1 82 0
+ 144 00ae 0122     		movs	r2, #1
+ 145 00b0 1B4B     		ldr	r3, .L8+4
+ 146 00b2 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 5
+
+
+  83:source\asw/Arcadian.c ****             GreenHigh_RedLow = 0;
+ 147              		.loc 1 83 0
+ 148 00b4 0022     		movs	r2, #0
+ 149 00b6 194B     		ldr	r3, .L8
+ 150 00b8 9A60     		str	r2, [r3, #8]
+ 151              	.L3:
+  84:source\asw/Arcadian.c ****         }
+  85:source\asw/Arcadian.c ****     }
+  86:source\asw/Arcadian.c ****         
+  87:source\asw/Arcadian.c **** 
+  88:source\asw/Arcadian.c ****     //LED GLOWER
+  89:source\asw/Arcadian.c ****    if(curr_index % total_index == 0)
+ 152              		.loc 1 89 0
+ 153 00ba 184B     		ldr	r3, .L8
+ 154 00bc DA68     		ldr	r2, [r3, #12]
+ 155 00be 194B     		ldr	r3, .L8+8
+ 156 00c0 83FB0231 		smull	r3, r1, r3, r2
+ 157 00c4 D317     		asrs	r3, r2, #31
+ 158 00c6 C3EB6103 		rsb	r3, r3, r1, asr #1
+ 159 00ca 03EBC303 		add	r3, r3, r3, lsl #3
+ 160 00ce 9A42     		cmp	r2, r3
+ 161 00d0 02D1     		bne	.L5
+  90:source\asw/Arcadian.c ****     {
+  91:source\asw/Arcadian.c ****         curr_index = 0;
+ 162              		.loc 1 91 0
+ 163 00d2 0022     		movs	r2, #0
+ 164 00d4 114B     		ldr	r3, .L8
+ 165 00d6 DA60     		str	r2, [r3, #12]
+ 166              	.L5:
+  92:source\asw/Arcadian.c ****     }
+  93:source\asw/Arcadian.c ****         
+  94:source\asw/Arcadian.c **** 
+  95:source\asw/Arcadian.c ****     LED_RGB_Set(RG_glowtable_1[curr_index].Red, RG_glowtable_1[curr_index].Green, RG_glowtable_1[cu
+ 167              		.loc 1 95 0
+ 168 00d8 104C     		ldr	r4, .L8
+ 169 00da E368     		ldr	r3, [r4, #12]
+ 170 00dc 124D     		ldr	r5, .L8+12
+ 171 00de 5A00     		lsls	r2, r3, #1
+ 172 00e0 D018     		adds	r0, r2, r3
+ 173 00e2 4100     		lsls	r1, r0, #1
+ 174 00e4 0846     		mov	r0, r1
+ 175 00e6 2944     		add	r1, r1, r5
+ 176 00e8 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
+ 177 00ea 4978     		ldrb	r1, [r1, #1]	@ zero_extendqisi2
+ 178 00ec 285C     		ldrb	r0, [r5, r0]	@ zero_extendqisi2
+ 179 00ee FFF7FEFF 		bl	LED_RGB_Set
+ 180              	.LVL18:
+  96:source\asw/Arcadian.c ****             
+  97:source\asw/Arcadian.c ****     if(count >= RG_glowtable_1[curr_index].time/22)
+ 181              		.loc 1 97 0
+ 182 00f2 E268     		ldr	r2, [r4, #12]
+ 183 00f4 02EB4201 		add	r1, r2, r2, lsl #1
+ 184 00f8 4B00     		lsls	r3, r1, #1
+ 185 00fa 2B44     		add	r3, r3, r5
+ 186 00fc 9B88     		ldrh	r3, [r3, #4]
+ 187 00fe 0B49     		ldr	r1, .L8+16
+ 188 0100 A1FB0313 		umull	r1, r3, r1, r3
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 6
+
+
+ 189 0104 2168     		ldr	r1, [r4]
+ 190 0106 B1EB131F 		cmp	r1, r3, lsr #4
+ 191 010a 03DB     		blt	.L6
+  98:source\asw/Arcadian.c ****     {
+  99:source\asw/Arcadian.c ****        count = 0;
+ 192              		.loc 1 99 0
+ 193 010c 0021     		movs	r1, #0
+ 194 010e 2160     		str	r1, [r4]
+ 100:source\asw/Arcadian.c ****        curr_index++;
+ 195              		.loc 1 100 0
+ 196 0110 0132     		adds	r2, r2, #1
+ 197 0112 E260     		str	r2, [r4, #12]
+ 198              	.L6:
+ 101:source\asw/Arcadian.c ****     }
+ 102:source\asw/Arcadian.c ****     
+ 103:source\asw/Arcadian.c ****     TerminateTask();
+ 199              		.loc 1 103 0
+ 200 0114 FFF7FEFF 		bl	EE_oo_TerminateTask
+ 201              	.LVL19:
+ 202 0118 38BD     		pop	{r3, r4, r5, pc}
+ 203              	.L9:
+ 204 011a 00BF     		.align	2
+ 205              	.L8:
+ 206 011c 00000000 		.word	.LANCHOR0
+ 207 0120 00000000 		.word	.LANCHOR1
+ 208 0124 398EE338 		.word	954437177
+ 209 0128 00000000 		.word	.LANCHOR2
+ 210 012c A38B2EBA 		.word	-1171354717
+ 211              		.cfi_endproc
+ 212              	.LFE110:
+ 213              		.size	Functsk_arcadian, .-Functsk_arcadian
+ 214              		.global	RG_glowtable_1
+ 215              		.section	.rodata
+ 216              		.align	2
+ 217              		.set	.LANCHOR2,. + 0
+ 218              		.type	RG_glowtable_1, %object
+ 219              		.size	RG_glowtable_1, 54
+ 220              	RG_glowtable_1:
+ 221 0000 FF       		.byte	-1
+ 222 0001 00       		.byte	0
+ 223 0002 00       		.byte	0
+ 224 0003 00       		.space	1
+ 225 0004 F401     		.short	500
+ 226 0006 00       		.byte	0
+ 227 0007 FF       		.byte	-1
+ 228 0008 00       		.byte	0
+ 229 0009 00       		.space	1
+ 230 000a F401     		.short	500
+ 231 000c 00       		.byte	0
+ 232 000d 00       		.byte	0
+ 233 000e FF       		.byte	-1
+ 234 000f 00       		.space	1
+ 235 0010 F401     		.short	500
+ 236 0012 00       		.byte	0
+ 237 0013 00       		.byte	0
+ 238 0014 00       		.byte	0
+ 239 0015 00       		.space	1
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 7
+
+
+ 240 0016 6400     		.short	100
+ 241 0018 FF       		.byte	-1
+ 242 0019 FF       		.byte	-1
+ 243 001a FF       		.byte	-1
+ 244 001b 00       		.space	1
+ 245 001c 6400     		.short	100
+ 246 001e 00       		.byte	0
+ 247 001f 00       		.byte	0
+ 248 0020 00       		.byte	0
+ 249 0021 00       		.space	1
+ 250 0022 6400     		.short	100
+ 251 0024 FF       		.byte	-1
+ 252 0025 FF       		.byte	-1
+ 253 0026 FF       		.byte	-1
+ 254 0027 00       		.space	1
+ 255 0028 6400     		.short	100
+ 256 002a 00       		.byte	0
+ 257 002b 00       		.byte	0
+ 258 002c 00       		.byte	0
+ 259 002d 00       		.space	1
+ 260 002e 6400     		.short	100
+ 261 0030 FF       		.byte	-1
+ 262 0031 FF       		.byte	-1
+ 263 0032 FF       		.byte	-1
+ 264 0033 00       		.space	1
+ 265 0034 6400     		.short	100
+ 266              		.data
+ 267              		.align	2
+ 268              		.set	.LANCHOR1,. + 0
+ 269              		.type	RedHigh_GreenLow, %object
+ 270              		.size	RedHigh_GreenLow, 4
+ 271              	RedHigh_GreenLow:
+ 272 0000 01000000 		.word	1
+ 273              		.bss
+ 274              		.align	2
+ 275              		.set	.LANCHOR0,. + 0
+ 276              		.type	count, %object
+ 277              		.size	count, 4
+ 278              	count:
+ 279 0000 00000000 		.space	4
+ 280              		.type	YellowHigh_RedLow, %object
+ 281              		.size	YellowHigh_RedLow, 4
+ 282              	YellowHigh_RedLow:
+ 283 0004 00000000 		.space	4
+ 284              		.type	GreenHigh_RedLow, %object
+ 285              		.size	GreenHigh_RedLow, 4
+ 286              	GreenHigh_RedLow:
+ 287 0008 00000000 		.space	4
+ 288              		.type	curr_index, %object
+ 289              		.size	curr_index, 4
+ 290              	curr_index:
+ 291 000c 00000000 		.space	4
+ 292              		.text
+ 293              	.Letext0:
+ 294              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 295              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 296              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 8
+
+
+ 297              		.file 5 "Generated_Source\\PSoC5/ErikaOS_1_common_ee_types.inc"
+ 298              		.file 6 "Generated_Source\\PSoC5/ErikaOS_1_cortex_mx_ee_cpu.inc"
+ 299              		.file 7 ".\\source\\bsw/RGB_Led.h"
+ 300              		.file 8 "Generated_Source\\PSoC5/ErikaOS_1_ee_oo_intfunc.inc"
+ 301              		.file 9 "Generated_Source\\PSoC5/ErikaOS_1_cortex_mx_ee_context.inc"
+ 302              		.file 10 "Generated_Source\\PSoC5/ErikaOS_1_common_ee_primitives.inc"
+ 303              		.file 11 "Generated_Source\\PSoC5/core_cm3.h"
+ 304              		.file 12 "Generated_Source\\PSoC5/PWM_Red.h"
+ 305              		.file 13 "Generated_Source\\PSoC5/PWM_Green.h"
+ 306              		.file 14 "Generated_Source\\PSoC5/PWM_Yellow.h"
+ 307              		.file 15 "Generated_Source\\PSoC5/ErikaOS_1_ee_oo_kernel.inc"
+ 308              		.section	.debug_info,"",%progbits
+ 309              	.Ldebug_info0:
+ 310 0000 97050000 		.4byte	0x597
+ 311 0004 0400     		.2byte	0x4
+ 312 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 313 000a 04       		.byte	0x4
+ 314 000b 01       		.uleb128 0x1
+ 315 000c B1000000 		.4byte	.LASF55
+ 316 0010 0C       		.byte	0xc
+ 317 0011 95020000 		.4byte	.LASF56
+ 318 0015 4C030000 		.4byte	.LASF57
+ 319 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 320 001d 00000000 		.4byte	0
+ 321 0021 00000000 		.4byte	.Ldebug_line0
+ 322 0025 02       		.uleb128 0x2
+ 323 0026 01       		.byte	0x1
+ 324 0027 06       		.byte	0x6
+ 325 0028 D6030000 		.4byte	.LASF0
+ 326 002c 03       		.uleb128 0x3
+ 327 002d 00000000 		.4byte	.LASF3
+ 328 0031 02       		.byte	0x2
+ 329 0032 1D       		.byte	0x1d
+ 330 0033 37000000 		.4byte	0x37
+ 331 0037 02       		.uleb128 0x2
+ 332 0038 01       		.byte	0x1
+ 333 0039 08       		.byte	0x8
+ 334 003a A3000000 		.4byte	.LASF1
+ 335 003e 02       		.uleb128 0x2
+ 336 003f 02       		.byte	0x2
+ 337 0040 05       		.byte	0x5
+ 338 0041 18030000 		.4byte	.LASF2
+ 339 0045 03       		.uleb128 0x3
+ 340 0046 C3010000 		.4byte	.LASF4
+ 341 004a 02       		.byte	0x2
+ 342 004b 2B       		.byte	0x2b
+ 343 004c 50000000 		.4byte	0x50
+ 344 0050 02       		.uleb128 0x2
+ 345 0051 02       		.byte	0x2
+ 346 0052 07       		.byte	0x7
+ 347 0053 56000000 		.4byte	.LASF5
+ 348 0057 03       		.uleb128 0x3
+ 349 0058 4C000000 		.4byte	.LASF6
+ 350 005c 02       		.byte	0x2
+ 351 005d 3F       		.byte	0x3f
+ 352 005e 62000000 		.4byte	0x62
+ 353 0062 02       		.uleb128 0x2
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 9
+
+
+ 354 0063 04       		.byte	0x4
+ 355 0064 05       		.byte	0x5
+ 356 0065 43030000 		.4byte	.LASF7
+ 357 0069 02       		.uleb128 0x2
+ 358 006a 04       		.byte	0x4
+ 359 006b 07       		.byte	0x7
+ 360 006c 6B010000 		.4byte	.LASF8
+ 361 0070 02       		.uleb128 0x2
+ 362 0071 08       		.byte	0x8
+ 363 0072 05       		.byte	0x5
+ 364 0073 CB020000 		.4byte	.LASF9
+ 365 0077 02       		.uleb128 0x2
+ 366 0078 08       		.byte	0x8
+ 367 0079 07       		.byte	0x7
+ 368 007a 47020000 		.4byte	.LASF10
+ 369 007e 04       		.uleb128 0x4
+ 370 007f 04       		.byte	0x4
+ 371 0080 05       		.byte	0x5
+ 372 0081 696E7400 		.ascii	"int\000"
+ 373 0085 02       		.uleb128 0x2
+ 374 0086 04       		.byte	0x4
+ 375 0087 07       		.byte	0x7
+ 376 0088 21020000 		.4byte	.LASF11
+ 377 008c 03       		.uleb128 0x3
+ 378 008d 5E020000 		.4byte	.LASF12
+ 379 0091 03       		.byte	0x3
+ 380 0092 18       		.byte	0x18
+ 381 0093 2C000000 		.4byte	0x2c
+ 382 0097 03       		.uleb128 0x3
+ 383 0098 3A030000 		.4byte	.LASF13
+ 384 009c 03       		.byte	0x3
+ 385 009d 24       		.byte	0x24
+ 386 009e 45000000 		.4byte	0x45
+ 387 00a2 03       		.uleb128 0x3
+ 388 00a3 89000000 		.4byte	.LASF14
+ 389 00a7 03       		.byte	0x3
+ 390 00a8 2C       		.byte	0x2c
+ 391 00a9 57000000 		.4byte	0x57
+ 392 00ad 05       		.uleb128 0x5
+ 393 00ae EC010000 		.4byte	.LASF15
+ 394 00b2 04       		.byte	0x4
+ 395 00b3 E901     		.2byte	0x1e9
+ 396 00b5 50000000 		.4byte	0x50
+ 397 00b9 02       		.uleb128 0x2
+ 398 00ba 04       		.byte	0x4
+ 399 00bb 04       		.byte	0x4
+ 400 00bc 9D000000 		.4byte	.LASF16
+ 401 00c0 02       		.uleb128 0x2
+ 402 00c1 08       		.byte	0x8
+ 403 00c2 04       		.byte	0x4
+ 404 00c3 CE010000 		.4byte	.LASF17
+ 405 00c7 02       		.uleb128 0x2
+ 406 00c8 01       		.byte	0x1
+ 407 00c9 08       		.byte	0x8
+ 408 00ca E2020000 		.4byte	.LASF18
+ 409 00ce 02       		.uleb128 0x2
+ 410 00cf 08       		.byte	0x8
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 10
+
+
+ 411 00d0 04       		.byte	0x4
+ 412 00d1 CA030000 		.4byte	.LASF19
+ 413 00d5 03       		.uleb128 0x3
+ 414 00d6 85010000 		.4byte	.LASF20
+ 415 00da 05       		.byte	0x5
+ 416 00db 53       		.byte	0x53
+ 417 00dc 7E000000 		.4byte	0x7e
+ 418 00e0 03       		.uleb128 0x3
+ 419 00e1 3F010000 		.4byte	.LASF21
+ 420 00e5 05       		.byte	0x5
+ 421 00e6 54       		.byte	0x54
+ 422 00e7 85000000 		.4byte	0x85
+ 423 00eb 03       		.uleb128 0x3
+ 424 00ec 7D010000 		.4byte	.LASF22
+ 425 00f0 06       		.byte	0x6
+ 426 00f1 4D       		.byte	0x4d
+ 427 00f2 E0000000 		.4byte	0xe0
+ 428 00f6 03       		.uleb128 0x3
+ 429 00f7 2E020000 		.4byte	.LASF23
+ 430 00fb 06       		.byte	0x6
+ 431 00fc 4F       		.byte	0x4f
+ 432 00fd E0000000 		.4byte	0xe0
+ 433 0101 03       		.uleb128 0x3
+ 434 0102 82000000 		.4byte	.LASF24
+ 435 0106 06       		.byte	0x6
+ 436 0107 78       		.byte	0x78
+ 437 0108 D5000000 		.4byte	0xd5
+ 438 010c 02       		.uleb128 0x2
+ 439 010d 04       		.byte	0x4
+ 440 010e 07       		.byte	0x7
+ 441 010f D9020000 		.4byte	.LASF25
+ 442 0113 06       		.uleb128 0x6
+ 443 0114 06       		.byte	0x6
+ 444 0115 01       		.byte	0x1
+ 445 0116 18       		.byte	0x18
+ 446 0117 4C010000 		.4byte	0x14c
+ 447 011b 07       		.uleb128 0x7
+ 448 011c 52656400 		.ascii	"Red\000"
+ 449 0120 01       		.byte	0x1
+ 450 0121 1A       		.byte	0x1a
+ 451 0122 8C000000 		.4byte	0x8c
+ 452 0126 00       		.byte	0
+ 453 0127 08       		.uleb128 0x8
+ 454 0128 1D040000 		.4byte	.LASF26
+ 455 012c 01       		.byte	0x1
+ 456 012d 1B       		.byte	0x1b
+ 457 012e 8C000000 		.4byte	0x8c
+ 458 0132 01       		.byte	0x1
+ 459 0133 08       		.uleb128 0x8
+ 460 0134 B3010000 		.4byte	.LASF27
+ 461 0138 01       		.byte	0x1
+ 462 0139 1C       		.byte	0x1c
+ 463 013a 8C000000 		.4byte	0x8c
+ 464 013e 02       		.byte	0x2
+ 465 013f 08       		.uleb128 0x8
+ 466 0140 79020000 		.4byte	.LASF28
+ 467 0144 01       		.byte	0x1
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 11
+
+
+ 468 0145 1D       		.byte	0x1d
+ 469 0146 97000000 		.4byte	0x97
+ 470 014a 04       		.byte	0x4
+ 471 014b 00       		.byte	0
+ 472 014c 03       		.uleb128 0x3
+ 473 014d AB020000 		.4byte	.LASF29
+ 474 0151 01       		.byte	0x1
+ 475 0152 1E       		.byte	0x1e
+ 476 0153 13010000 		.4byte	0x113
+ 477 0157 09       		.uleb128 0x9
+ 478 0158 5A010000 		.4byte	.LASF58
+ 479 015c 01       		.byte	0x1
+ 480 015d 33       		.byte	0x33
+ 481 015e 00000000 		.4byte	.LFB110
+ 482 0162 30010000 		.4byte	.LFE110-.LFB110
+ 483 0166 01       		.uleb128 0x1
+ 484 0167 9C       		.byte	0x9c
+ 485 0168 21020000 		.4byte	0x221
+ 486 016c 0A       		.uleb128 0xa
+ 487 016d 16000000 		.4byte	.LVL0
+ 488 0171 21050000 		.4byte	0x521
+ 489 0175 0A       		.uleb128 0xa
+ 490 0176 1E000000 		.4byte	.LVL1
+ 491 017a 2C050000 		.4byte	0x52c
+ 492 017e 0A       		.uleb128 0xa
+ 493 017f 22000000 		.4byte	.LVL2
+ 494 0183 37050000 		.4byte	0x537
+ 495 0187 0A       		.uleb128 0xa
+ 496 0188 2A000000 		.4byte	.LVL3
+ 497 018c 42050000 		.4byte	0x542
+ 498 0190 0A       		.uleb128 0xa
+ 499 0191 2E000000 		.4byte	.LVL4
+ 500 0195 21050000 		.4byte	0x521
+ 501 0199 0A       		.uleb128 0xa
+ 502 019a 34000000 		.4byte	.LVL5
+ 503 019e 4D050000 		.4byte	0x54d
+ 504 01a2 0A       		.uleb128 0xa
+ 505 01a3 52000000 		.4byte	.LVL6
+ 506 01a7 21050000 		.4byte	0x521
+ 507 01ab 0A       		.uleb128 0xa
+ 508 01ac 5A000000 		.4byte	.LVL7
+ 509 01b0 2C050000 		.4byte	0x52c
+ 510 01b4 0A       		.uleb128 0xa
+ 511 01b5 5E000000 		.4byte	.LVL8
+ 512 01b9 58050000 		.4byte	0x558
+ 513 01bd 0A       		.uleb128 0xa
+ 514 01be 66000000 		.4byte	.LVL9
+ 515 01c2 63050000 		.4byte	0x563
+ 516 01c6 0A       		.uleb128 0xa
+ 517 01c7 6A000000 		.4byte	.LVL10
+ 518 01cb 58050000 		.4byte	0x558
+ 519 01cf 0A       		.uleb128 0xa
+ 520 01d0 70000000 		.4byte	.LVL11
+ 521 01d4 6E050000 		.4byte	0x56e
+ 522 01d8 0A       		.uleb128 0xa
+ 523 01d9 8C000000 		.4byte	.LVL12
+ 524 01dd 37050000 		.4byte	0x537
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 12
+
+
+ 525 01e1 0A       		.uleb128 0xa
+ 526 01e2 94000000 		.4byte	.LVL13
+ 527 01e6 42050000 		.4byte	0x542
+ 528 01ea 0A       		.uleb128 0xa
+ 529 01eb 98000000 		.4byte	.LVL14
+ 530 01ef 58050000 		.4byte	0x558
+ 531 01f3 0A       		.uleb128 0xa
+ 532 01f4 A0000000 		.4byte	.LVL15
+ 533 01f8 63050000 		.4byte	0x563
+ 534 01fc 0A       		.uleb128 0xa
+ 535 01fd A4000000 		.4byte	.LVL16
+ 536 0201 37050000 		.4byte	0x537
+ 537 0205 0A       		.uleb128 0xa
+ 538 0206 AA000000 		.4byte	.LVL17
+ 539 020a 79050000 		.4byte	0x579
+ 540 020e 0A       		.uleb128 0xa
+ 541 020f F2000000 		.4byte	.LVL18
+ 542 0213 84050000 		.4byte	0x584
+ 543 0217 0A       		.uleb128 0xa
+ 544 0218 18010000 		.4byte	.LVL19
+ 545 021c 8F050000 		.4byte	0x58f
+ 546 0220 00       		.byte	0
+ 547 0221 0B       		.uleb128 0xb
+ 548 0222 31020000 		.4byte	0x231
+ 549 0226 31020000 		.4byte	0x231
+ 550 022a 0C       		.uleb128 0xc
+ 551 022b 0C010000 		.4byte	0x10c
+ 552 022f FF       		.byte	0xff
+ 553 0230 00       		.byte	0
+ 554 0231 0D       		.uleb128 0xd
+ 555 0232 AD000000 		.4byte	0xad
+ 556 0236 0E       		.uleb128 0xe
+ 557 0237 49010000 		.4byte	.LASF30
+ 558 023b 07       		.byte	0x7
+ 559 023c 08       		.byte	0x8
+ 560 023d 43040000 		.4byte	0x443
+ 561 0241 0002     		.2byte	0x200
+ 562 0243 00       		.byte	0
+ 563 0244 00       		.byte	0
+ 564 0245 01       		.byte	0x1
+ 565 0246 00       		.byte	0
+ 566 0247 01       		.byte	0x1
+ 567 0248 00       		.byte	0
+ 568 0249 01       		.byte	0x1
+ 569 024a 00       		.byte	0
+ 570 024b 01       		.byte	0x1
+ 571 024c 00       		.byte	0
+ 572 024d 01       		.byte	0x1
+ 573 024e 00       		.byte	0
+ 574 024f 01       		.byte	0x1
+ 575 0250 00       		.byte	0
+ 576 0251 01       		.byte	0x1
+ 577 0252 00       		.byte	0
+ 578 0253 01       		.byte	0x1
+ 579 0254 00       		.byte	0
+ 580 0255 02       		.byte	0x2
+ 581 0256 00       		.byte	0
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 13
+
+
+ 582 0257 02       		.byte	0x2
+ 583 0258 00       		.byte	0
+ 584 0259 02       		.byte	0x2
+ 585 025a 00       		.byte	0
+ 586 025b 02       		.byte	0x2
+ 587 025c 00       		.byte	0
+ 588 025d 02       		.byte	0x2
+ 589 025e 00       		.byte	0
+ 590 025f 02       		.byte	0x2
+ 591 0260 00       		.byte	0
+ 592 0261 02       		.byte	0x2
+ 593 0262 00       		.byte	0
+ 594 0263 02       		.byte	0x2
+ 595 0264 00       		.byte	0
+ 596 0265 02       		.byte	0x2
+ 597 0266 00       		.byte	0
+ 598 0267 02       		.byte	0x2
+ 599 0268 00       		.byte	0
+ 600 0269 02       		.byte	0x2
+ 601 026a 00       		.byte	0
+ 602 026b 02       		.byte	0x2
+ 603 026c 00       		.byte	0
+ 604 026d 03       		.byte	0x3
+ 605 026e 00       		.byte	0
+ 606 026f 03       		.byte	0x3
+ 607 0270 00       		.byte	0
+ 608 0271 03       		.byte	0x3
+ 609 0272 00       		.byte	0
+ 610 0273 03       		.byte	0x3
+ 611 0274 00       		.byte	0
+ 612 0275 03       		.byte	0x3
+ 613 0276 00       		.byte	0
+ 614 0277 03       		.byte	0x3
+ 615 0278 00       		.byte	0
+ 616 0279 03       		.byte	0x3
+ 617 027a 00       		.byte	0
+ 618 027b 04       		.byte	0x4
+ 619 027c 00       		.byte	0
+ 620 027d 04       		.byte	0x4
+ 621 027e 00       		.byte	0
+ 622 027f 04       		.byte	0x4
+ 623 0280 00       		.byte	0
+ 624 0281 04       		.byte	0x4
+ 625 0282 00       		.byte	0
+ 626 0283 04       		.byte	0x4
+ 627 0284 00       		.byte	0
+ 628 0285 04       		.byte	0x4
+ 629 0286 00       		.byte	0
+ 630 0287 05       		.byte	0x5
+ 631 0288 00       		.byte	0
+ 632 0289 05       		.byte	0x5
+ 633 028a 00       		.byte	0
+ 634 028b 05       		.byte	0x5
+ 635 028c 00       		.byte	0
+ 636 028d 05       		.byte	0x5
+ 637 028e 00       		.byte	0
+ 638 028f 05       		.byte	0x5
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 14
+
+
+ 639 0290 00       		.byte	0
+ 640 0291 06       		.byte	0x6
+ 641 0292 00       		.byte	0
+ 642 0293 06       		.byte	0x6
+ 643 0294 00       		.byte	0
+ 644 0295 06       		.byte	0x6
+ 645 0296 00       		.byte	0
+ 646 0297 06       		.byte	0x6
+ 647 0298 00       		.byte	0
+ 648 0299 07       		.byte	0x7
+ 649 029a 00       		.byte	0
+ 650 029b 07       		.byte	0x7
+ 651 029c 00       		.byte	0
+ 652 029d 07       		.byte	0x7
+ 653 029e 00       		.byte	0
+ 654 029f 08       		.byte	0x8
+ 655 02a0 00       		.byte	0
+ 656 02a1 08       		.byte	0x8
+ 657 02a2 00       		.byte	0
+ 658 02a3 08       		.byte	0x8
+ 659 02a4 00       		.byte	0
+ 660 02a5 09       		.byte	0x9
+ 661 02a6 00       		.byte	0
+ 662 02a7 09       		.byte	0x9
+ 663 02a8 00       		.byte	0
+ 664 02a9 0A       		.byte	0xa
+ 665 02aa 00       		.byte	0
+ 666 02ab 0A       		.byte	0xa
+ 667 02ac 00       		.byte	0
+ 668 02ad 0A       		.byte	0xa
+ 669 02ae 00       		.byte	0
+ 670 02af 0B       		.byte	0xb
+ 671 02b0 00       		.byte	0
+ 672 02b1 0B       		.byte	0xb
+ 673 02b2 00       		.byte	0
+ 674 02b3 0C       		.byte	0xc
+ 675 02b4 00       		.byte	0
+ 676 02b5 0C       		.byte	0xc
+ 677 02b6 00       		.byte	0
+ 678 02b7 0D       		.byte	0xd
+ 679 02b8 00       		.byte	0
+ 680 02b9 0D       		.byte	0xd
+ 681 02ba 00       		.byte	0
+ 682 02bb 0E       		.byte	0xe
+ 683 02bc 00       		.byte	0
+ 684 02bd 0F       		.byte	0xf
+ 685 02be 00       		.byte	0
+ 686 02bf 0F       		.byte	0xf
+ 687 02c0 00       		.byte	0
+ 688 02c1 10       		.byte	0x10
+ 689 02c2 00       		.byte	0
+ 690 02c3 11       		.byte	0x11
+ 691 02c4 00       		.byte	0
+ 692 02c5 11       		.byte	0x11
+ 693 02c6 00       		.byte	0
+ 694 02c7 12       		.byte	0x12
+ 695 02c8 00       		.byte	0
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 15
+
+
+ 696 02c9 13       		.byte	0x13
+ 697 02ca 00       		.byte	0
+ 698 02cb 14       		.byte	0x14
+ 699 02cc 00       		.byte	0
+ 700 02cd 15       		.byte	0x15
+ 701 02ce 00       		.byte	0
+ 702 02cf 16       		.byte	0x16
+ 703 02d0 00       		.byte	0
+ 704 02d1 17       		.byte	0x17
+ 705 02d2 00       		.byte	0
+ 706 02d3 18       		.byte	0x18
+ 707 02d4 00       		.byte	0
+ 708 02d5 19       		.byte	0x19
+ 709 02d6 00       		.byte	0
+ 710 02d7 1A       		.byte	0x1a
+ 711 02d8 00       		.byte	0
+ 712 02d9 1B       		.byte	0x1b
+ 713 02da 00       		.byte	0
+ 714 02db 1C       		.byte	0x1c
+ 715 02dc 00       		.byte	0
+ 716 02dd 1D       		.byte	0x1d
+ 717 02de 00       		.byte	0
+ 718 02df 1F       		.byte	0x1f
+ 719 02e0 00       		.byte	0
+ 720 02e1 20       		.byte	0x20
+ 721 02e2 00       		.byte	0
+ 722 02e3 21       		.byte	0x21
+ 723 02e4 00       		.byte	0
+ 724 02e5 23       		.byte	0x23
+ 725 02e6 00       		.byte	0
+ 726 02e7 24       		.byte	0x24
+ 727 02e8 00       		.byte	0
+ 728 02e9 26       		.byte	0x26
+ 729 02ea 00       		.byte	0
+ 730 02eb 28       		.byte	0x28
+ 731 02ec 00       		.byte	0
+ 732 02ed 29       		.byte	0x29
+ 733 02ee 00       		.byte	0
+ 734 02ef 2B       		.byte	0x2b
+ 735 02f0 00       		.byte	0
+ 736 02f1 2D       		.byte	0x2d
+ 737 02f2 00       		.byte	0
+ 738 02f3 2F       		.byte	0x2f
+ 739 02f4 00       		.byte	0
+ 740 02f5 31       		.byte	0x31
+ 741 02f6 00       		.byte	0
+ 742 02f7 34       		.byte	0x34
+ 743 02f8 00       		.byte	0
+ 744 02f9 36       		.byte	0x36
+ 745 02fa 00       		.byte	0
+ 746 02fb 38       		.byte	0x38
+ 747 02fc 00       		.byte	0
+ 748 02fd 3B       		.byte	0x3b
+ 749 02fe 00       		.byte	0
+ 750 02ff 3D       		.byte	0x3d
+ 751 0300 00       		.byte	0
+ 752 0301 40       		.byte	0x40
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 16
+
+
+ 753 0302 00       		.byte	0
+ 754 0303 43       		.byte	0x43
+ 755 0304 00       		.byte	0
+ 756 0305 46       		.byte	0x46
+ 757 0306 00       		.byte	0
+ 758 0307 49       		.byte	0x49
+ 759 0308 00       		.byte	0
+ 760 0309 4C       		.byte	0x4c
+ 761 030a 00       		.byte	0
+ 762 030b 4F       		.byte	0x4f
+ 763 030c 00       		.byte	0
+ 764 030d 53       		.byte	0x53
+ 765 030e 00       		.byte	0
+ 766 030f 57       		.byte	0x57
+ 767 0310 00       		.byte	0
+ 768 0311 5B       		.byte	0x5b
+ 769 0312 00       		.byte	0
+ 770 0313 5F       		.byte	0x5f
+ 771 0314 00       		.byte	0
+ 772 0315 63       		.byte	0x63
+ 773 0316 00       		.byte	0
+ 774 0317 67       		.byte	0x67
+ 775 0318 00       		.byte	0
+ 776 0319 6C       		.byte	0x6c
+ 777 031a 00       		.byte	0
+ 778 031b 70       		.byte	0x70
+ 779 031c 00       		.byte	0
+ 780 031d 75       		.byte	0x75
+ 781 031e 00       		.byte	0
+ 782 031f 7B       		.byte	0x7b
+ 783 0320 00       		.byte	0
+ 784 0321 80       		.byte	0x80
+ 785 0322 00       		.byte	0
+ 786 0323 86       		.byte	0x86
+ 787 0324 00       		.byte	0
+ 788 0325 8C       		.byte	0x8c
+ 789 0326 00       		.byte	0
+ 790 0327 92       		.byte	0x92
+ 791 0328 00       		.byte	0
+ 792 0329 98       		.byte	0x98
+ 793 032a 00       		.byte	0
+ 794 032b 9F       		.byte	0x9f
+ 795 032c 00       		.byte	0
+ 796 032d A6       		.byte	0xa6
+ 797 032e 00       		.byte	0
+ 798 032f AD       		.byte	0xad
+ 799 0330 00       		.byte	0
+ 800 0331 B5       		.byte	0xb5
+ 801 0332 00       		.byte	0
+ 802 0333 BD       		.byte	0xbd
+ 803 0334 00       		.byte	0
+ 804 0335 C5       		.byte	0xc5
+ 805 0336 00       		.byte	0
+ 806 0337 CE       		.byte	0xce
+ 807 0338 00       		.byte	0
+ 808 0339 D7       		.byte	0xd7
+ 809 033a 00       		.byte	0
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 17
+
+
+ 810 033b E1       		.byte	0xe1
+ 811 033c 00       		.byte	0
+ 812 033d EB       		.byte	0xeb
+ 813 033e 00       		.byte	0
+ 814 033f F5       		.byte	0xf5
+ 815 0340 00       		.byte	0
+ 816 0341 00       		.byte	0
+ 817 0342 01       		.byte	0x1
+ 818 0343 0B       		.byte	0xb
+ 819 0344 01       		.byte	0x1
+ 820 0345 17       		.byte	0x17
+ 821 0346 01       		.byte	0x1
+ 822 0347 24       		.byte	0x24
+ 823 0348 01       		.byte	0x1
+ 824 0349 30       		.byte	0x30
+ 825 034a 01       		.byte	0x1
+ 826 034b 3E       		.byte	0x3e
+ 827 034c 01       		.byte	0x1
+ 828 034d 4C       		.byte	0x4c
+ 829 034e 01       		.byte	0x1
+ 830 034f 5B       		.byte	0x5b
+ 831 0350 01       		.byte	0x1
+ 832 0351 6A       		.byte	0x6a
+ 833 0352 01       		.byte	0x1
+ 834 0353 7A       		.byte	0x7a
+ 835 0354 01       		.byte	0x1
+ 836 0355 8B       		.byte	0x8b
+ 837 0356 01       		.byte	0x1
+ 838 0357 9C       		.byte	0x9c
+ 839 0358 01       		.byte	0x1
+ 840 0359 AF       		.byte	0xaf
+ 841 035a 01       		.byte	0x1
+ 842 035b C2       		.byte	0xc2
+ 843 035c 01       		.byte	0x1
+ 844 035d D6       		.byte	0xd6
+ 845 035e 01       		.byte	0x1
+ 846 035f EA       		.byte	0xea
+ 847 0360 01       		.byte	0x1
+ 848 0361 00       		.byte	0
+ 849 0362 02       		.byte	0x2
+ 850 0363 17       		.byte	0x17
+ 851 0364 02       		.byte	0x2
+ 852 0365 2E       		.byte	0x2e
+ 853 0366 02       		.byte	0x2
+ 854 0367 47       		.byte	0x47
+ 855 0368 02       		.byte	0x2
+ 856 0369 61       		.byte	0x61
+ 857 036a 02       		.byte	0x2
+ 858 036b 7C       		.byte	0x7c
+ 859 036c 02       		.byte	0x2
+ 860 036d 98       		.byte	0x98
+ 861 036e 02       		.byte	0x2
+ 862 036f B5       		.byte	0xb5
+ 863 0370 02       		.byte	0x2
+ 864 0371 D4       		.byte	0xd4
+ 865 0372 02       		.byte	0x2
+ 866 0373 F4       		.byte	0xf4
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 18
+
+
+ 867 0374 02       		.byte	0x2
+ 868 0375 16       		.byte	0x16
+ 869 0376 03       		.byte	0x3
+ 870 0377 39       		.byte	0x39
+ 871 0378 03       		.byte	0x3
+ 872 0379 5D       		.byte	0x5d
+ 873 037a 03       		.byte	0x3
+ 874 037b 83       		.byte	0x83
+ 875 037c 03       		.byte	0x3
+ 876 037d AB       		.byte	0xab
+ 877 037e 03       		.byte	0x3
+ 878 037f D5       		.byte	0xd5
+ 879 0380 03       		.byte	0x3
+ 880 0381 00       		.byte	0
+ 881 0382 04       		.byte	0x4
+ 882 0383 2D       		.byte	0x2d
+ 883 0384 04       		.byte	0x4
+ 884 0385 5D       		.byte	0x5d
+ 885 0386 04       		.byte	0x4
+ 886 0387 8E       		.byte	0x8e
+ 887 0388 04       		.byte	0x4
+ 888 0389 C2       		.byte	0xc2
+ 889 038a 04       		.byte	0x4
+ 890 038b F8       		.byte	0xf8
+ 891 038c 04       		.byte	0x4
+ 892 038d 30       		.byte	0x30
+ 893 038e 05       		.byte	0x5
+ 894 038f 6B       		.byte	0x6b
+ 895 0390 05       		.byte	0x5
+ 896 0391 A8       		.byte	0xa8
+ 897 0392 05       		.byte	0x5
+ 898 0393 E8       		.byte	0xe8
+ 899 0394 05       		.byte	0x5
+ 900 0395 2B       		.byte	0x2b
+ 901 0396 06       		.byte	0x6
+ 902 0397 71       		.byte	0x71
+ 903 0398 06       		.byte	0x6
+ 904 0399 BA       		.byte	0xba
+ 905 039a 06       		.byte	0x6
+ 906 039b 06       		.byte	0x6
+ 907 039c 07       		.byte	0x7
+ 908 039d 56       		.byte	0x56
+ 909 039e 07       		.byte	0x7
+ 910 039f A9       		.byte	0xa9
+ 911 03a0 07       		.byte	0x7
+ 912 03a1 00       		.byte	0
+ 913 03a2 08       		.byte	0x8
+ 914 03a3 5B       		.byte	0x5b
+ 915 03a4 08       		.byte	0x8
+ 916 03a5 B9       		.byte	0xb9
+ 917 03a6 08       		.byte	0x8
+ 918 03a7 1C       		.byte	0x1c
+ 919 03a8 09       		.byte	0x9
+ 920 03a9 83       		.byte	0x83
+ 921 03aa 09       		.byte	0x9
+ 922 03ab EF       		.byte	0xef
+ 923 03ac 09       		.byte	0x9
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 19
+
+
+ 924 03ad 60       		.byte	0x60
+ 925 03ae 0A       		.byte	0xa
+ 926 03af D5       		.byte	0xd5
+ 927 03b0 0A       		.byte	0xa
+ 928 03b1 50       		.byte	0x50
+ 929 03b2 0B       		.byte	0xb
+ 930 03b3 D1       		.byte	0xd1
+ 931 03b4 0B       		.byte	0xb
+ 932 03b5 56       		.byte	0x56
+ 933 03b6 0C       		.byte	0xc
+ 934 03b7 E2       		.byte	0xe2
+ 935 03b8 0C       		.byte	0xc
+ 936 03b9 74       		.byte	0x74
+ 937 03ba 0D       		.byte	0xd
+ 938 03bb 0D       		.byte	0xd
+ 939 03bc 0E       		.byte	0xe
+ 940 03bd AC       		.byte	0xac
+ 941 03be 0E       		.byte	0xe
+ 942 03bf 52       		.byte	0x52
+ 943 03c0 0F       		.byte	0xf
+ 944 03c1 00       		.byte	0
+ 945 03c2 10       		.byte	0x10
+ 946 03c3 B5       		.byte	0xb5
+ 947 03c4 10       		.byte	0x10
+ 948 03c5 73       		.byte	0x73
+ 949 03c6 11       		.byte	0x11
+ 950 03c7 38       		.byte	0x38
+ 951 03c8 12       		.byte	0x12
+ 952 03c9 07       		.byte	0x7
+ 953 03ca 13       		.byte	0x13
+ 954 03cb DF       		.byte	0xdf
+ 955 03cc 13       		.byte	0x13
+ 956 03cd C0       		.byte	0xc0
+ 957 03ce 14       		.byte	0x14
+ 958 03cf AB       		.byte	0xab
+ 959 03d0 15       		.byte	0x15
+ 960 03d1 A1       		.byte	0xa1
+ 961 03d2 16       		.byte	0x16
+ 962 03d3 A1       		.byte	0xa1
+ 963 03d4 17       		.byte	0x17
+ 964 03d5 AD       		.byte	0xad
+ 965 03d6 18       		.byte	0x18
+ 966 03d7 C4       		.byte	0xc4
+ 967 03d8 19       		.byte	0x19
+ 968 03d9 E9       		.byte	0xe9
+ 969 03da 1A       		.byte	0x1a
+ 970 03db 1A       		.byte	0x1a
+ 971 03dc 1C       		.byte	0x1c
+ 972 03dd 58       		.byte	0x58
+ 973 03de 1D       		.byte	0x1d
+ 974 03df A5       		.byte	0xa5
+ 975 03e0 1E       		.byte	0x1e
+ 976 03e1 00       		.byte	0
+ 977 03e2 20       		.byte	0x20
+ 978 03e3 6B       		.byte	0x6b
+ 979 03e4 21       		.byte	0x21
+ 980 03e5 E5       		.byte	0xe5
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 20
+
+
+ 981 03e6 22       		.byte	0x22
+ 982 03e7 71       		.byte	0x71
+ 983 03e8 24       		.byte	0x24
+ 984 03e9 0E       		.byte	0xe
+ 985 03ea 26       		.byte	0x26
+ 986 03eb BD       		.byte	0xbd
+ 987 03ec 27       		.byte	0x27
+ 988 03ed 80       		.byte	0x80
+ 989 03ee 29       		.byte	0x29
+ 990 03ef 56       		.byte	0x56
+ 991 03f0 2B       		.byte	0x2b
+ 992 03f1 41       		.byte	0x41
+ 993 03f2 2D       		.byte	0x2d
+ 994 03f3 42       		.byte	0x42
+ 995 03f4 2F       		.byte	0x2f
+ 996 03f5 5A       		.byte	0x5a
+ 997 03f6 31       		.byte	0x31
+ 998 03f7 89       		.byte	0x89
+ 999 03f8 33       		.byte	0x33
+ 1000 03f9 D1       		.byte	0xd1
+ 1001 03fa 35       		.byte	0x35
+ 1002 03fb 33       		.byte	0x33
+ 1003 03fc 38       		.byte	0x38
+ 1004 03fd B0       		.byte	0xb0
+ 1005 03fe 3A       		.byte	0x3a
+ 1006 03ff 49       		.byte	0x49
+ 1007 0400 3D       		.byte	0x3d
+ 1008 0401 00       		.byte	0
+ 1009 0402 40       		.byte	0x40
+ 1010 0403 D5       		.byte	0xd5
+ 1011 0404 42       		.byte	0x42
+ 1012 0405 CB       		.byte	0xcb
+ 1013 0406 45       		.byte	0x45
+ 1014 0407 E2       		.byte	0xe2
+ 1015 0408 48       		.byte	0x48
+ 1016 0409 1C       		.byte	0x1c
+ 1017 040a 4C       		.byte	0x4c
+ 1018 040b 7A       		.byte	0x7a
+ 1019 040c 4F       		.byte	0x4f
+ 1020 040d FF       		.byte	0xff
+ 1021 040e 52       		.byte	0x52
+ 1022 040f AC       		.byte	0xac
+ 1023 0410 56       		.byte	0x56
+ 1024 0411 82       		.byte	0x82
+ 1025 0412 5A       		.byte	0x5a
+ 1026 0413 84       		.byte	0x84
+ 1027 0414 5E       		.byte	0x5e
+ 1028 0415 B3       		.byte	0xb3
+ 1029 0416 62       		.byte	0x62
+ 1030 0417 12       		.byte	0x12
+ 1031 0418 67       		.byte	0x67
+ 1032 0419 A2       		.byte	0xa2
+ 1033 041a 6B       		.byte	0x6b
+ 1034 041b 66       		.byte	0x66
+ 1035 041c 70       		.byte	0x70
+ 1036 041d 60       		.byte	0x60
+ 1037 041e 75       		.byte	0x75
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 21
+
+
+ 1038 041f 92       		.byte	0x92
+ 1039 0420 7A       		.byte	0x7a
+ 1040 0421 00       		.byte	0
+ 1041 0422 80       		.byte	0x80
+ 1042 0423 AA       		.byte	0xaa
+ 1043 0424 85       		.byte	0x85
+ 1044 0425 95       		.byte	0x95
+ 1045 0426 8B       		.byte	0x8b
+ 1046 0427 C3       		.byte	0xc3
+ 1047 0428 91       		.byte	0x91
+ 1048 0429 37       		.byte	0x37
+ 1049 042a 98       		.byte	0x98
+ 1050 042b F5       		.byte	0xf5
+ 1051 042c 9E       		.byte	0x9e
+ 1052 042d FE       		.byte	0xfe
+ 1053 042e A5       		.byte	0xa5
+ 1054 042f 58       		.byte	0x58
+ 1055 0430 AD       		.byte	0xad
+ 1056 0431 04       		.byte	0x4
+ 1057 0432 B5       		.byte	0xb5
+ 1058 0433 08       		.byte	0x8
+ 1059 0434 BD       		.byte	0xbd
+ 1060 0435 66       		.byte	0x66
+ 1061 0436 C5       		.byte	0xc5
+ 1062 0437 24       		.byte	0x24
+ 1063 0438 CE       		.byte	0xce
+ 1064 0439 44       		.byte	0x44
+ 1065 043a D7       		.byte	0xd7
+ 1066 043b CC       		.byte	0xcc
+ 1067 043c E0       		.byte	0xe0
+ 1068 043d C0       		.byte	0xc0
+ 1069 043e EA       		.byte	0xea
+ 1070 043f 25       		.byte	0x25
+ 1071 0440 F5       		.byte	0xf5
+ 1072 0441 FF       		.byte	0xff
+ 1073 0442 FF       		.byte	0xff
+ 1074 0443 0D       		.uleb128 0xd
+ 1075 0444 21020000 		.4byte	0x221
+ 1076 0448 0F       		.uleb128 0xf
+ 1077 0449 36020000 		.4byte	.LASF31
+ 1078 044d 01       		.byte	0x1
+ 1079 044e 11       		.byte	0x11
+ 1080 044f 7E000000 		.4byte	0x7e
+ 1081 0453 05       		.uleb128 0x5
+ 1082 0454 03       		.byte	0x3
+ 1083 0455 00000000 		.4byte	RedHigh_GreenLow
+ 1084 0459 0F       		.uleb128 0xf
+ 1085 045a B8030000 		.4byte	.LASF32
+ 1086 045e 01       		.byte	0x1
+ 1087 045f 12       		.byte	0x12
+ 1088 0460 7E000000 		.4byte	0x7e
+ 1089 0464 05       		.uleb128 0x5
+ 1090 0465 03       		.byte	0x3
+ 1091 0466 04000000 		.4byte	YellowHigh_RedLow
+ 1092 046a 0F       		.uleb128 0xf
+ 1093 046b 2F000000 		.4byte	.LASF33
+ 1094 046f 01       		.byte	0x1
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 22
+
+
+ 1095 0470 13       		.byte	0x13
+ 1096 0471 7E000000 		.4byte	0x7e
+ 1097 0475 05       		.uleb128 0x5
+ 1098 0476 03       		.byte	0x3
+ 1099 0477 08000000 		.4byte	GreenHigh_RedLow
+ 1100 047b 0F       		.uleb128 0xf
+ 1101 047c 12030000 		.4byte	.LASF34
+ 1102 0480 01       		.byte	0x1
+ 1103 0481 14       		.byte	0x14
+ 1104 0482 7E000000 		.4byte	0x7e
+ 1105 0486 05       		.uleb128 0x5
+ 1106 0487 03       		.byte	0x3
+ 1107 0488 00000000 		.4byte	count
+ 1108 048c 0F       		.uleb128 0xf
+ 1109 048d B8010000 		.4byte	.LASF35
+ 1110 0491 01       		.byte	0x1
+ 1111 0492 15       		.byte	0x15
+ 1112 0493 7E000000 		.4byte	0x7e
+ 1113 0497 05       		.uleb128 0x5
+ 1114 0498 03       		.byte	0x3
+ 1115 0499 0C000000 		.4byte	curr_index
+ 1116 049d 10       		.uleb128 0x10
+ 1117 049e 40000000 		.4byte	.LASF36
+ 1118 04a2 01       		.byte	0x1
+ 1119 04a3 16       		.byte	0x16
+ 1120 04a4 A9040000 		.4byte	0x4a9
+ 1121 04a8 09       		.byte	0x9
+ 1122 04a9 0D       		.uleb128 0xd
+ 1123 04aa 7E000000 		.4byte	0x7e
+ 1124 04ae 11       		.uleb128 0x11
+ 1125 04af 22030000 		.4byte	.LASF37
+ 1126 04b3 08       		.byte	0x8
+ 1127 04b4 40       		.byte	0x40
+ 1128 04b5 EB000000 		.4byte	0xeb
+ 1129 04b9 11       		.uleb128 0x11
+ 1130 04ba 69000000 		.4byte	.LASF38
+ 1131 04be 08       		.byte	0x8
+ 1132 04bf 47       		.byte	0x47
+ 1133 04c0 F6000000 		.4byte	0xf6
+ 1134 04c4 11       		.uleb128 0x11
+ 1135 04c5 66020000 		.4byte	.LASF39
+ 1136 04c9 08       		.byte	0x8
+ 1137 04ca 4A       		.byte	0x4a
+ 1138 04cb EB000000 		.4byte	0xeb
+ 1139 04cf 11       		.uleb128 0x11
+ 1140 04d0 08020000 		.4byte	.LASF40
+ 1141 04d4 09       		.byte	0x9
+ 1142 04d5 48       		.byte	0x48
+ 1143 04d6 01010000 		.4byte	0x101
+ 1144 04da 11       		.uleb128 0x11
+ 1145 04db FD020000 		.4byte	.LASF41
+ 1146 04df 0A       		.byte	0xa
+ 1147 04e0 44       		.byte	0x44
+ 1148 04e1 EB000000 		.4byte	0xeb
+ 1149 04e5 12       		.uleb128 0x12
+ 1150 04e6 A6010000 		.4byte	.LASF42
+ 1151 04ea 0B       		.byte	0xb
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 23
+
+
+ 1152 04eb 1207     		.2byte	0x712
+ 1153 04ed F1040000 		.4byte	0x4f1
+ 1154 04f1 13       		.uleb128 0x13
+ 1155 04f2 A2000000 		.4byte	0xa2
+ 1156 04f6 0B       		.uleb128 0xb
+ 1157 04f7 06050000 		.4byte	0x506
+ 1158 04fb 06050000 		.4byte	0x506
+ 1159 04ff 0C       		.uleb128 0xc
+ 1160 0500 0C010000 		.4byte	0x10c
+ 1161 0504 08       		.byte	0x8
+ 1162 0505 00       		.byte	0
+ 1163 0506 0D       		.uleb128 0xd
+ 1164 0507 4C010000 		.4byte	0x14c
+ 1165 050b 14       		.uleb128 0x14
+ 1166 050c 20000000 		.4byte	.LASF43
+ 1167 0510 01       		.byte	0x1
+ 1168 0511 20       		.byte	0x20
+ 1169 0512 1C050000 		.4byte	0x51c
+ 1170 0516 05       		.uleb128 0x5
+ 1171 0517 03       		.byte	0x3
+ 1172 0518 00000000 		.4byte	RG_glowtable_1
+ 1173 051c 0D       		.uleb128 0xd
+ 1174 051d F6040000 		.4byte	0x4f6
+ 1175 0521 15       		.uleb128 0x15
+ 1176 0522 F6030000 		.4byte	.LASF44
+ 1177 0526 F6030000 		.4byte	.LASF44
+ 1178 052a 0C       		.byte	0xc
+ 1179 052b C5       		.byte	0xc5
+ 1180 052c 15       		.uleb128 0x15
+ 1181 052d B6020000 		.4byte	.LASF45
+ 1182 0531 B6020000 		.4byte	.LASF45
+ 1183 0535 0C       		.byte	0xc
+ 1184 0536 C3       		.byte	0xc3
+ 1185 0537 15       		.uleb128 0x15
+ 1186 0538 0A000000 		.4byte	.LASF46
+ 1187 053c 0A000000 		.4byte	.LASF46
+ 1188 0540 0D       		.byte	0xd
+ 1189 0541 C5       		.byte	0xc5
+ 1190 0542 15       		.uleb128 0x15
+ 1191 0543 D5010000 		.4byte	.LASF47
+ 1192 0547 D5010000 		.4byte	.LASF47
+ 1193 054b 0D       		.byte	0xd
+ 1194 054c C3       		.byte	0xc3
+ 1195 054d 15       		.uleb128 0x15
+ 1196 054e 0A040000 		.4byte	.LASF48
+ 1197 0552 0A040000 		.4byte	.LASF48
+ 1198 0556 0C       		.byte	0xc
+ 1199 0557 C0       		.byte	0xc0
+ 1200 0558 15       		.uleb128 0x15
+ 1201 0559 7E020000 		.4byte	.LASF49
+ 1202 055d 7E020000 		.4byte	.LASF49
+ 1203 0561 0E       		.byte	0xe
+ 1204 0562 C5       		.byte	0xc5
+ 1205 0563 15       		.uleb128 0x15
+ 1206 0564 8E010000 		.4byte	.LASF50
+ 1207 0568 8E010000 		.4byte	.LASF50
+ 1208 056c 0E       		.byte	0xe
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 24
+
+
+ 1209 056d C3       		.byte	0xc3
+ 1210 056e 15       		.uleb128 0x15
+ 1211 056f E7020000 		.4byte	.LASF51
+ 1212 0573 E7020000 		.4byte	.LASF51
+ 1213 0577 0E       		.byte	0xe
+ 1214 0578 C0       		.byte	0xc0
+ 1215 0579 15       		.uleb128 0x15
+ 1216 057a F3010000 		.4byte	.LASF52
+ 1217 057e F3010000 		.4byte	.LASF52
+ 1218 0582 0D       		.byte	0xd
+ 1219 0583 C0       		.byte	0xc0
+ 1220 0584 15       		.uleb128 0x15
+ 1221 0585 91000000 		.4byte	.LASF53
+ 1222 0589 91000000 		.4byte	.LASF53
+ 1223 058d 07       		.byte	0x7
+ 1224 058e 22       		.byte	0x22
+ 1225 058f 15       		.uleb128 0x15
+ 1226 0590 E2030000 		.4byte	.LASF54
+ 1227 0594 E2030000 		.4byte	.LASF54
+ 1228 0598 0F       		.byte	0xf
+ 1229 0599 9F       		.byte	0x9f
+ 1230 059a 00       		.byte	0
+ 1231              		.section	.debug_abbrev,"",%progbits
+ 1232              	.Ldebug_abbrev0:
+ 1233 0000 01       		.uleb128 0x1
+ 1234 0001 11       		.uleb128 0x11
+ 1235 0002 01       		.byte	0x1
+ 1236 0003 25       		.uleb128 0x25
+ 1237 0004 0E       		.uleb128 0xe
+ 1238 0005 13       		.uleb128 0x13
+ 1239 0006 0B       		.uleb128 0xb
+ 1240 0007 03       		.uleb128 0x3
+ 1241 0008 0E       		.uleb128 0xe
+ 1242 0009 1B       		.uleb128 0x1b
+ 1243 000a 0E       		.uleb128 0xe
+ 1244 000b 55       		.uleb128 0x55
+ 1245 000c 17       		.uleb128 0x17
+ 1246 000d 11       		.uleb128 0x11
+ 1247 000e 01       		.uleb128 0x1
+ 1248 000f 10       		.uleb128 0x10
+ 1249 0010 17       		.uleb128 0x17
+ 1250 0011 00       		.byte	0
+ 1251 0012 00       		.byte	0
+ 1252 0013 02       		.uleb128 0x2
+ 1253 0014 24       		.uleb128 0x24
+ 1254 0015 00       		.byte	0
+ 1255 0016 0B       		.uleb128 0xb
+ 1256 0017 0B       		.uleb128 0xb
+ 1257 0018 3E       		.uleb128 0x3e
+ 1258 0019 0B       		.uleb128 0xb
+ 1259 001a 03       		.uleb128 0x3
+ 1260 001b 0E       		.uleb128 0xe
+ 1261 001c 00       		.byte	0
+ 1262 001d 00       		.byte	0
+ 1263 001e 03       		.uleb128 0x3
+ 1264 001f 16       		.uleb128 0x16
+ 1265 0020 00       		.byte	0
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 25
+
+
+ 1266 0021 03       		.uleb128 0x3
+ 1267 0022 0E       		.uleb128 0xe
+ 1268 0023 3A       		.uleb128 0x3a
+ 1269 0024 0B       		.uleb128 0xb
+ 1270 0025 3B       		.uleb128 0x3b
+ 1271 0026 0B       		.uleb128 0xb
+ 1272 0027 49       		.uleb128 0x49
+ 1273 0028 13       		.uleb128 0x13
+ 1274 0029 00       		.byte	0
+ 1275 002a 00       		.byte	0
+ 1276 002b 04       		.uleb128 0x4
+ 1277 002c 24       		.uleb128 0x24
+ 1278 002d 00       		.byte	0
+ 1279 002e 0B       		.uleb128 0xb
+ 1280 002f 0B       		.uleb128 0xb
+ 1281 0030 3E       		.uleb128 0x3e
+ 1282 0031 0B       		.uleb128 0xb
+ 1283 0032 03       		.uleb128 0x3
+ 1284 0033 08       		.uleb128 0x8
+ 1285 0034 00       		.byte	0
+ 1286 0035 00       		.byte	0
+ 1287 0036 05       		.uleb128 0x5
+ 1288 0037 16       		.uleb128 0x16
+ 1289 0038 00       		.byte	0
+ 1290 0039 03       		.uleb128 0x3
+ 1291 003a 0E       		.uleb128 0xe
+ 1292 003b 3A       		.uleb128 0x3a
+ 1293 003c 0B       		.uleb128 0xb
+ 1294 003d 3B       		.uleb128 0x3b
+ 1295 003e 05       		.uleb128 0x5
+ 1296 003f 49       		.uleb128 0x49
+ 1297 0040 13       		.uleb128 0x13
+ 1298 0041 00       		.byte	0
+ 1299 0042 00       		.byte	0
+ 1300 0043 06       		.uleb128 0x6
+ 1301 0044 13       		.uleb128 0x13
+ 1302 0045 01       		.byte	0x1
+ 1303 0046 0B       		.uleb128 0xb
+ 1304 0047 0B       		.uleb128 0xb
+ 1305 0048 3A       		.uleb128 0x3a
+ 1306 0049 0B       		.uleb128 0xb
+ 1307 004a 3B       		.uleb128 0x3b
+ 1308 004b 0B       		.uleb128 0xb
+ 1309 004c 01       		.uleb128 0x1
+ 1310 004d 13       		.uleb128 0x13
+ 1311 004e 00       		.byte	0
+ 1312 004f 00       		.byte	0
+ 1313 0050 07       		.uleb128 0x7
+ 1314 0051 0D       		.uleb128 0xd
+ 1315 0052 00       		.byte	0
+ 1316 0053 03       		.uleb128 0x3
+ 1317 0054 08       		.uleb128 0x8
+ 1318 0055 3A       		.uleb128 0x3a
+ 1319 0056 0B       		.uleb128 0xb
+ 1320 0057 3B       		.uleb128 0x3b
+ 1321 0058 0B       		.uleb128 0xb
+ 1322 0059 49       		.uleb128 0x49
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 26
+
+
+ 1323 005a 13       		.uleb128 0x13
+ 1324 005b 38       		.uleb128 0x38
+ 1325 005c 0B       		.uleb128 0xb
+ 1326 005d 00       		.byte	0
+ 1327 005e 00       		.byte	0
+ 1328 005f 08       		.uleb128 0x8
+ 1329 0060 0D       		.uleb128 0xd
+ 1330 0061 00       		.byte	0
+ 1331 0062 03       		.uleb128 0x3
+ 1332 0063 0E       		.uleb128 0xe
+ 1333 0064 3A       		.uleb128 0x3a
+ 1334 0065 0B       		.uleb128 0xb
+ 1335 0066 3B       		.uleb128 0x3b
+ 1336 0067 0B       		.uleb128 0xb
+ 1337 0068 49       		.uleb128 0x49
+ 1338 0069 13       		.uleb128 0x13
+ 1339 006a 38       		.uleb128 0x38
+ 1340 006b 0B       		.uleb128 0xb
+ 1341 006c 00       		.byte	0
+ 1342 006d 00       		.byte	0
+ 1343 006e 09       		.uleb128 0x9
+ 1344 006f 2E       		.uleb128 0x2e
+ 1345 0070 01       		.byte	0x1
+ 1346 0071 3F       		.uleb128 0x3f
+ 1347 0072 19       		.uleb128 0x19
+ 1348 0073 03       		.uleb128 0x3
+ 1349 0074 0E       		.uleb128 0xe
+ 1350 0075 3A       		.uleb128 0x3a
+ 1351 0076 0B       		.uleb128 0xb
+ 1352 0077 3B       		.uleb128 0x3b
+ 1353 0078 0B       		.uleb128 0xb
+ 1354 0079 27       		.uleb128 0x27
+ 1355 007a 19       		.uleb128 0x19
+ 1356 007b 11       		.uleb128 0x11
+ 1357 007c 01       		.uleb128 0x1
+ 1358 007d 12       		.uleb128 0x12
+ 1359 007e 06       		.uleb128 0x6
+ 1360 007f 40       		.uleb128 0x40
+ 1361 0080 18       		.uleb128 0x18
+ 1362 0081 9742     		.uleb128 0x2117
+ 1363 0083 19       		.uleb128 0x19
+ 1364 0084 01       		.uleb128 0x1
+ 1365 0085 13       		.uleb128 0x13
+ 1366 0086 00       		.byte	0
+ 1367 0087 00       		.byte	0
+ 1368 0088 0A       		.uleb128 0xa
+ 1369 0089 898201   		.uleb128 0x4109
+ 1370 008c 00       		.byte	0
+ 1371 008d 11       		.uleb128 0x11
+ 1372 008e 01       		.uleb128 0x1
+ 1373 008f 31       		.uleb128 0x31
+ 1374 0090 13       		.uleb128 0x13
+ 1375 0091 00       		.byte	0
+ 1376 0092 00       		.byte	0
+ 1377 0093 0B       		.uleb128 0xb
+ 1378 0094 01       		.uleb128 0x1
+ 1379 0095 01       		.byte	0x1
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 27
+
+
+ 1380 0096 49       		.uleb128 0x49
+ 1381 0097 13       		.uleb128 0x13
+ 1382 0098 01       		.uleb128 0x1
+ 1383 0099 13       		.uleb128 0x13
+ 1384 009a 00       		.byte	0
+ 1385 009b 00       		.byte	0
+ 1386 009c 0C       		.uleb128 0xc
+ 1387 009d 21       		.uleb128 0x21
+ 1388 009e 00       		.byte	0
+ 1389 009f 49       		.uleb128 0x49
+ 1390 00a0 13       		.uleb128 0x13
+ 1391 00a1 2F       		.uleb128 0x2f
+ 1392 00a2 0B       		.uleb128 0xb
+ 1393 00a3 00       		.byte	0
+ 1394 00a4 00       		.byte	0
+ 1395 00a5 0D       		.uleb128 0xd
+ 1396 00a6 26       		.uleb128 0x26
+ 1397 00a7 00       		.byte	0
+ 1398 00a8 49       		.uleb128 0x49
+ 1399 00a9 13       		.uleb128 0x13
+ 1400 00aa 00       		.byte	0
+ 1401 00ab 00       		.byte	0
+ 1402 00ac 0E       		.uleb128 0xe
+ 1403 00ad 34       		.uleb128 0x34
+ 1404 00ae 00       		.byte	0
+ 1405 00af 03       		.uleb128 0x3
+ 1406 00b0 0E       		.uleb128 0xe
+ 1407 00b1 3A       		.uleb128 0x3a
+ 1408 00b2 0B       		.uleb128 0xb
+ 1409 00b3 3B       		.uleb128 0x3b
+ 1410 00b4 0B       		.uleb128 0xb
+ 1411 00b5 49       		.uleb128 0x49
+ 1412 00b6 13       		.uleb128 0x13
+ 1413 00b7 1C       		.uleb128 0x1c
+ 1414 00b8 03       		.uleb128 0x3
+ 1415 00b9 00       		.byte	0
+ 1416 00ba 00       		.byte	0
+ 1417 00bb 0F       		.uleb128 0xf
+ 1418 00bc 34       		.uleb128 0x34
+ 1419 00bd 00       		.byte	0
+ 1420 00be 03       		.uleb128 0x3
+ 1421 00bf 0E       		.uleb128 0xe
+ 1422 00c0 3A       		.uleb128 0x3a
+ 1423 00c1 0B       		.uleb128 0xb
+ 1424 00c2 3B       		.uleb128 0x3b
+ 1425 00c3 0B       		.uleb128 0xb
+ 1426 00c4 49       		.uleb128 0x49
+ 1427 00c5 13       		.uleb128 0x13
+ 1428 00c6 02       		.uleb128 0x2
+ 1429 00c7 18       		.uleb128 0x18
+ 1430 00c8 00       		.byte	0
+ 1431 00c9 00       		.byte	0
+ 1432 00ca 10       		.uleb128 0x10
+ 1433 00cb 34       		.uleb128 0x34
+ 1434 00cc 00       		.byte	0
+ 1435 00cd 03       		.uleb128 0x3
+ 1436 00ce 0E       		.uleb128 0xe
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 28
+
+
+ 1437 00cf 3A       		.uleb128 0x3a
+ 1438 00d0 0B       		.uleb128 0xb
+ 1439 00d1 3B       		.uleb128 0x3b
+ 1440 00d2 0B       		.uleb128 0xb
+ 1441 00d3 49       		.uleb128 0x49
+ 1442 00d4 13       		.uleb128 0x13
+ 1443 00d5 1C       		.uleb128 0x1c
+ 1444 00d6 0B       		.uleb128 0xb
+ 1445 00d7 00       		.byte	0
+ 1446 00d8 00       		.byte	0
+ 1447 00d9 11       		.uleb128 0x11
+ 1448 00da 34       		.uleb128 0x34
+ 1449 00db 00       		.byte	0
+ 1450 00dc 03       		.uleb128 0x3
+ 1451 00dd 0E       		.uleb128 0xe
+ 1452 00de 3A       		.uleb128 0x3a
+ 1453 00df 0B       		.uleb128 0xb
+ 1454 00e0 3B       		.uleb128 0x3b
+ 1455 00e1 0B       		.uleb128 0xb
+ 1456 00e2 49       		.uleb128 0x49
+ 1457 00e3 13       		.uleb128 0x13
+ 1458 00e4 3F       		.uleb128 0x3f
+ 1459 00e5 19       		.uleb128 0x19
+ 1460 00e6 3C       		.uleb128 0x3c
+ 1461 00e7 19       		.uleb128 0x19
+ 1462 00e8 00       		.byte	0
+ 1463 00e9 00       		.byte	0
+ 1464 00ea 12       		.uleb128 0x12
+ 1465 00eb 34       		.uleb128 0x34
+ 1466 00ec 00       		.byte	0
+ 1467 00ed 03       		.uleb128 0x3
+ 1468 00ee 0E       		.uleb128 0xe
+ 1469 00ef 3A       		.uleb128 0x3a
+ 1470 00f0 0B       		.uleb128 0xb
+ 1471 00f1 3B       		.uleb128 0x3b
+ 1472 00f2 05       		.uleb128 0x5
+ 1473 00f3 49       		.uleb128 0x49
+ 1474 00f4 13       		.uleb128 0x13
+ 1475 00f5 3F       		.uleb128 0x3f
+ 1476 00f6 19       		.uleb128 0x19
+ 1477 00f7 3C       		.uleb128 0x3c
+ 1478 00f8 19       		.uleb128 0x19
+ 1479 00f9 00       		.byte	0
+ 1480 00fa 00       		.byte	0
+ 1481 00fb 13       		.uleb128 0x13
+ 1482 00fc 35       		.uleb128 0x35
+ 1483 00fd 00       		.byte	0
+ 1484 00fe 49       		.uleb128 0x49
+ 1485 00ff 13       		.uleb128 0x13
+ 1486 0100 00       		.byte	0
+ 1487 0101 00       		.byte	0
+ 1488 0102 14       		.uleb128 0x14
+ 1489 0103 34       		.uleb128 0x34
+ 1490 0104 00       		.byte	0
+ 1491 0105 03       		.uleb128 0x3
+ 1492 0106 0E       		.uleb128 0xe
+ 1493 0107 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 29
+
+
+ 1494 0108 0B       		.uleb128 0xb
+ 1495 0109 3B       		.uleb128 0x3b
+ 1496 010a 0B       		.uleb128 0xb
+ 1497 010b 49       		.uleb128 0x49
+ 1498 010c 13       		.uleb128 0x13
+ 1499 010d 3F       		.uleb128 0x3f
+ 1500 010e 19       		.uleb128 0x19
+ 1501 010f 02       		.uleb128 0x2
+ 1502 0110 18       		.uleb128 0x18
+ 1503 0111 00       		.byte	0
+ 1504 0112 00       		.byte	0
+ 1505 0113 15       		.uleb128 0x15
+ 1506 0114 2E       		.uleb128 0x2e
+ 1507 0115 00       		.byte	0
+ 1508 0116 3F       		.uleb128 0x3f
+ 1509 0117 19       		.uleb128 0x19
+ 1510 0118 3C       		.uleb128 0x3c
+ 1511 0119 19       		.uleb128 0x19
+ 1512 011a 6E       		.uleb128 0x6e
+ 1513 011b 0E       		.uleb128 0xe
+ 1514 011c 03       		.uleb128 0x3
+ 1515 011d 0E       		.uleb128 0xe
+ 1516 011e 3A       		.uleb128 0x3a
+ 1517 011f 0B       		.uleb128 0xb
+ 1518 0120 3B       		.uleb128 0x3b
+ 1519 0121 0B       		.uleb128 0xb
+ 1520 0122 00       		.byte	0
+ 1521 0123 00       		.byte	0
+ 1522 0124 00       		.byte	0
+ 1523              		.section	.debug_aranges,"",%progbits
+ 1524 0000 1C000000 		.4byte	0x1c
+ 1525 0004 0200     		.2byte	0x2
+ 1526 0006 00000000 		.4byte	.Ldebug_info0
+ 1527 000a 04       		.byte	0x4
+ 1528 000b 00       		.byte	0
+ 1529 000c 0000     		.2byte	0
+ 1530 000e 0000     		.2byte	0
+ 1531 0010 00000000 		.4byte	.LFB110
+ 1532 0014 30010000 		.4byte	.LFE110-.LFB110
+ 1533 0018 00000000 		.4byte	0
+ 1534 001c 00000000 		.4byte	0
+ 1535              		.section	.debug_ranges,"",%progbits
+ 1536              	.Ldebug_ranges0:
+ 1537 0000 00000000 		.4byte	.LFB110
+ 1538 0004 30010000 		.4byte	.LFE110
+ 1539 0008 00000000 		.4byte	0
+ 1540 000c 00000000 		.4byte	0
+ 1541              		.section	.debug_line,"",%progbits
+ 1542              	.Ldebug_line0:
+ 1543 0000 9C020000 		.section	.debug_str,"MS",%progbits,1
+ 1543      02006D02 
+ 1543      00000201 
+ 1543      FB0E0D00 
+ 1543      01010101 
+ 1544              	.LASF3:
+ 1545 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1545      6E74385F 
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 30
+
+
+ 1545      7400
+ 1546              	.LASF46:
+ 1547 000a 50574D5F 		.ascii	"PWM_Green_ReadCompare\000"
+ 1547      47726565 
+ 1547      6E5F5265 
+ 1547      6164436F 
+ 1547      6D706172 
+ 1548              	.LASF43:
+ 1549 0020 52475F67 		.ascii	"RG_glowtable_1\000"
+ 1549      6C6F7774 
+ 1549      61626C65 
+ 1549      5F3100
+ 1550              	.LASF33:
+ 1551 002f 47726565 		.ascii	"GreenHigh_RedLow\000"
+ 1551      6E486967 
+ 1551      685F5265 
+ 1551      644C6F77 
+ 1551      00
+ 1552              	.LASF36:
+ 1553 0040 746F7461 		.ascii	"total_index\000"
+ 1553      6C5F696E 
+ 1553      64657800 
+ 1554              	.LASF6:
+ 1555 004c 5F5F696E 		.ascii	"__int32_t\000"
+ 1555      7433325F 
+ 1555      7400
+ 1556              	.LASF5:
+ 1557 0056 73686F72 		.ascii	"short unsigned int\000"
+ 1557      7420756E 
+ 1557      7369676E 
+ 1557      65642069 
+ 1557      6E7400
+ 1558              	.LASF38:
+ 1559 0069 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 1559      6F5F4952 
+ 1559      515F7375 
+ 1559      7370656E 
+ 1559      645F7374 
+ 1560              	.LASF24:
+ 1561 0082 45455F54 		.ascii	"EE_TID\000"
+ 1561      494400
+ 1562              	.LASF14:
+ 1563 0089 696E7433 		.ascii	"int32_t\000"
+ 1563      325F7400 
+ 1564              	.LASF53:
+ 1565 0091 4C45445F 		.ascii	"LED_RGB_Set\000"
+ 1565      5247425F 
+ 1565      53657400 
+ 1566              	.LASF16:
+ 1567 009d 666C6F61 		.ascii	"float\000"
+ 1567      7400
+ 1568              	.LASF1:
+ 1569 00a3 756E7369 		.ascii	"unsigned char\000"
+ 1569      676E6564 
+ 1569      20636861 
+ 1569      7200
+ 1570              	.LASF55:
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 31
+
+
+ 1571 00b1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1571      43313120 
+ 1571      352E342E 
+ 1571      31203230 
+ 1571      31363036 
+ 1572 00e4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1572      20726576 
+ 1572      6973696F 
+ 1572      6E203233 
+ 1572      37373135 
+ 1573 0117 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1573      66756E63 
+ 1573      74696F6E 
+ 1573      2D736563 
+ 1573      74696F6E 
+ 1574              	.LASF21:
+ 1575 013f 45455F55 		.ascii	"EE_UINT32\000"
+ 1575      494E5433 
+ 1575      3200
+ 1576              	.LASF30:
+ 1577 0149 4C45445F 		.ascii	"LED__Pulse_Width\000"
+ 1577      5F50756C 
+ 1577      73655F57 
+ 1577      69647468 
+ 1577      00
+ 1578              	.LASF58:
+ 1579 015a 46756E63 		.ascii	"Functsk_arcadian\000"
+ 1579      74736B5F 
+ 1579      61726361 
+ 1579      6469616E 
+ 1579      00
+ 1580              	.LASF8:
+ 1581 016b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1581      20756E73 
+ 1581      69676E65 
+ 1581      6420696E 
+ 1581      7400
+ 1582              	.LASF22:
+ 1583 017d 45455F55 		.ascii	"EE_UREG\000"
+ 1583      52454700 
+ 1584              	.LASF20:
+ 1585 0185 45455F49 		.ascii	"EE_INT32\000"
+ 1585      4E543332 
+ 1585      00
+ 1586              	.LASF50:
+ 1587 018e 50574D5F 		.ascii	"PWM_Yellow_WriteCompare\000"
+ 1587      59656C6C 
+ 1587      6F775F57 
+ 1587      72697465 
+ 1587      436F6D70 
+ 1588              	.LASF42:
+ 1589 01a6 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1589      52784275 
+ 1589      66666572 
+ 1589      00
+ 1590              	.LASF27:
+ 1591 01b3 426C7565 		.ascii	"Blue\000"
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 32
+
+
+ 1591      00
+ 1592              	.LASF35:
+ 1593 01b8 63757272 		.ascii	"curr_index\000"
+ 1593      5F696E64 
+ 1593      657800
+ 1594              	.LASF4:
+ 1595 01c3 5F5F7569 		.ascii	"__uint16_t\000"
+ 1595      6E743136 
+ 1595      5F7400
+ 1596              	.LASF17:
+ 1597 01ce 646F7562 		.ascii	"double\000"
+ 1597      6C6500
+ 1598              	.LASF47:
+ 1599 01d5 50574D5F 		.ascii	"PWM_Green_WriteCompare\000"
+ 1599      47726565 
+ 1599      6E5F5772 
+ 1599      69746543 
+ 1599      6F6D7061 
+ 1600              	.LASF15:
+ 1601 01ec 75696E74 		.ascii	"uint16\000"
+ 1601      313600
+ 1602              	.LASF52:
+ 1603 01f3 50574D5F 		.ascii	"PWM_Green_ReadPeriod\000"
+ 1603      47726565 
+ 1603      6E5F5265 
+ 1603      61645065 
+ 1603      72696F64 
+ 1604              	.LASF40:
+ 1605 0208 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 1605      74645F65 
+ 1605      6E646379 
+ 1605      636C655F 
+ 1605      6E657874 
+ 1606              	.LASF11:
+ 1607 0221 756E7369 		.ascii	"unsigned int\000"
+ 1607      676E6564 
+ 1607      20696E74 
+ 1607      00
+ 1608              	.LASF23:
+ 1609 022e 45455F46 		.ascii	"EE_FREG\000"
+ 1609      52454700 
+ 1610              	.LASF31:
+ 1611 0236 52656448 		.ascii	"RedHigh_GreenLow\000"
+ 1611      6967685F 
+ 1611      47726565 
+ 1611      6E4C6F77 
+ 1611      00
+ 1612              	.LASF10:
+ 1613 0247 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1613      206C6F6E 
+ 1613      6720756E 
+ 1613      7369676E 
+ 1613      65642069 
+ 1614              	.LASF12:
+ 1615 025e 75696E74 		.ascii	"uint8_t\000"
+ 1615      385F7400 
+ 1616              	.LASF39:
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 33
+
+
+ 1617 0266 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 1617      70706C69 
+ 1617      63617469 
+ 1617      6F6E4D6F 
+ 1617      646500
+ 1618              	.LASF28:
+ 1619 0279 74696D65 		.ascii	"time\000"
+ 1619      00
+ 1620              	.LASF49:
+ 1621 027e 50574D5F 		.ascii	"PWM_Yellow_ReadCompare\000"
+ 1621      59656C6C 
+ 1621      6F775F52 
+ 1621      65616443 
+ 1621      6F6D7061 
+ 1622              	.LASF56:
+ 1623 0295 736F7572 		.ascii	"source\\asw\\Arcadian.c\000"
+ 1623      63655C61 
+ 1623      73775C41 
+ 1623      72636164 
+ 1623      69616E2E 
+ 1624              	.LASF29:
+ 1625 02ab 52475F5F 		.ascii	"RG__Glow_t\000"
+ 1625      476C6F77 
+ 1625      5F7400
+ 1626              	.LASF45:
+ 1627 02b6 50574D5F 		.ascii	"PWM_Red_WriteCompare\000"
+ 1627      5265645F 
+ 1627      57726974 
+ 1627      65436F6D 
+ 1627      70617265 
+ 1628              	.LASF9:
+ 1629 02cb 6C6F6E67 		.ascii	"long long int\000"
+ 1629      206C6F6E 
+ 1629      6720696E 
+ 1629      7400
+ 1630              	.LASF25:
+ 1631 02d9 73697A65 		.ascii	"sizetype\000"
+ 1631      74797065 
+ 1631      00
+ 1632              	.LASF18:
+ 1633 02e2 63686172 		.ascii	"char\000"
+ 1633      00
+ 1634              	.LASF51:
+ 1635 02e7 50574D5F 		.ascii	"PWM_Yellow_ReadPeriod\000"
+ 1635      59656C6C 
+ 1635      6F775F52 
+ 1635      65616450 
+ 1635      6572696F 
+ 1636              	.LASF41:
+ 1637 02fd 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 1637      52515F6E 
+ 1637      65737469 
+ 1637      6E675F6C 
+ 1637      6576656C 
+ 1638              	.LASF34:
+ 1639 0312 636F756E 		.ascii	"count\000"
+ 1639      7400
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 34
+
+
+ 1640              	.LASF2:
+ 1641 0318 73686F72 		.ascii	"short int\000"
+ 1641      7420696E 
+ 1641      7400
+ 1642              	.LASF37:
+ 1643 0322 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 1643      6F5F4952 
+ 1643      515F6469 
+ 1643      7361626C 
+ 1643      655F636F 
+ 1644              	.LASF13:
+ 1645 033a 75696E74 		.ascii	"uint16_t\000"
+ 1645      31365F74 
+ 1645      00
+ 1646              	.LASF7:
+ 1647 0343 6C6F6E67 		.ascii	"long int\000"
+ 1647      20696E74 
+ 1647      00
+ 1648              	.LASF57:
+ 1649 034c 443A5C44 		.ascii	"D:\\Darmstadt\\College\\Study\\Semester1\\AMA_EOS\\"
+ 1649      61726D73 
+ 1649      74616474 
+ 1649      5C436F6C 
+ 1649      6C656765 
+ 1650 0379 454F535C 		.ascii	"EOS\\Lab\\Assignments\\Lab1\\ReactionGame.cydsn\\Re"
+ 1650      4C61625C 
+ 1650      41737369 
+ 1650      676E6D65 
+ 1650      6E74735C 
+ 1651 03a7 61637469 		.ascii	"actionGame.cydsn\000"
+ 1651      6F6E4761 
+ 1651      6D652E63 
+ 1651      7964736E 
+ 1651      00
+ 1652              	.LASF32:
+ 1653 03b8 59656C6C 		.ascii	"YellowHigh_RedLow\000"
+ 1653      6F774869 
+ 1653      67685F52 
+ 1653      65644C6F 
+ 1653      7700
+ 1654              	.LASF19:
+ 1655 03ca 6C6F6E67 		.ascii	"long double\000"
+ 1655      20646F75 
+ 1655      626C6500 
+ 1656              	.LASF0:
+ 1657 03d6 7369676E 		.ascii	"signed char\000"
+ 1657      65642063 
+ 1657      68617200 
+ 1658              	.LASF54:
+ 1659 03e2 45455F6F 		.ascii	"EE_oo_TerminateTask\000"
+ 1659      6F5F5465 
+ 1659      726D696E 
+ 1659      61746554 
+ 1659      61736B00 
+ 1660              	.LASF44:
+ 1661 03f6 50574D5F 		.ascii	"PWM_Red_ReadCompare\000"
+ 1661      5265645F 
+ARM GAS  C:\Users\SAISWA~1\AppData\Local\Temp\ccveBM64.s 			page 35
+
+
+ 1661      52656164 
+ 1661      436F6D70 
+ 1661      61726500 
+ 1662              	.LASF48:
+ 1663 040a 50574D5F 		.ascii	"PWM_Red_ReadPeriod\000"
+ 1663      5265645F 
+ 1663      52656164 
+ 1663      50657269 
+ 1663      6F6400
+ 1664              	.LASF26:
+ 1665 041d 47726565 		.ascii	"Green\000"
+ 1665      6E00
+ 1666              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

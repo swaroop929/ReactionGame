@@ -1,0 +1,73 @@
+\doxysection{source/asw/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{source/asw/main.c@{source/asw/main.c}}
+{\ttfamily \#include "{}project.\+h"{}}\newline
+{\ttfamily \#include "{}./bsw/seven.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}./bsw/\+RGB\+\_\+\+LED.\+h"{}}\newline
+{\ttfamily \#include "{}arcadian.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{main_8c_ad45d7c82a1e6c90c60892030f7dcba14}{ISR}} (systick\+\_\+handler)
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\item 
+\mbox{\hyperlink{main_8c_a7822d411bf9cc71cc21d2763dca2873f}{TASK}} (tsk\+\_\+init)
+\begin{DoxyCompactList}\small\item\em This task is auto started by OS and it initialises ISRs and actiavates the tsk\+\_\+arcadian and tsk\+\_\+background. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8c_a0da086337b00f9a9090c00a86a929a40}{TASK}} (tsk\+\_\+background)
+\begin{DoxyCompactList}\small\item\em This task is just the background task which will be running when the system is in busy waiting state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8c_ad79c19cbc804226a5b3708db7285c8dc}{ISR}} (isr\+\_\+start\+\_\+game)
+\begin{DoxyCompactList}\small\item\em ISR when button3 or button4 are pressed which will call tsk\+\_\+game and starts the game task This even calls the scheduler and sets events when button3 or button4 are pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ab8ee8c12ece9a6b08e8e02c0829c7076}{unhandled\+Exception}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_ad79c19cbc804226a5b3708db7285c8dc}\label{main_8c_ad79c19cbc804226a5b3708db7285c8dc} 
+\index{main.c@{main.c}!ISR@{ISR}}
+\index{ISR@{ISR}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ISR()}{ISR()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ISR (\begin{DoxyParamCaption}\item[{isr\+\_\+start\+\_\+game}]{ }\end{DoxyParamCaption})}
+
+
+
+ISR when button3 or button4 are pressed which will call tsk\+\_\+game and starts the game task This even calls the scheduler and sets events when button3 or button4 are pressed. 
+
+\Hypertarget{main_8c_ad45d7c82a1e6c90c60892030f7dcba14}\label{main_8c_ad45d7c82a1e6c90c60892030f7dcba14} 
+\index{main.c@{main.c}!ISR@{ISR}}
+\index{ISR@{ISR}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ISR()}{ISR()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ISR (\begin{DoxyParamCaption}\item[{systick\+\_\+handler}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_a0da086337b00f9a9090c00a86a929a40}\label{main_8c_a0da086337b00f9a9090c00a86a929a40} 
+\index{main.c@{main.c}!TASK@{TASK}}
+\index{TASK@{TASK}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{TASK()}{TASK()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily TASK (\begin{DoxyParamCaption}\item[{tsk\+\_\+background}]{ }\end{DoxyParamCaption})}
+
+
+
+This task is just the background task which will be running when the system is in busy waiting state. 
+
+\Hypertarget{main_8c_a7822d411bf9cc71cc21d2763dca2873f}\label{main_8c_a7822d411bf9cc71cc21d2763dca2873f} 
+\index{main.c@{main.c}!TASK@{TASK}}
+\index{TASK@{TASK}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{TASK()}{TASK()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily TASK (\begin{DoxyParamCaption}\item[{tsk\+\_\+init}]{ }\end{DoxyParamCaption})}
+
+
+
+This task is auto started by OS and it initialises ISRs and actiavates the tsk\+\_\+arcadian and tsk\+\_\+background. 
+
+\Hypertarget{main_8c_ab8ee8c12ece9a6b08e8e02c0829c7076}\label{main_8c_ab8ee8c12ece9a6b08e8e02c0829c7076} 
+\index{main.c@{main.c}!unhandledException@{unhandledException}}
+\index{unhandledException@{unhandledException}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{unhandledException()}{unhandledException()}}
+{\footnotesize\ttfamily void unhandled\+Exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

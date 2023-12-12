@@ -1,0 +1,125 @@
+\doxysection{source/bsw/seven.c File Reference}
+\hypertarget{seven_8c}{}\label{seven_8c}\index{source/bsw/seven.c@{source/bsw/seven.c}}
+{\ttfamily \#include "{}seven.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8c_a48a8ddcc683400403f1c004664c89d47}{Seven\+\_\+init}} ()
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8c_af2952c0238f865557fd449dffbfd43e2}{Seven\+\_\+\+Write}} (\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}} display, \mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}} value)
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8c_a523d295219fe9b7885ea81b6b68bbe24}{Seven\+\_\+\+Write\+\_\+\+Hex}} (\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}} value)
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8c_ae3bb3a0b69a7f4973b03892588a78572}{Seven\+\_\+\+Write\+\_\+\+Dp}} (\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}} display)
+\item 
+\mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \mbox{\hyperlink{seven_8c_aa56d60f55c0589e0367308d709835007}{Seven\+\_\+\+Clear}} (\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}} display)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}} \mbox{\hyperlink{seven_8c_af00fbe393538cdeb1b27c11aa1931742}{Seven\+\_\+\+Lookup}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{seven_8c_aa56d60f55c0589e0367308d709835007}\label{seven_8c_aa56d60f55c0589e0367308d709835007} 
+\index{seven.c@{seven.c}!Seven\_Clear@{Seven\_Clear}}
+\index{Seven\_Clear@{Seven\_Clear}!seven.c@{seven.c}}
+\doxysubsubsection{\texorpdfstring{Seven\_Clear()}{Seven\_Clear()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}}}]{display }\end{DoxyParamCaption})}
+
+To clear one of the 7 segement displays 
+\begin{DoxyParams}{Parameters}
+{\em Seven\+\_\+\+Display\+\_\+t} & display \+: Left or Right display selector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8c_a48a8ddcc683400403f1c004664c89d47}\label{seven_8c_a48a8ddcc683400403f1c004664c89d47} 
+\index{seven.c@{seven.c}!Seven\_init@{Seven\_init}}
+\index{Seven\_init@{Seven\_init}!seven.c@{seven.c}}
+\doxysubsubsection{\texorpdfstring{Seven\_init()}{Seven\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+To initalise the 7 seg with 0
+
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8c_af2952c0238f865557fd449dffbfd43e2}\label{seven_8c_af2952c0238f865557fd449dffbfd43e2} 
+\index{seven.c@{seven.c}!Seven\_Write@{Seven\_Write}}
+\index{Seven\_Write@{Seven\_Write}!seven.c@{seven.c}}
+\doxysubsubsection{\texorpdfstring{Seven\_Write()}{Seven\_Write()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}}}]{display,  }\item[{\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}}]{value }\end{DoxyParamCaption})}
+
+To write into one of the 7 segement displays with a value from 0x00 to 0x\+FF 
+\begin{DoxyParams}{Parameters}
+{\em Seven\+\_\+\+Display\+\_\+t} & display \+: Left or Right display selector \\
+\hline
+{\em uint8} & value \+: Value that is to be displayed on the 7 seg \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8c_ae3bb3a0b69a7f4973b03892588a78572}\label{seven_8c_ae3bb3a0b69a7f4973b03892588a78572} 
+\index{seven.c@{seven.c}!Seven\_Write\_Dp@{Seven\_Write\_Dp}}
+\index{Seven\_Write\_Dp@{Seven\_Write\_Dp}!seven.c@{seven.c}}
+\doxysubsubsection{\texorpdfstring{Seven\_Write\_Dp()}{Seven\_Write\_Dp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Write\+\_\+\+Dp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{seven_8h_a69a4184e51e5fccddfd0eecbcd09d46e}{Seven\+\_\+\+Display\+\_\+t}}}]{display }\end{DoxyParamCaption})}
+
+To write into one of the 7 segement displays decimal pointer 
+\begin{DoxyParams}{Parameters}
+{\em Seven\+\_\+\+Display\+\_\+t} & display \+: Left or Right display selector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+\Hypertarget{seven_8c_a523d295219fe9b7885ea81b6b68bbe24}\label{seven_8c_a523d295219fe9b7885ea81b6b68bbe24} 
+\index{seven.c@{seven.c}!Seven\_Write\_Hex@{Seven\_Write\_Hex}}
+\index{Seven\_Write\_Hex@{Seven\_Write\_Hex}!seven.c@{seven.c}}
+\doxysubsubsection{\texorpdfstring{Seven\_Write\_Hex()}{Seven\_Write\_Hex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} Seven\+\_\+\+Write\+\_\+\+Hex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}}]{value }\end{DoxyParamCaption})}
+
+To write into one of the 7 segement displays in the Hex value 
+\begin{DoxyParams}{Parameters}
+{\em uint8} & value \+: Value that is to be displayed on the 7 seg, this value is passed to write fucntion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RC\+\_\+t error check 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{seven_8c_af00fbe393538cdeb1b27c11aa1931742}\label{seven_8c_af00fbe393538cdeb1b27c11aa1931742} 
+\index{seven.c@{seven.c}!Seven\_Lookup@{Seven\_Lookup}}
+\index{Seven\_Lookup@{Seven\_Lookup}!seven.c@{seven.c}}
+\doxysubsubsection{\texorpdfstring{Seven\_Lookup}{Seven\_Lookup}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}} Seven\+\_\+\+Lookup\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ 0b00111111,\ }
+\DoxyCodeLine{\ \ \ \ 0b00000110,\ }
+\DoxyCodeLine{\ \ \ \ 0b01011011,\ }
+\DoxyCodeLine{\ \ \ \ 0b01001111,\ }
+\DoxyCodeLine{\ \ \ \ 0b01100110,\ }
+\DoxyCodeLine{\ \ \ \ 0b01101101,\ }
+\DoxyCodeLine{\ \ \ \ 0b01111101,\ }
+\DoxyCodeLine{\ \ \ \ 0b00000111,\ }
+\DoxyCodeLine{\ \ \ \ 0b01111111,\ }
+\DoxyCodeLine{\ \ \ \ 0b01101111,\ }
+\DoxyCodeLine{\ \ \ \ 0b01110111,\ }
+\DoxyCodeLine{\ \ \ \ 0b11111111,\ }
+\DoxyCodeLine{\ \ \ \ 0b00111001,\ }
+\DoxyCodeLine{\ \ \ \ 0b10111111,\ }
+\DoxyCodeLine{\ \ \ \ 0b01111001,\ }
+\DoxyCodeLine{\ \ \ \ 0b01110001,\ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\doxysection{source/asw/game.c File Reference}
+\hypertarget{game_8c}{}\label{game_8c}\index{source/asw/game.c@{source/asw/game.c}}
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}./bsw/seven.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8c_a9e80b9725050ce338c7da460eaac2290}{TASK}} (tsk\+\_\+timer)
+\begin{DoxyCompactList}\small\item\em This task is activated by the alarm alrm\+\_\+1ms and is called every 1ms This task increments a static var tick which will act as the timer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{game_8c_a7b7d71661261e02941d6d5ce9d4b9ad5}{TASK}} (tsk\+\_\+game)
+\begin{DoxyCompactList}\small\item\em This task is called whenever button3 or button4 are pressed This task has a high priority than Arcadian task and tsk\+\_\+game has the Reaction Game logic. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{game_8c_a09cf423e7f4fd91669a539d670a9d0d9}{ISR2}} (isr\+\_\+button\+\_\+press)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8c_a09cf423e7f4fd91669a539d670a9d0d9}\label{game_8c_a09cf423e7f4fd91669a539d670a9d0d9} 
+\index{game.c@{game.c}!ISR2@{ISR2}}
+\index{ISR2@{ISR2}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{ISR2()}{ISR2()}}
+{\footnotesize\ttfamily ISR2 (\begin{DoxyParamCaption}\item[{isr\+\_\+button\+\_\+press}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{game_8c_a7b7d71661261e02941d6d5ce9d4b9ad5}\label{game_8c_a7b7d71661261e02941d6d5ce9d4b9ad5} 
+\index{game.c@{game.c}!TASK@{TASK}}
+\index{TASK@{TASK}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{TASK()}{TASK()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily TASK (\begin{DoxyParamCaption}\item[{tsk\+\_\+game}]{ }\end{DoxyParamCaption})}
+
+
+
+This task is called whenever button3 or button4 are pressed This task has a high priority than Arcadian task and tsk\+\_\+game has the Reaction Game logic. 
+
+\Hypertarget{game_8c_a9e80b9725050ce338c7da460eaac2290}\label{game_8c_a9e80b9725050ce338c7da460eaac2290} 
+\index{game.c@{game.c}!TASK@{TASK}}
+\index{TASK@{TASK}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{TASK()}{TASK()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily TASK (\begin{DoxyParamCaption}\item[{tsk\+\_\+timer}]{ }\end{DoxyParamCaption})}
+
+
+
+This task is activated by the alarm alrm\+\_\+1ms and is called every 1ms This task increments a static var tick which will act as the timer. 
+

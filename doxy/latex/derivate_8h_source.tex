@@ -1,0 +1,136 @@
+\doxysection{derivate.\+h}
+\hypertarget{derivate_8h_source}{}\label{derivate_8h_source}\index{source/bsw/derivate.h@{source/bsw/derivate.h}}
+\mbox{\hyperlink{derivate_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#ifndef\ DERIVATE\_H\_}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ DERIVATE\_H\_}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ -\/-\/\ [\ Architectures\ ]}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ ARCH\_PSOC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ ARCH\_AURIX\_1G\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ ARCH\_ESP32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00042\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//******************\ Definition\ of\ supported\ derivates\ ******************************//}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/\ [\ PSoC\ ]}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ TARGET\_PSOC5LP\ \ \ \ \ \ \ \ \ \ \ \ \ \ 25\ \ \ \ \ \ }}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/\ [\ AURIX\ ]}}
+\DoxyCodeLine{00050\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ *\ as\ the\ preprocessor\ cannot\ compare\ strings,\ we\ have\ to\ give\ integers\ for\ the\ the\ AURIX\ derivates:}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ *\ Format:\ Derivate,\ Architecture,\ Step.}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ TARGET\_AURIX\_TC27xA\ \ \ \ \ \ \ \ \ 1271\ \ \ \ }}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ TARGET\_AURIX\_TC27xB\ \ \ \ \ \ \ \ \ 1272\ \ \ \ }}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ TARGET\_AURIX\_TC27xC\ \ \ \ \ \ \ \ \ 1273\ \ \ \ }}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ TARGET\_AURIX\_TC27xD\ \ \ \ \ \ \ \ \ 1274\ \ \ \ }}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ TARGET\_AURIX\_TC29xA\ \ \ \ \ \ \ \ \ 1291\ \ \ \ }}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ TARGET\_AURIX\_TC29xB\ \ \ \ \ \ \ \ \ 1292\ \ \ \ }}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ TARGET\_AURIX\_TC29xC\ \ \ \ \ \ \ \ \ 1293\ \ \ \ }}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/\ [\ others\ ]}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ TARGET\_ESP32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 30\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00066\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//******************\ Target\ Selection\ ***********************************************//}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ TARGET\_ID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TARGET\_PSOC5LP}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//******************\ global\ defines\ selection\ based\ on\ derivate\ *********************//}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00076\ \ \ \ }
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/\ [\ PSoC\ ]}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#if\ (TARGET\_ID==TARGET\_PSOC5LP)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_PSOC}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ PSoC5LP}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/\ [\ AURIX\ ]}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_AURIX\_TC27xA)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_AURIX\_1G}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ tc27xa}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_AURIX\_TC27xB)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_AURIX\_1G}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ tc27xb}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_AURIX\_TC27xC)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_AURIX\_1G}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ tc27xc}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_AURIX\_TC27xD)}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_AURIX\_1G}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ tc27xd}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_AURIX\_TC29xA)}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_AURIX\_1G}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ tc29xa}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_AURIX\_TC29xB)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_AURIX\_1G}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ tc29xb}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CAN\_N\ \ \ \ \ \ 4}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CAN\_OBJ\ \ \ \ 256}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CAN\_LST\ \ \ \ 16}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_AURIX\_TC29xC)}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_AURIX\_1G}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ tc29xc}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/\ [\ others\ ]}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#elif\ (TARGET\_ID==TARGET\_ESP32)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \#define\ ARCHITECTURE\ \ \ \ \ \ \ \ \ \ \ \ ARCH\_ESP32}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NAME\ \ \ \ \ \ \ \ \ \ \ ESP32}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ \ \ \#define\ DERIVATE\_NUM\_CORES\ \ \ \ \ \ 2}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00123\ \textcolor{comment}{//******************\ derivate\ specific\ constraints\ **********************************//}}
+\DoxyCodeLine{00124\ \textcolor{comment}{//***********************************************************************************//}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#if(TARGET\_ID==TARGET\_AURIX\_TC29xB)}}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fBASE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (150000000ul)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fBACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (100000000ul)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fPLL\_MIN\ \ \ \ \ \ \ \ \ \ \ \ (20000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fPLL\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fPLLERAY\_MIN\ \ \ \ \ \ \ \ (20000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fPLLERAY\_MAX\ \ \ \ \ \ \ \ (400000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fBAUD1\_MAX\ \ \ \ \ \ \ \ \ \ (100000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fBAUD2\_MAX\ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fSRI\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fSPB\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (100000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fFSI2\_MAX\ \ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fFSI\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (100000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fCAN\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (100000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fERAY\_MAX\ \ \ \ \ \ \ \ \ \ \ (80000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fSTM\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (100000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fGTM\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (100000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fASCLINF\_MAX\ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fASCLINS\_MAX\ \ \ \ \ \ \ \ (100000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fMAX\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fEBU\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (200000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fBBB\_MAX\ \ \ \ \ \ \ \ \ \ \ \ (150000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fCPU0\_MAX\ \ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fCPU1\_MAX\ \ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_fCPU2\_MAX\ \ \ \ \ \ \ \ \ \ \ (300000000)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_tPF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (30)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \ \ \#define\ CLK\_tPFECC\ \ \ \ \ \ \ \ \ \ \ \ \ \ (10)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#elif(TARGET\_ID==TARGET\_ESP32)}}
+\DoxyCodeLine{00159\ \ \ \ \ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\ \ \ \ \#define\ PIN\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ \ 64}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\ \ \ \ \#define\ EXTI\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ \ \ \#define\ SPI\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\ \ \ \ \#define\ UART\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\ \ \ \ \#define\ CAN\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\ \ \ \ \#define\ PWM\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\ \ \ \ \#define\ ADC\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\ \ \ \ \#define\ FLASH\_DEVICE\_MAX\ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\ \ \ \ \#define\ DAC\_DEVICE\_MAX\ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00169\ \ \ \ \ }
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ DERIVATE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

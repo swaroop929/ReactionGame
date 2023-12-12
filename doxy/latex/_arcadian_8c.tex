@@ -1,0 +1,57 @@
+\doxysection{source/asw/\+Arcadian.c File Reference}
+\hypertarget{_arcadian_8c}{}\label{_arcadian_8c}\index{source/asw/Arcadian.c@{source/asw/Arcadian.c}}
+{\ttfamily \#include "{}Arcadian.\+h"{}}\newline
+{\ttfamily \#include "{}./bsw/\+RGB\+\_\+\+Led.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_r_g_____glow__t}{RG\+\_\+\+\_\+\+Glow\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_arcadian_8c_a257b91c3b93d13a94a74a168c0131d7f}{TASK}} (tsk\+\_\+arcadian)
+\begin{DoxyCompactList}\small\item\em This task is activated by tsk\+\_\+init and this task is always running in background This task has lower priority than the tsk\+\_\+game and the tsk\+\_\+game can preempt this task tsk\+\_\+arcadian will make the Red, Yellow and Green LEDs glow in form of a travelling light and will make the RGB light glow in a particular sequence defined in the array RG\+\_\+glowtable\+\_\+1\mbox{[}\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{struct_r_g_____glow__t}{RG\+\_\+\+\_\+\+Glow\+\_\+t}} \mbox{\hyperlink{_arcadian_8c_acdcffb48aec6c59aebf4912d3870edf1}{RG\+\_\+glowtable\+\_\+1}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_arcadian_8c_a257b91c3b93d13a94a74a168c0131d7f}\label{_arcadian_8c_a257b91c3b93d13a94a74a168c0131d7f} 
+\index{Arcadian.c@{Arcadian.c}!TASK@{TASK}}
+\index{TASK@{TASK}!Arcadian.c@{Arcadian.c}}
+\doxysubsubsection{\texorpdfstring{TASK()}{TASK()}}
+{\footnotesize\ttfamily TASK (\begin{DoxyParamCaption}\item[{tsk\+\_\+arcadian}]{ }\end{DoxyParamCaption})}
+
+
+
+This task is activated by tsk\+\_\+init and this task is always running in background This task has lower priority than the tsk\+\_\+game and the tsk\+\_\+game can preempt this task tsk\+\_\+arcadian will make the Red, Yellow and Green LEDs glow in form of a travelling light and will make the RGB light glow in a particular sequence defined in the array RG\+\_\+glowtable\+\_\+1\mbox{[}\mbox{]}. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_arcadian_8c_acdcffb48aec6c59aebf4912d3870edf1}\label{_arcadian_8c_acdcffb48aec6c59aebf4912d3870edf1} 
+\index{Arcadian.c@{Arcadian.c}!RG\_glowtable\_1@{RG\_glowtable\_1}}
+\index{RG\_glowtable\_1@{RG\_glowtable\_1}!Arcadian.c@{Arcadian.c}}
+\doxysubsubsection{\texorpdfstring{RG\_glowtable\_1}{RG\_glowtable\_1}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_r_g_____glow__t}{RG\+\_\+\+\_\+\+Glow\+\_\+t}} RG\+\_\+glowtable\+\_\+1\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\{255,\ 0,\ 0,\ 500\},}
+\DoxyCodeLine{\{0,\ 255,\ 0,\ 500\},}
+\DoxyCodeLine{\{0,\ 0,\ 255,\ 500\},}
+\DoxyCodeLine{\{0,\ 0,\ 0,\ 100\},}
+\DoxyCodeLine{\{255,\ 255,\ 255,\ 100\},}
+\DoxyCodeLine{\{0,\ 0,\ 0,\ 100\},}
+\DoxyCodeLine{\{255,\ 255,\ 255,\ 100\},}
+\DoxyCodeLine{\{0,\ 0,\ 0,\ 100\},}
+\DoxyCodeLine{\{255,\ 255,\ 255,\ 100\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

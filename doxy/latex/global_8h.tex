@@ -1,0 +1,1041 @@
+\doxysection{source/bsw/global.h File Reference}
+\hypertarget{global_8h}{}\label{global_8h}\index{source/bsw/global.h@{source/bsw/global.h}}
+
+
+Global definitions for datatypes and definitions.  
+
+
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_a_u_r_i_x__time__t}{AURIX\+\_\+time\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{global_8h_aee70138f33aba6d0a7f273d869a705e9}{OS\+\_\+\+NONE}}~0
+\begin{DoxyCompactList}\small\item\em target runs without operationg system \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a733b8bbe4c3e45d26a57f82dbdf08d27}{OS\+\_\+\+PXROS}}~1
+\begin{DoxyCompactList}\small\item\em target runs Px\+ROS \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a38ee9888611a0037e1644c7cd66fffec}{OS\+\_\+\+FREERTOS}}~2
+\begin{DoxyCompactList}\small\item\em target runs Free\+RTOS \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a4f6a1f4acc3cc46a766147a276d928fb}{OS\+\_\+\+ERIKA}}~3
+\begin{DoxyCompactList}\small\item\em target runs ERIKA OS \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a3324dbb5e25daac23e988901bb085447}{OS}}~\mbox{\hyperlink{global_8h_a4f6a1f4acc3cc46a766147a276d928fb}{OS\+\_\+\+ERIKA}}
+\begin{DoxyCompactList}\small\item\em OS selection. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_ae5a35de9ad0fb2d907fcd64be667cbcc}{TCPATH}}~\mbox{\hyperlink{derivate_8h_ab199a80cd218fec8ed6b0997a1e11e7f}{DERIVATE\+\_\+\+NAME}}
+\begin{DoxyCompactList}\small\item\em TC\+\_\+\+Path Generator. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_aab2beb3d3a7972429070d4a03a31a942}{TC\+\_\+\+STR}}(s)~\# s
+\begin{DoxyCompactList}\small\item\em TC\+\_\+\+Path Generator Stringification stage 2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a741bc18b5c35628354dfe1a08710a43c}{TC\+\_\+\+INCLUDE}}(f)~\mbox{\hyperlink{global_8h_aab2beb3d3a7972429070d4a03a31a942}{TC\+\_\+\+STR}}(f)
+\begin{DoxyCompactList}\small\item\em TC\+\_\+\+Path Generator Stringification stage 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a22f064707db63ec3e40d5a5caf36a771}{DELAY\+\_\+\+MS}}(ms)~SYSTEM\+\_\+\+Delay\+Us(ms\texorpdfstring{$\ast$}{*}1000)
+\begin{DoxyCompactList}\small\item\em blocking milliseconds delay using AURIX STM timer \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a60aba7cd6f93c0f065c51db5481f2cb4}{DELAY\+\_\+\+US}}(us)~SYSTEM\+\_\+\+Delay\+Us(us)
+\begin{DoxyCompactList}\small\item\em blocking microseconds delay using AURIX STM timer \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_abf5ad32190a6451968c92b4da1a4c5e3}{uint8\+\_\+t\+\_\+\+MAX}}~0x\+FF
+\begin{DoxyCompactList}\small\item\em maximum value of uint8\+\_\+t \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_ada2acc66fafc97db164c7aea4c79c616}{uint16\+\_\+t\+\_\+\+MAX}}~0x\+FFFF
+\begin{DoxyCompactList}\small\item\em maximum value of uint16\+\_\+t \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a0a0fb92f3d549b5fdc7f9bc11aff4a78}{uint32\+\_\+t\+\_\+\+MAX}}~0x\+FFFFFFFF
+\begin{DoxyCompactList}\small\item\em maximum value of uint32\+\_\+t \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}~((\mbox{\hyperlink{global_8h_a5338510a6d3a27844de9a766a4303d46}{boolean\+\_\+t}}) 1==1)
+\begin{DoxyCompactList}\small\item\em Value is true (boolean\+\_\+t type) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}~((\mbox{\hyperlink{global_8h_a5338510a6d3a27844de9a766a4303d46}{boolean\+\_\+t}}) 1==0)
+\begin{DoxyCompactList}\small\item\em Value is true (boolean\+\_\+t type) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_ad76d1750a6cdeebd506bfcd6752554d2}{ON}}~1
+\begin{DoxyCompactList}\small\item\em Parameter is ON. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a29e413f6725b2ba32d165ffaa35b01e5}{OFF}}~0
+\begin{DoxyCompactList}\small\item\em Parameter is OFF. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a530f11a96e508d171d28564c8dc20942}{NULL\+\_\+\+PTR}}~((\mbox{\hyperlink{global_8h_aca8863fc9e4eafd6b64e9265ae4b0d85}{pvoid\+\_\+t}})0)
+\begin{DoxyCompactList}\small\item\em NULL pointer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}}~0
+\begin{DoxyCompactList}\small\item\em NULL. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_add6d2693f5d356b091088437148f939b}{BIT\+\_\+0}}~0x0
+\begin{DoxyCompactList}\small\item\em Bit 0. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_aec9fa7211b7c9a686f2cd522cad7989d}{BIT\+\_\+1}}~0x1
+\begin{DoxyCompactList}\small\item\em Bit 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(x)~(\mbox{\hyperlink{global_8h_aec9fa7211b7c9a686f2cd522cad7989d}{BIT\+\_\+1}}$<$$<$(x))
+\begin{DoxyCompactList}\small\item\em 1 shifted by given parameter \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a71b71595cbacd7eb8643dbde70db816a}{BIT\+\_\+\+SET}}(var,  pos)~(var\texorpdfstring{$\vert$}{|}=\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))
+\begin{DoxyCompactList}\small\item\em Sets a bit within a variable. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a34d530905cd080e8c2a3ce917e3a2a81}{BIT\+\_\+\+CLEAR}}(var,  pos)~(var\&=\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))
+\begin{DoxyCompactList}\small\item\em Clears a bit within a variable. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a117dd62b706ad8c85c76ed08c9292cef}{BIT\+\_\+\+TOGGLE}}(var,  pos)~(var\texorpdfstring{$^\wedge$}{\string^}=\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))
+\begin{DoxyCompactList}\small\item\em Toggles a bit within a variable. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a87ec975045f18ecb83d23c5b926198b3}{BIT\+\_\+\+IS\+\_\+\+SET}}(var,  pos)~((var)\&\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))
+\begin{DoxyCompactList}\small\item\em Checks if a certain bit is set within a variable. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_ae84c362ebd8d3f4c518787e7cdeda083}{BYTE\+\_\+L}}~(0x8)
+\begin{DoxyCompactList}\small\item\em length of one byte ;) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a5cdd7cb508f45dda958f8b44b1c2053b}{NIBBLE\+\_\+L}}~(0x4)
+\begin{DoxyCompactList}\small\item\em length of one nibble \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a25c8363b88d9b8f73cc6b1a98bba8d9c}{BYTE\+\_\+\+MASK}}~(0xff)
+\begin{DoxyCompactList}\small\item\em masks one byte \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a929ced93dfd701d4a0a31c28383791d2}{CONCAT\+\_\+2\+BYTES}}(x,  y)~((x$<$$<$\mbox{\hyperlink{global_8h_ae84c362ebd8d3f4c518787e7cdeda083}{BYTE\+\_\+L}})\texorpdfstring{$\vert$}{|}y)
+\begin{DoxyCompactList}\small\item\em Concatenates 2 bytes to an 16 bit/2byte value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_aebda51058f93fbdbcc97c101c76c2443}{ADRU32}}(x)~((\mbox{\hyperlink{global_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}})\&x)
+\begin{DoxyCompactList}\small\item\em Casts the address of a symbol to uint32\+\_\+t. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_acdff3daf6a97877485fcd0e4811b53a4}{LO4}}(x)~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) ((x) \& 0x\+Fu))
+\begin{DoxyCompactList}\small\item\em Get lower 4 bits of value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a122926be4949419253f5c674491aeab3}{HI4}}(x)~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) (((x) \& 0x\+F0u)$>$$>$4))
+\begin{DoxyCompactList}\small\item\em Get higher 4 bits of value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a15943ab208c7c2f3035bf6d4454a83bf}{LO8}}(x)~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) ((x) \& 0x\+FFu))
+\begin{DoxyCompactList}\small\item\em Get lower 8 bits of value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_afcb3dd525c646f9cf35c411d791b8c37}{HI8}}(x)~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) ((\mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}})(x) $>$$>$ 8))
+\begin{DoxyCompactList}\small\item\em Get higher 8 bits of (16bit) value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a4869076e18c9b9422a69a28f38e04478}{LO16}}(x)~((\mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}) ((x) \& 0x\+FFFFu))
+\begin{DoxyCompactList}\small\item\em Get lower 16 bits of value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a5a82452de17502177235772e8345ce47}{HI16}}(x)~((\mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}) ((\mbox{\hyperlink{global_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}})(x) $>$$>$ 16))
+\begin{DoxyCompactList}\small\item\em Get higher 16 bits of (32bit) value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{INLINE}}~inline \+\_\+\+\_\+attribute\+\_\+\+\_\+ ((always\+\_\+inline))
+\begin{DoxyCompactList}\small\item\em inline function \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a77366c1bd428629dc898e188bfd182a3}{EXTERN}}~extern
+\begin{DoxyCompactList}\small\item\em extern reference \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC}}~static
+\begin{DoxyCompactList}\small\item\em static qualifier \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a718749e18d63ca0d6b0d1b918efb41d6}{STATIC\+\_\+\+INLINE}}~\mbox{\hyperlink{global_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC}} \mbox{\hyperlink{global_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{INLINE}}
+\begin{DoxyCompactList}\small\item\em static inline function \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a36d525cf4d116b2fe4ecc00222b256f1}{PACKED}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+ ((packed))
+\begin{DoxyCompactList}\small\item\em GCC packed attribute. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_ada9d7622865275ae4289dff050f1589e}{ALIGN}}(n)~\+\_\+\+\_\+attribute\+\_\+\+\_\+ ((aligned(n)))
+\item 
+\#define \mbox{\hyperlink{global_8h_aca5f458c5d6bcc44e3913b4cfcf741f5}{\+\_\+\+\_\+absolute\+\_\+jump}}(adr)~\+\_\+\+\_\+asm\+\_\+\+\_\+ volatile ("{}ja "{}\#adr)
+\begin{DoxyCompactList}\small\item\em Absolute Jump. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef signed char \mbox{\hyperlink{global_8h_a54cceacffb6d6dff03bf69f786d431a9}{sint8\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em -\/128 .. +127 ~\newline
+ \end{DoxyCompactList}\item 
+typedef unsigned char \mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em 0 .. 255 ~\newline
+ \end{DoxyCompactList}\item 
+typedef signed short \mbox{\hyperlink{global_8h_a8b7579a6aaba6d7fa221becce63e85cd}{sint16\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em -\/32768 .. +32767 ~\newline
+ \end{DoxyCompactList}\item 
+typedef unsigned short \mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em 0 .. 65535 ~\newline
+ \end{DoxyCompactList}\item 
+typedef signed long \mbox{\hyperlink{global_8h_a73705d44e0ddde601ded7d759dd0eaed}{sint32\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em -\/2147483648 .. +2147483647 ~\newline
+ \end{DoxyCompactList}\item 
+typedef unsigned long \mbox{\hyperlink{global_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em 0 .. 4294967295 ~\newline
+ \end{DoxyCompactList}\item 
+typedef float \mbox{\hyperlink{global_8h_a4611b605e45ab401f02cab15c5e38715}{float32\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em single precision floating point number (4 byte) \end{DoxyCompactList}\item 
+typedef double \mbox{\hyperlink{global_8h_ac55f3ae81b5bc9053760baacf57e47f4}{float64\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em double precision floating point number (8 byte) \end{DoxyCompactList}\item 
+typedef signed long long \mbox{\hyperlink{global_8h_a50f1081965dcc748269a971b74a60cc3}{sint64\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em -\/9223372036854775808 .. +9223372036854775807 ~\newline
+ \end{DoxyCompactList}\item 
+typedef unsigned long long \mbox{\hyperlink{global_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em 0 .. 18446744073709551615 ~\newline
+ \end{DoxyCompactList}\item 
+typedef unsigned char \mbox{\hyperlink{global_8h_a5338510a6d3a27844de9a766a4303d46}{boolean\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em for use with TRUE/\+FALSE ~\newline
+ \end{DoxyCompactList}\item 
+typedef char \mbox{\hyperlink{global_8h_a40bb5262bf908c328fbcfbe5d29d0201}{char\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Character Datatype. \end{DoxyCompactList}\item 
+typedef const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_a4219d333bdd953f73437146af6a43f2a}{pchar\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em const char pointer \end{DoxyCompactList}\item 
+typedef void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_aca8863fc9e4eafd6b64e9265ae4b0d85}{pvoid\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em void pointer \end{DoxyCompactList}\item 
+typedef volatile void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_a85f896920a05a034e95b648c4f286d2e}{vvoid\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em volatile void pointer \end{DoxyCompactList}\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_ad36f57dfdec420de405da86ee1cc61c3}{Fct\+Ptr\+\_\+void}}) (void)
+\begin{DoxyCompactList}\small\item\em Function Pointer with void argument. \end{DoxyCompactList}\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_aa2b9857d411b6909a97b8c14595927b6}{Fct\+Ptr\+\_\+int}}) (\mbox{\hyperlink{global_8h_a73705d44e0ddde601ded7d759dd0eaed}{sint32\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function Pointer with sint32 argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2}{RX\+\_\+sel\+\_\+t}} \{ \newline
+\mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a0978005d3f45cb655ca598857841e73d}{RX\+\_\+sel\+\_\+a}} =0
+, \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a5ea840ad509ddb6bcb433fa026834ca6}{RX\+\_\+sel\+\_\+b}}
+, \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2aab71e6b9a05ff7ce67668b7d99f3f6db}{RX\+\_\+sel\+\_\+c}}
+, \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2af793f636176092d95644e7349af9c0de}{RX\+\_\+sel\+\_\+d}}
+, \newline
+\mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2af68f980a1807741610c230e37f8f8a10}{RX\+\_\+sel\+\_\+e}}
+, \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a33900aa2c8dd57c84a68f809e5409c77}{RX\+\_\+sel\+\_\+f}}
+, \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a20e514c6ba3f9318ad5dbc3dacd84222}{RX\+\_\+sel\+\_\+g}}
+, \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a589ab221344a320890168f4d4d2a94b2}{RX\+\_\+sel\+\_\+h}}
+ \}
+\begin{DoxyCompactList}\small\item\em Hardware Modules on the AURIX usually have a GPIO input selector, where the user can select out of 8 pins. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}} \{ \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945a7834a46e385d8eb279f597b5cee9a2ea}{RC\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945aae4a23b560d56fcf0981a9636f58edeb}{RC\+\_\+\+ERROR}}
+, \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945ace8a2d3e8e19899c3ed95a20347a9cff}{RC\+\_\+\+BAD\+\_\+\+PARAM}}
+ \}
+\item 
+enum \mbox{\hyperlink{global_8h_aedde67e455ef641f574726c47f2b483a}{Cpu\+Id\+\_\+t}} \{ \mbox{\hyperlink{global_8h_aedde67e455ef641f574726c47f2b483aa0fe48e24f27c1541955eff1b53fe4be7}{cpu0}} =0
+, \mbox{\hyperlink{global_8h_aedde67e455ef641f574726c47f2b483aa8c0b0be598378e4167cb0140a78e605a}{cpu1}} =1
+, \mbox{\hyperlink{global_8h_aedde67e455ef641f574726c47f2b483aa7e7ca28ef584ecf25d6eff96dca4bd7d}{cpu2}} =2
+ \}
+\begin{DoxyCompactList}\small\item\em CPU Core number. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2}{transmission\+\_\+state\+\_\+t}} \{ \newline
+\mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2a7100e422011170bf46fa6af8ea4f2a05}{transmission\+\_\+\+UNDEFINED}}
+, \mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2a232c8c9f728fe933f761c2f3b41b3552}{transmission\+\_\+\+PENDING}}
+, \mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2ab883de580d4af0ff107b3e7cf608c42e}{transmission\+\_\+\+ACTIVE}}
+, \mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2ac9a507c08859762fceacc746bdaa87fe}{transmission\+\_\+\+COMPLETED}}
+, \newline
+\mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2a42c11dc659939699890c7d20d78963cc}{transmission\+\_\+\+ERROR}}
+, \mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2a2dfd8ef86d69aa24a3ccafb0e7ff1f3e}{transmission\+\_\+\+ABORTED}}
+ \}
+\begin{DoxyCompactList}\small\item\em Transmission states for communication services. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{global_8h_aab8464c573d90df82a079c3dccccd3c2}{service\+\_\+state\+\_\+t}} \{ \mbox{\hyperlink{global_8h_aab8464c573d90df82a079c3dccccd3c2a8a31eedcb780dde27fdceb7d2d75394c}{service\+\_\+\+UNDEFINED}}
+, \mbox{\hyperlink{global_8h_aab8464c573d90df82a079c3dccccd3c2ab0c11dcfaa51c2ea78621c5b7aca6ea3}{service\+\_\+\+READY}}
+, \mbox{\hyperlink{global_8h_aab8464c573d90df82a079c3dccccd3c2a09ac01f090273bc22d752b9475fff4d6}{service\+\_\+\+BUSY}}
+, \mbox{\hyperlink{global_8h_aab8464c573d90df82a079c3dccccd3c2acb314ab0fd9c55a0619cca0e9b727f09}{service\+\_\+\+UNAVAILABLE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Services states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Global definitions for datatypes and definitions. 
+
+\begin{DoxyAuthor}{Author}
+Prof. P. Fromm Hochschule Darmstadt -\/ \href{mailto:peter.fromm@h-da.de}{\texttt{ peter.\+fromm@h-\/da.\+de}} 
+
+Thomas Barth Hochschule Darmstadt -\/ \href{mailto:thomas.barth@h-da.de}{\texttt{ thomas.\+barth@h-\/da.\+de}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22.\+06.\+2018 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+
+
+Changelog\+:~\newline
+
+\begin{DoxyItemize}
+\item 1.\+0 06.\+07.\+18 Barth
+\begin{DoxyItemize}
+\item Base\+Sys V3
+\item INLINE had static keyword. Split into INLINE and STATIC\+\_\+\+INLINE
+\end{DoxyItemize}
+\item 0.\+61 17.\+11.\+17 Barth
+\begin{DoxyItemize}
+\item Replaced \#v\+Task\+Delay\+Until with \#v\+Task\+Delay in \doxylink{global_8h_a22f064707db63ec3e40d5a5caf36a771}{DELAY\+\_\+\+MS}
+\end{DoxyItemize}
+\item 0.\+6 22.\+06.\+18 Barth
+\begin{DoxyItemize}
+\item Added Rx\+\_\+\+Sel\+\_\+t enum for hw module pin input selection on AURIX
+\begin{DoxyItemize}
+\item moved mathematical helpers to own file (math\+\_\+helper.\+h)
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item 0.\+6 12.\+01.\+17 Barth
+\begin{DoxyItemize}
+\item Added \doxylink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT} Macro
+\end{DoxyItemize}
+\item 0.\+5 13.\+12.\+16 Barth
+\begin{DoxyItemize}
+\item Advanced documentation
+\item removed STDLIB and STRING from global headers
+\item cleaned up backward compatibility symbols. U16 etc.
+\end{DoxyItemize}
+\item 0.\+4 05.\+07.\+16 Barth ~\newline
+
+\begin{DoxyItemize}
+\item Added CEIL Macros~\newline
+~\newline
+
+\end{DoxyItemize}
+\item 0.\+3 02.\+06.\+16 Barth ~\newline
+
+\begin{DoxyItemize}
+\item Removed symbol TC29\+XB~\newline
+
+\item Added uint32\+\_\+t\+\_\+\+MAX~\newline
+
+\item Removed inline functions\+: \+\_\+min, \+\_\+max, \+\_\+ldmst, \+\_\+get\+A11, \+\_\+swap. Moved \+\_\+minu to driver.~\newline
+
+\item Adapted file to work on both, ARUIX and PSoC~\newline
+
+\item Added RC\+\_\+t enums\+: RC\+\_\+\+ERROR\+\_\+\+BAD\+\_\+\+PARAM, RC\+\_\+\+ERROR\+\_\+\+BAD\+\_\+\+DATA, RC\+\_\+\+ERROR\+\_\+\+CANCELED, RC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+STATE, RC\+\_\+\+UNKNOWN~\newline
+~\newline
+ \begin{DoxyCopyright}{Copyright}
+Copyright ©2018 Department of electrical engineering and information technology, Hochschule Darmstadt -\/ University of applied sciences (h\+\_\+da). All Rights Reserved. Permission to use, copy, modify, and distribute this software and its documentation for educational, and research purposes in the context of non-\/commercial (unless permitted by h\+\_\+da) and official h\+\_\+da projects, is hereby granted for enrolled students of h\+\_\+da, provided that the above copyright notice, this paragraph and the following paragraph appear in all copies, modifications, and distributions. Contact Prof.\+Dr.-\/Ing. Peter Fromm, \href{mailto:peter.fromm@h-da.de}{\texttt{ peter.\+fromm@h-\/da.\+de}}, Birkenweg 8 64295 Darmstadt -\/ GERMANY for commercial requests.
+\end{DoxyCopyright}
+\begin{DoxyWarning}{Warning}
+This software is a PROTOTYPE version and is not designed or intended for use in production, especially not for safety-\/critical applications! The user represents and warrants that it will NOT use or redistribute the Software for such purposes. This prototype is for research purposes only. This software is provided "{}\+AS IS,"{} without a warranty of any kind. 
+\end{DoxyWarning}
+
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{global_8h_aca5f458c5d6bcc44e3913b4cfcf741f5}\label{global_8h_aca5f458c5d6bcc44e3913b4cfcf741f5} 
+\index{global.h@{global.h}!\_\_absolute\_jump@{\_\_absolute\_jump}}
+\index{\_\_absolute\_jump@{\_\_absolute\_jump}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{\_\_absolute\_jump}{\_\_absolute\_jump}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+absolute\+\_\+jump(\begin{DoxyParamCaption}\item[{}]{adr }\end{DoxyParamCaption})~\+\_\+\+\_\+asm\+\_\+\+\_\+ volatile ("{}ja "{}\#adr)}
+
+
+
+Absolute Jump. 
+
+\Hypertarget{global_8h_aebda51058f93fbdbcc97c101c76c2443}\label{global_8h_aebda51058f93fbdbcc97c101c76c2443} 
+\index{global.h@{global.h}!ADRU32@{ADRU32}}
+\index{ADRU32@{ADRU32}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{ADRU32}{ADRU32}}
+{\footnotesize\ttfamily \#define ADRU32(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{global_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}})\&x)}
+
+
+
+Casts the address of a symbol to uint32\+\_\+t. 
+
+\Hypertarget{global_8h_ada9d7622865275ae4289dff050f1589e}\label{global_8h_ada9d7622865275ae4289dff050f1589e} 
+\index{global.h@{global.h}!ALIGN@{ALIGN}}
+\index{ALIGN@{ALIGN}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN}{ALIGN}}
+{\footnotesize\ttfamily \#define ALIGN(\begin{DoxyParamCaption}\item[{}]{n }\end{DoxyParamCaption})~\+\_\+\+\_\+attribute\+\_\+\+\_\+ ((aligned(n)))}
+
+\Hypertarget{global_8h_ad27cc17b25bb93134368d5eb21126eae}\label{global_8h_ad27cc17b25bb93134368d5eb21126eae} 
+\index{global.h@{global.h}!BIT@{BIT}}
+\index{BIT@{BIT}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BIT}{BIT}}
+{\footnotesize\ttfamily \#define BIT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(\mbox{\hyperlink{global_8h_aec9fa7211b7c9a686f2cd522cad7989d}{BIT\+\_\+1}}$<$$<$(x))}
+
+
+
+1 shifted by given parameter 
+
+\Hypertarget{global_8h_add6d2693f5d356b091088437148f939b}\label{global_8h_add6d2693f5d356b091088437148f939b} 
+\index{global.h@{global.h}!BIT\_0@{BIT\_0}}
+\index{BIT\_0@{BIT\_0}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BIT\_0}{BIT\_0}}
+{\footnotesize\ttfamily \#define BIT\+\_\+0~0x0}
+
+
+
+Bit 0. 
+
+\Hypertarget{global_8h_aec9fa7211b7c9a686f2cd522cad7989d}\label{global_8h_aec9fa7211b7c9a686f2cd522cad7989d} 
+\index{global.h@{global.h}!BIT\_1@{BIT\_1}}
+\index{BIT\_1@{BIT\_1}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BIT\_1}{BIT\_1}}
+{\footnotesize\ttfamily \#define BIT\+\_\+1~0x1}
+
+
+
+Bit 1. 
+
+\Hypertarget{global_8h_a34d530905cd080e8c2a3ce917e3a2a81}\label{global_8h_a34d530905cd080e8c2a3ce917e3a2a81} 
+\index{global.h@{global.h}!BIT\_CLEAR@{BIT\_CLEAR}}
+\index{BIT\_CLEAR@{BIT\_CLEAR}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BIT\_CLEAR}{BIT\_CLEAR}}
+{\footnotesize\ttfamily \#define BIT\+\_\+\+CLEAR(\begin{DoxyParamCaption}\item[{}]{var,  }\item[{}]{pos }\end{DoxyParamCaption})~(var\&=\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))}
+
+
+
+Clears a bit within a variable. 
+
+\Hypertarget{global_8h_a87ec975045f18ecb83d23c5b926198b3}\label{global_8h_a87ec975045f18ecb83d23c5b926198b3} 
+\index{global.h@{global.h}!BIT\_IS\_SET@{BIT\_IS\_SET}}
+\index{BIT\_IS\_SET@{BIT\_IS\_SET}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BIT\_IS\_SET}{BIT\_IS\_SET}}
+{\footnotesize\ttfamily \#define BIT\+\_\+\+IS\+\_\+\+SET(\begin{DoxyParamCaption}\item[{}]{var,  }\item[{}]{pos }\end{DoxyParamCaption})~((var)\&\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))}
+
+
+
+Checks if a certain bit is set within a variable. 
+
+\Hypertarget{global_8h_a71b71595cbacd7eb8643dbde70db816a}\label{global_8h_a71b71595cbacd7eb8643dbde70db816a} 
+\index{global.h@{global.h}!BIT\_SET@{BIT\_SET}}
+\index{BIT\_SET@{BIT\_SET}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BIT\_SET}{BIT\_SET}}
+{\footnotesize\ttfamily \#define BIT\+\_\+\+SET(\begin{DoxyParamCaption}\item[{}]{var,  }\item[{}]{pos }\end{DoxyParamCaption})~(var\texorpdfstring{$\vert$}{|}=\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))}
+
+
+
+Sets a bit within a variable. 
+
+\Hypertarget{global_8h_a117dd62b706ad8c85c76ed08c9292cef}\label{global_8h_a117dd62b706ad8c85c76ed08c9292cef} 
+\index{global.h@{global.h}!BIT\_TOGGLE@{BIT\_TOGGLE}}
+\index{BIT\_TOGGLE@{BIT\_TOGGLE}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BIT\_TOGGLE}{BIT\_TOGGLE}}
+{\footnotesize\ttfamily \#define BIT\+\_\+\+TOGGLE(\begin{DoxyParamCaption}\item[{}]{var,  }\item[{}]{pos }\end{DoxyParamCaption})~(var\texorpdfstring{$^\wedge$}{\string^}=\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{global_8h_ad27cc17b25bb93134368d5eb21126eae}{BIT}}(pos))}
+
+
+
+Toggles a bit within a variable. 
+
+\Hypertarget{global_8h_ae84c362ebd8d3f4c518787e7cdeda083}\label{global_8h_ae84c362ebd8d3f4c518787e7cdeda083} 
+\index{global.h@{global.h}!BYTE\_L@{BYTE\_L}}
+\index{BYTE\_L@{BYTE\_L}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BYTE\_L}{BYTE\_L}}
+{\footnotesize\ttfamily \#define BYTE\+\_\+L~(0x8)}
+
+
+
+length of one byte ;) 
+
+\Hypertarget{global_8h_a25c8363b88d9b8f73cc6b1a98bba8d9c}\label{global_8h_a25c8363b88d9b8f73cc6b1a98bba8d9c} 
+\index{global.h@{global.h}!BYTE\_MASK@{BYTE\_MASK}}
+\index{BYTE\_MASK@{BYTE\_MASK}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MASK}{BYTE\_MASK}}
+{\footnotesize\ttfamily \#define BYTE\+\_\+\+MASK~(0xff)}
+
+
+
+masks one byte 
+
+\Hypertarget{global_8h_a929ced93dfd701d4a0a31c28383791d2}\label{global_8h_a929ced93dfd701d4a0a31c28383791d2} 
+\index{global.h@{global.h}!CONCAT\_2BYTES@{CONCAT\_2BYTES}}
+\index{CONCAT\_2BYTES@{CONCAT\_2BYTES}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{CONCAT\_2BYTES}{CONCAT\_2BYTES}}
+{\footnotesize\ttfamily \#define CONCAT\+\_\+2\+BYTES(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x$<$$<$\mbox{\hyperlink{global_8h_ae84c362ebd8d3f4c518787e7cdeda083}{BYTE\+\_\+L}})\texorpdfstring{$\vert$}{|}y)}
+
+
+
+Concatenates 2 bytes to an 16 bit/2byte value. 
+
+\Hypertarget{global_8h_a22f064707db63ec3e40d5a5caf36a771}\label{global_8h_a22f064707db63ec3e40d5a5caf36a771} 
+\index{global.h@{global.h}!DELAY\_MS@{DELAY\_MS}}
+\index{DELAY\_MS@{DELAY\_MS}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{DELAY\_MS}{DELAY\_MS}}
+{\footnotesize\ttfamily \#define DELAY\+\_\+\+MS(\begin{DoxyParamCaption}\item[{}]{ms }\end{DoxyParamCaption})~SYSTEM\+\_\+\+Delay\+Us(ms\texorpdfstring{$\ast$}{*}1000)}
+
+
+
+blocking milliseconds delay using AURIX STM timer 
+
+\Hypertarget{global_8h_a60aba7cd6f93c0f065c51db5481f2cb4}\label{global_8h_a60aba7cd6f93c0f065c51db5481f2cb4} 
+\index{global.h@{global.h}!DELAY\_US@{DELAY\_US}}
+\index{DELAY\_US@{DELAY\_US}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{DELAY\_US}{DELAY\_US}}
+{\footnotesize\ttfamily \#define DELAY\+\_\+\+US(\begin{DoxyParamCaption}\item[{}]{us }\end{DoxyParamCaption})~SYSTEM\+\_\+\+Delay\+Us(us)}
+
+
+
+blocking microseconds delay using AURIX STM timer 
+
+\Hypertarget{global_8h_a77366c1bd428629dc898e188bfd182a3}\label{global_8h_a77366c1bd428629dc898e188bfd182a3} 
+\index{global.h@{global.h}!EXTERN@{EXTERN}}
+\index{EXTERN@{EXTERN}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{EXTERN}{EXTERN}}
+{\footnotesize\ttfamily \#define EXTERN~extern}
+
+
+
+extern reference 
+
+\Hypertarget{global_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{global_8h_aa93f0eb578d23995850d61f7d61c55c1} 
+\index{global.h@{global.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{FALSE}{FALSE}}
+{\footnotesize\ttfamily \#define FALSE~((\mbox{\hyperlink{global_8h_a5338510a6d3a27844de9a766a4303d46}{boolean\+\_\+t}}) 1==0)}
+
+
+
+Value is true (boolean\+\_\+t type) 
+
+\Hypertarget{global_8h_a5a82452de17502177235772e8345ce47}\label{global_8h_a5a82452de17502177235772e8345ce47} 
+\index{global.h@{global.h}!HI16@{HI16}}
+\index{HI16@{HI16}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{HI16}{HI16}}
+{\footnotesize\ttfamily \#define HI16(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}) ((\mbox{\hyperlink{global_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}})(x) $>$$>$ 16))}
+
+
+
+Get higher 16 bits of (32bit) value. 
+
+\Hypertarget{global_8h_a122926be4949419253f5c674491aeab3}\label{global_8h_a122926be4949419253f5c674491aeab3} 
+\index{global.h@{global.h}!HI4@{HI4}}
+\index{HI4@{HI4}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{HI4}{HI4}}
+{\footnotesize\ttfamily \#define HI4(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) (((x) \& 0x\+F0u)$>$$>$4))}
+
+
+
+Get higher 4 bits of value. 
+
+\Hypertarget{global_8h_afcb3dd525c646f9cf35c411d791b8c37}\label{global_8h_afcb3dd525c646f9cf35c411d791b8c37} 
+\index{global.h@{global.h}!HI8@{HI8}}
+\index{HI8@{HI8}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{HI8}{HI8}}
+{\footnotesize\ttfamily \#define HI8(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) ((\mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}})(x) $>$$>$ 8))}
+
+
+
+Get higher 8 bits of (16bit) value. 
+
+\Hypertarget{global_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}\label{global_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116} 
+\index{global.h@{global.h}!INLINE@{INLINE}}
+\index{INLINE@{INLINE}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{INLINE}{INLINE}}
+{\footnotesize\ttfamily \#define INLINE~inline \+\_\+\+\_\+attribute\+\_\+\+\_\+ ((always\+\_\+inline))}
+
+
+
+inline function 
+
+\Hypertarget{global_8h_a4869076e18c9b9422a69a28f38e04478}\label{global_8h_a4869076e18c9b9422a69a28f38e04478} 
+\index{global.h@{global.h}!LO16@{LO16}}
+\index{LO16@{LO16}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{LO16}{LO16}}
+{\footnotesize\ttfamily \#define LO16(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}) ((x) \& 0x\+FFFFu))}
+
+
+
+Get lower 16 bits of value. 
+
+\Hypertarget{global_8h_acdff3daf6a97877485fcd0e4811b53a4}\label{global_8h_acdff3daf6a97877485fcd0e4811b53a4} 
+\index{global.h@{global.h}!LO4@{LO4}}
+\index{LO4@{LO4}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{LO4}{LO4}}
+{\footnotesize\ttfamily \#define LO4(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) ((x) \& 0x\+Fu))}
+
+
+
+Get lower 4 bits of value. 
+
+\Hypertarget{global_8h_a15943ab208c7c2f3035bf6d4454a83bf}\label{global_8h_a15943ab208c7c2f3035bf6d4454a83bf} 
+\index{global.h@{global.h}!LO8@{LO8}}
+\index{LO8@{LO8}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{LO8}{LO8}}
+{\footnotesize\ttfamily \#define LO8(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((\mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}) ((x) \& 0x\+FFu))}
+
+
+
+Get lower 8 bits of value. 
+
+\Hypertarget{global_8h_a5cdd7cb508f45dda958f8b44b1c2053b}\label{global_8h_a5cdd7cb508f45dda958f8b44b1c2053b} 
+\index{global.h@{global.h}!NIBBLE\_L@{NIBBLE\_L}}
+\index{NIBBLE\_L@{NIBBLE\_L}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{NIBBLE\_L}{NIBBLE\_L}}
+{\footnotesize\ttfamily \#define NIBBLE\+\_\+L~(0x4)}
+
+
+
+length of one nibble 
+
+\Hypertarget{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}\label{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4} 
+\index{global.h@{global.h}!NULL@{NULL}}
+\index{NULL@{NULL}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{NULL}{NULL}}
+{\footnotesize\ttfamily \#define NULL~0}
+
+
+
+NULL. 
+
+\Hypertarget{global_8h_a530f11a96e508d171d28564c8dc20942}\label{global_8h_a530f11a96e508d171d28564c8dc20942} 
+\index{global.h@{global.h}!NULL\_PTR@{NULL\_PTR}}
+\index{NULL\_PTR@{NULL\_PTR}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{NULL\_PTR}{NULL\_PTR}}
+{\footnotesize\ttfamily \#define NULL\+\_\+\+PTR~((\mbox{\hyperlink{global_8h_aca8863fc9e4eafd6b64e9265ae4b0d85}{pvoid\+\_\+t}})0)}
+
+
+
+NULL pointer. 
+
+\Hypertarget{global_8h_a29e413f6725b2ba32d165ffaa35b01e5}\label{global_8h_a29e413f6725b2ba32d165ffaa35b01e5} 
+\index{global.h@{global.h}!OFF@{OFF}}
+\index{OFF@{OFF}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{OFF}{OFF}}
+{\footnotesize\ttfamily \#define OFF~0}
+
+
+
+Parameter is OFF. 
+
+\Hypertarget{global_8h_ad76d1750a6cdeebd506bfcd6752554d2}\label{global_8h_ad76d1750a6cdeebd506bfcd6752554d2} 
+\index{global.h@{global.h}!ON@{ON}}
+\index{ON@{ON}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{ON}{ON}}
+{\footnotesize\ttfamily \#define ON~1}
+
+
+
+Parameter is ON. 
+
+\Hypertarget{global_8h_a3324dbb5e25daac23e988901bb085447}\label{global_8h_a3324dbb5e25daac23e988901bb085447} 
+\index{global.h@{global.h}!OS@{OS}}
+\index{OS@{OS}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{OS}{OS}}
+{\footnotesize\ttfamily \#define OS~\mbox{\hyperlink{global_8h_a4f6a1f4acc3cc46a766147a276d928fb}{OS\+\_\+\+ERIKA}}}
+
+
+
+OS selection. 
+
+\Hypertarget{global_8h_a4f6a1f4acc3cc46a766147a276d928fb}\label{global_8h_a4f6a1f4acc3cc46a766147a276d928fb} 
+\index{global.h@{global.h}!OS\_ERIKA@{OS\_ERIKA}}
+\index{OS\_ERIKA@{OS\_ERIKA}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{OS\_ERIKA}{OS\_ERIKA}}
+{\footnotesize\ttfamily \#define OS\+\_\+\+ERIKA~3}
+
+
+
+target runs ERIKA OS 
+
+\Hypertarget{global_8h_a38ee9888611a0037e1644c7cd66fffec}\label{global_8h_a38ee9888611a0037e1644c7cd66fffec} 
+\index{global.h@{global.h}!OS\_FREERTOS@{OS\_FREERTOS}}
+\index{OS\_FREERTOS@{OS\_FREERTOS}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{OS\_FREERTOS}{OS\_FREERTOS}}
+{\footnotesize\ttfamily \#define OS\+\_\+\+FREERTOS~2}
+
+
+
+target runs Free\+RTOS 
+
+\Hypertarget{global_8h_aee70138f33aba6d0a7f273d869a705e9}\label{global_8h_aee70138f33aba6d0a7f273d869a705e9} 
+\index{global.h@{global.h}!OS\_NONE@{OS\_NONE}}
+\index{OS\_NONE@{OS\_NONE}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{OS\_NONE}{OS\_NONE}}
+{\footnotesize\ttfamily \#define OS\+\_\+\+NONE~0}
+
+
+
+target runs without operationg system 
+
+\Hypertarget{global_8h_a733b8bbe4c3e45d26a57f82dbdf08d27}\label{global_8h_a733b8bbe4c3e45d26a57f82dbdf08d27} 
+\index{global.h@{global.h}!OS\_PXROS@{OS\_PXROS}}
+\index{OS\_PXROS@{OS\_PXROS}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{OS\_PXROS}{OS\_PXROS}}
+{\footnotesize\ttfamily \#define OS\+\_\+\+PXROS~1}
+
+
+
+target runs Px\+ROS 
+
+\Hypertarget{global_8h_a36d525cf4d116b2fe4ecc00222b256f1}\label{global_8h_a36d525cf4d116b2fe4ecc00222b256f1} 
+\index{global.h@{global.h}!PACKED@{PACKED}}
+\index{PACKED@{PACKED}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{PACKED}{PACKED}}
+{\footnotesize\ttfamily \#define PACKED~\+\_\+\+\_\+attribute\+\_\+\+\_\+ ((packed))}
+
+
+
+GCC packed attribute. 
+
+GCC aligned attribute \Hypertarget{global_8h_a10b2d890d871e1489bb02b7e70d9bdfb}\label{global_8h_a10b2d890d871e1489bb02b7e70d9bdfb} 
+\index{global.h@{global.h}!STATIC@{STATIC}}
+\index{STATIC@{STATIC}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{STATIC}{STATIC}}
+{\footnotesize\ttfamily \#define STATIC~static}
+
+
+
+static qualifier 
+
+\Hypertarget{global_8h_a718749e18d63ca0d6b0d1b918efb41d6}\label{global_8h_a718749e18d63ca0d6b0d1b918efb41d6} 
+\index{global.h@{global.h}!STATIC\_INLINE@{STATIC\_INLINE}}
+\index{STATIC\_INLINE@{STATIC\_INLINE}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{STATIC\_INLINE}{STATIC\_INLINE}}
+{\footnotesize\ttfamily \#define STATIC\+\_\+\+INLINE~\mbox{\hyperlink{global_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC}} \mbox{\hyperlink{global_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{INLINE}}}
+
+
+
+static inline function 
+
+\Hypertarget{global_8h_a741bc18b5c35628354dfe1a08710a43c}\label{global_8h_a741bc18b5c35628354dfe1a08710a43c} 
+\index{global.h@{global.h}!TC\_INCLUDE@{TC\_INCLUDE}}
+\index{TC\_INCLUDE@{TC\_INCLUDE}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{TC\_INCLUDE}{TC\_INCLUDE}}
+{\footnotesize\ttfamily \#define TC\+\_\+\+INCLUDE(\begin{DoxyParamCaption}\item[{}]{f }\end{DoxyParamCaption})~\mbox{\hyperlink{global_8h_aab2beb3d3a7972429070d4a03a31a942}{TC\+\_\+\+STR}}(f)}
+
+
+
+TC\+\_\+\+Path Generator Stringification stage 1. 
+
+\Hypertarget{global_8h_aab2beb3d3a7972429070d4a03a31a942}\label{global_8h_aab2beb3d3a7972429070d4a03a31a942} 
+\index{global.h@{global.h}!TC\_STR@{TC\_STR}}
+\index{TC\_STR@{TC\_STR}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{TC\_STR}{TC\_STR}}
+{\footnotesize\ttfamily \#define TC\+\_\+\+STR(\begin{DoxyParamCaption}\item[{}]{s }\end{DoxyParamCaption})~\# s}
+
+
+
+TC\+\_\+\+Path Generator Stringification stage 2. 
+
+\Hypertarget{global_8h_ae5a35de9ad0fb2d907fcd64be667cbcc}\label{global_8h_ae5a35de9ad0fb2d907fcd64be667cbcc} 
+\index{global.h@{global.h}!TCPATH@{TCPATH}}
+\index{TCPATH@{TCPATH}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{TCPATH}{TCPATH}}
+{\footnotesize\ttfamily \#define TCPATH~\mbox{\hyperlink{derivate_8h_ab199a80cd218fec8ed6b0997a1e11e7f}{DERIVATE\+\_\+\+NAME}}}
+
+
+
+TC\+\_\+\+Path Generator. 
+
+\Hypertarget{global_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{global_8h_aa8cecfc5c5c054d2875c03e77b7be15d} 
+\index{global.h@{global.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{TRUE}{TRUE}}
+{\footnotesize\ttfamily \#define TRUE~((\mbox{\hyperlink{global_8h_a5338510a6d3a27844de9a766a4303d46}{boolean\+\_\+t}}) 1==1)}
+
+
+
+Value is true (boolean\+\_\+t type) 
+
+\Hypertarget{global_8h_ada2acc66fafc97db164c7aea4c79c616}\label{global_8h_ada2acc66fafc97db164c7aea4c79c616} 
+\index{global.h@{global.h}!uint16\_t\_MAX@{uint16\_t\_MAX}}
+\index{uint16\_t\_MAX@{uint16\_t\_MAX}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{uint16\_t\_MAX}{uint16\_t\_MAX}}
+{\footnotesize\ttfamily \#define uint16\+\_\+t\+\_\+\+MAX~0x\+FFFF}
+
+
+
+maximum value of uint16\+\_\+t 
+
+\Hypertarget{global_8h_a0a0fb92f3d549b5fdc7f9bc11aff4a78}\label{global_8h_a0a0fb92f3d549b5fdc7f9bc11aff4a78} 
+\index{global.h@{global.h}!uint32\_t\_MAX@{uint32\_t\_MAX}}
+\index{uint32\_t\_MAX@{uint32\_t\_MAX}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{uint32\_t\_MAX}{uint32\_t\_MAX}}
+{\footnotesize\ttfamily \#define uint32\+\_\+t\+\_\+\+MAX~0x\+FFFFFFFF}
+
+
+
+maximum value of uint32\+\_\+t 
+
+\Hypertarget{global_8h_abf5ad32190a6451968c92b4da1a4c5e3}\label{global_8h_abf5ad32190a6451968c92b4da1a4c5e3} 
+\index{global.h@{global.h}!uint8\_t\_MAX@{uint8\_t\_MAX}}
+\index{uint8\_t\_MAX@{uint8\_t\_MAX}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{uint8\_t\_MAX}{uint8\_t\_MAX}}
+{\footnotesize\ttfamily \#define uint8\+\_\+t\+\_\+\+MAX~0x\+FF}
+
+
+
+maximum value of uint8\+\_\+t 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{global_8h_a5338510a6d3a27844de9a766a4303d46}\label{global_8h_a5338510a6d3a27844de9a766a4303d46} 
+\index{global.h@{global.h}!boolean\_t@{boolean\_t}}
+\index{boolean\_t@{boolean\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{boolean\_t}{boolean\_t}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{global_8h_a5338510a6d3a27844de9a766a4303d46}{boolean\+\_\+t}}}
+
+
+
+for use with TRUE/\+FALSE ~\newline
+ 
+
+\Hypertarget{global_8h_a40bb5262bf908c328fbcfbe5d29d0201}\label{global_8h_a40bb5262bf908c328fbcfbe5d29d0201} 
+\index{global.h@{global.h}!char\_t@{char\_t}}
+\index{char\_t@{char\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{char\_t}{char\_t}}
+{\footnotesize\ttfamily typedef char \mbox{\hyperlink{global_8h_a40bb5262bf908c328fbcfbe5d29d0201}{char\+\_\+t}}}
+
+
+
+Character Datatype. 
+
+\Hypertarget{global_8h_aa2b9857d411b6909a97b8c14595927b6}\label{global_8h_aa2b9857d411b6909a97b8c14595927b6} 
+\index{global.h@{global.h}!FctPtr\_int@{FctPtr\_int}}
+\index{FctPtr\_int@{FctPtr\_int}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{FctPtr\_int}{FctPtr\_int}}
+{\footnotesize\ttfamily typedef void(\texorpdfstring{$\ast$}{*} Fct\+Ptr\+\_\+int) (\mbox{\hyperlink{global_8h_a73705d44e0ddde601ded7d759dd0eaed}{sint32\+\_\+t}})}
+
+
+
+Function Pointer with sint32 argument. 
+
+\Hypertarget{global_8h_ad36f57dfdec420de405da86ee1cc61c3}\label{global_8h_ad36f57dfdec420de405da86ee1cc61c3} 
+\index{global.h@{global.h}!FctPtr\_void@{FctPtr\_void}}
+\index{FctPtr\_void@{FctPtr\_void}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{FctPtr\_void}{FctPtr\_void}}
+{\footnotesize\ttfamily typedef void(\texorpdfstring{$\ast$}{*} Fct\+Ptr\+\_\+void) (void)}
+
+
+
+Function Pointer with void argument. 
+
+\Hypertarget{global_8h_a4611b605e45ab401f02cab15c5e38715}\label{global_8h_a4611b605e45ab401f02cab15c5e38715} 
+\index{global.h@{global.h}!float32\_t@{float32\_t}}
+\index{float32\_t@{float32\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{float32\_t}{float32\_t}}
+{\footnotesize\ttfamily typedef float \mbox{\hyperlink{global_8h_a4611b605e45ab401f02cab15c5e38715}{float32\+\_\+t}}}
+
+
+
+single precision floating point number (4 byte) 
+
+\Hypertarget{global_8h_ac55f3ae81b5bc9053760baacf57e47f4}\label{global_8h_ac55f3ae81b5bc9053760baacf57e47f4} 
+\index{global.h@{global.h}!float64\_t@{float64\_t}}
+\index{float64\_t@{float64\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{float64\_t}{float64\_t}}
+{\footnotesize\ttfamily typedef double \mbox{\hyperlink{global_8h_ac55f3ae81b5bc9053760baacf57e47f4}{float64\+\_\+t}}}
+
+
+
+double precision floating point number (8 byte) 
+
+\Hypertarget{global_8h_a4219d333bdd953f73437146af6a43f2a}\label{global_8h_a4219d333bdd953f73437146af6a43f2a} 
+\index{global.h@{global.h}!pchar\_t@{pchar\_t}}
+\index{pchar\_t@{pchar\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{pchar\_t}{pchar\_t}}
+{\footnotesize\ttfamily typedef const char\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_a4219d333bdd953f73437146af6a43f2a}{pchar\+\_\+t}}}
+
+
+
+const char pointer 
+
+\Hypertarget{global_8h_aca8863fc9e4eafd6b64e9265ae4b0d85}\label{global_8h_aca8863fc9e4eafd6b64e9265ae4b0d85} 
+\index{global.h@{global.h}!pvoid\_t@{pvoid\_t}}
+\index{pvoid\_t@{pvoid\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{pvoid\_t}{pvoid\_t}}
+{\footnotesize\ttfamily typedef void\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_aca8863fc9e4eafd6b64e9265ae4b0d85}{pvoid\+\_\+t}}}
+
+
+
+void pointer 
+
+\Hypertarget{global_8h_a8b7579a6aaba6d7fa221becce63e85cd}\label{global_8h_a8b7579a6aaba6d7fa221becce63e85cd} 
+\index{global.h@{global.h}!sint16\_t@{sint16\_t}}
+\index{sint16\_t@{sint16\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{sint16\_t}{sint16\_t}}
+{\footnotesize\ttfamily typedef signed short \mbox{\hyperlink{global_8h_a8b7579a6aaba6d7fa221becce63e85cd}{sint16\+\_\+t}}}
+
+
+
+-\/32768 .. +32767 ~\newline
+ 
+
+\Hypertarget{global_8h_a73705d44e0ddde601ded7d759dd0eaed}\label{global_8h_a73705d44e0ddde601ded7d759dd0eaed} 
+\index{global.h@{global.h}!sint32\_t@{sint32\_t}}
+\index{sint32\_t@{sint32\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{sint32\_t}{sint32\_t}}
+{\footnotesize\ttfamily typedef signed long \mbox{\hyperlink{global_8h_a73705d44e0ddde601ded7d759dd0eaed}{sint32\+\_\+t}}}
+
+
+
+-\/2147483648 .. +2147483647 ~\newline
+ 
+
+\Hypertarget{global_8h_a50f1081965dcc748269a971b74a60cc3}\label{global_8h_a50f1081965dcc748269a971b74a60cc3} 
+\index{global.h@{global.h}!sint64\_t@{sint64\_t}}
+\index{sint64\_t@{sint64\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{sint64\_t}{sint64\_t}}
+{\footnotesize\ttfamily typedef signed long long \mbox{\hyperlink{global_8h_a50f1081965dcc748269a971b74a60cc3}{sint64\+\_\+t}}}
+
+
+
+-\/9223372036854775808 .. +9223372036854775807 ~\newline
+ 
+
+\Hypertarget{global_8h_a54cceacffb6d6dff03bf69f786d431a9}\label{global_8h_a54cceacffb6d6dff03bf69f786d431a9} 
+\index{global.h@{global.h}!sint8\_t@{sint8\_t}}
+\index{sint8\_t@{sint8\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{sint8\_t}{sint8\_t}}
+{\footnotesize\ttfamily typedef signed char \mbox{\hyperlink{global_8h_a54cceacffb6d6dff03bf69f786d431a9}{sint8\+\_\+t}}}
+
+
+
+-\/128 .. +127 ~\newline
+ 
+
+\Hypertarget{global_8h_a273cf69d639a59973b6019625df33e30}\label{global_8h_a273cf69d639a59973b6019625df33e30} 
+\index{global.h@{global.h}!uint16\_t@{uint16\_t}}
+\index{uint16\_t@{uint16\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{uint16\_t}{uint16\_t}}
+{\footnotesize\ttfamily typedef unsigned short \mbox{\hyperlink{global_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}}
+
+
+
+0 .. 65535 ~\newline
+ 
+
+\Hypertarget{global_8h_a06896e8c53f721507066c079052171f8}\label{global_8h_a06896e8c53f721507066c079052171f8} 
+\index{global.h@{global.h}!uint32\_t@{uint32\_t}}
+\index{uint32\_t@{uint32\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{uint32\_t}{uint32\_t}}
+{\footnotesize\ttfamily typedef unsigned long \mbox{\hyperlink{global_8h_a06896e8c53f721507066c079052171f8}{uint32\+\_\+t}}}
+
+
+
+0 .. 4294967295 ~\newline
+ 
+
+\Hypertarget{global_8h_aaa5d1cd013383c889537491c3cfd9aad}\label{global_8h_aaa5d1cd013383c889537491c3cfd9aad} 
+\index{global.h@{global.h}!uint64\_t@{uint64\_t}}
+\index{uint64\_t@{uint64\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{uint64\_t}{uint64\_t}}
+{\footnotesize\ttfamily typedef unsigned long long \mbox{\hyperlink{global_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t}}}
+
+
+
+0 .. 18446744073709551615 ~\newline
+ 
+
+\Hypertarget{global_8h_aba7bc1797add20fe3efdf37ced1182c5}\label{global_8h_aba7bc1797add20fe3efdf37ced1182c5} 
+\index{global.h@{global.h}!uint8\_t@{uint8\_t}}
+\index{uint8\_t@{uint8\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{uint8\_t}{uint8\_t}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{global_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}}
+
+
+
+0 .. 255 ~\newline
+ 
+
+\Hypertarget{global_8h_a85f896920a05a034e95b648c4f286d2e}\label{global_8h_a85f896920a05a034e95b648c4f286d2e} 
+\index{global.h@{global.h}!vvoid\_t@{vvoid\_t}}
+\index{vvoid\_t@{vvoid\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{vvoid\_t}{vvoid\_t}}
+{\footnotesize\ttfamily typedef volatile void\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_a85f896920a05a034e95b648c4f286d2e}{vvoid\+\_\+t}}}
+
+
+
+volatile void pointer 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{global_8h_aedde67e455ef641f574726c47f2b483a}\label{global_8h_aedde67e455ef641f574726c47f2b483a} 
+\index{global.h@{global.h}!CpuId\_t@{CpuId\_t}}
+\index{CpuId\_t@{CpuId\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{CpuId\_t}{CpuId\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{global_8h_aedde67e455ef641f574726c47f2b483a}{Cpu\+Id\+\_\+t}}}
+
+
+
+CPU Core number. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cpu0@{cpu0}!global.h@{global.h}}\index{global.h@{global.h}!cpu0@{cpu0}}}\Hypertarget{global_8h_aedde67e455ef641f574726c47f2b483aa0fe48e24f27c1541955eff1b53fe4be7}\label{global_8h_aedde67e455ef641f574726c47f2b483aa0fe48e24f27c1541955eff1b53fe4be7} 
+cpu0&Core/\+CPU 0. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cpu1@{cpu1}!global.h@{global.h}}\index{global.h@{global.h}!cpu1@{cpu1}}}\Hypertarget{global_8h_aedde67e455ef641f574726c47f2b483aa8c0b0be598378e4167cb0140a78e605a}\label{global_8h_aedde67e455ef641f574726c47f2b483aa8c0b0be598378e4167cb0140a78e605a} 
+cpu1&Core/\+CPU 1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{cpu2@{cpu2}!global.h@{global.h}}\index{global.h@{global.h}!cpu2@{cpu2}}}\Hypertarget{global_8h_aedde67e455ef641f574726c47f2b483aa7e7ca28ef584ecf25d6eff96dca4bd7d}\label{global_8h_aedde67e455ef641f574726c47f2b483aa7e7ca28ef584ecf25d6eff96dca4bd7d} 
+cpu2&Core/\+CPU 2. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{global_8h_ab3035d39bd16de0ee87831413f316945}\label{global_8h_ab3035d39bd16de0ee87831413f316945} 
+\index{global.h@{global.h}!RC\_t@{RC\_t}}
+\index{RC\_t@{RC\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{RC\_t}{RC\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{global_8h_ab3035d39bd16de0ee87831413f316945}{RC\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RC\_SUCCESS@{RC\_SUCCESS}!global.h@{global.h}}\index{global.h@{global.h}!RC\_SUCCESS@{RC\_SUCCESS}}}\Hypertarget{global_8h_ab3035d39bd16de0ee87831413f316945a7834a46e385d8eb279f597b5cee9a2ea}\label{global_8h_ab3035d39bd16de0ee87831413f316945a7834a46e385d8eb279f597b5cee9a2ea} 
+RC\+\_\+\+SUCCESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RC\_ERROR@{RC\_ERROR}!global.h@{global.h}}\index{global.h@{global.h}!RC\_ERROR@{RC\_ERROR}}}\Hypertarget{global_8h_ab3035d39bd16de0ee87831413f316945aae4a23b560d56fcf0981a9636f58edeb}\label{global_8h_ab3035d39bd16de0ee87831413f316945aae4a23b560d56fcf0981a9636f58edeb} 
+RC\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RC\_BAD\_PARAM@{RC\_BAD\_PARAM}!global.h@{global.h}}\index{global.h@{global.h}!RC\_BAD\_PARAM@{RC\_BAD\_PARAM}}}\Hypertarget{global_8h_ab3035d39bd16de0ee87831413f316945ace8a2d3e8e19899c3ed95a20347a9cff}\label{global_8h_ab3035d39bd16de0ee87831413f316945ace8a2d3e8e19899c3ed95a20347a9cff} 
+RC\+\_\+\+BAD\+\_\+\+PARAM&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2} 
+\index{global.h@{global.h}!RX\_sel\_t@{RX\_sel\_t}}
+\index{RX\_sel\_t@{RX\_sel\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{RX\_sel\_t}{RX\_sel\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2}{RX\+\_\+sel\+\_\+t}}}
+
+
+
+Hardware Modules on the AURIX usually have a GPIO input selector, where the user can select out of 8 pins. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_a@{RX\_sel\_a}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_a@{RX\_sel\_a}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a0978005d3f45cb655ca598857841e73d}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a0978005d3f45cb655ca598857841e73d} 
+RX\+\_\+sel\+\_\+a&Alternate Input 0 selected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_b@{RX\_sel\_b}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_b@{RX\_sel\_b}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a5ea840ad509ddb6bcb433fa026834ca6}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a5ea840ad509ddb6bcb433fa026834ca6} 
+RX\+\_\+sel\+\_\+b&Alternate Input 1 selected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_c@{RX\_sel\_c}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_c@{RX\_sel\_c}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2aab71e6b9a05ff7ce67668b7d99f3f6db}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2aab71e6b9a05ff7ce67668b7d99f3f6db} 
+RX\+\_\+sel\+\_\+c&Alternate Input 2 selected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_d@{RX\_sel\_d}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_d@{RX\_sel\_d}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2af793f636176092d95644e7349af9c0de}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2af793f636176092d95644e7349af9c0de} 
+RX\+\_\+sel\+\_\+d&Alternate Input 3 selected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_e@{RX\_sel\_e}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_e@{RX\_sel\_e}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2af68f980a1807741610c230e37f8f8a10}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2af68f980a1807741610c230e37f8f8a10} 
+RX\+\_\+sel\+\_\+e&Alternate Input 4 selected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_f@{RX\_sel\_f}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_f@{RX\_sel\_f}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a33900aa2c8dd57c84a68f809e5409c77}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a33900aa2c8dd57c84a68f809e5409c77} 
+RX\+\_\+sel\+\_\+f&Alternate Input 5 selected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_g@{RX\_sel\_g}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_g@{RX\_sel\_g}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a20e514c6ba3f9318ad5dbc3dacd84222}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a20e514c6ba3f9318ad5dbc3dacd84222} 
+RX\+\_\+sel\+\_\+g&Alternate Input 6 selected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RX\_sel\_h@{RX\_sel\_h}!global.h@{global.h}}\index{global.h@{global.h}!RX\_sel\_h@{RX\_sel\_h}}}\Hypertarget{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a589ab221344a320890168f4d4d2a94b2}\label{global_8h_a8b93f01dff6313e4d05c0f700a61e5c2a589ab221344a320890168f4d4d2a94b2} 
+RX\+\_\+sel\+\_\+h&Alternate Input 7 selected. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{global_8h_aab8464c573d90df82a079c3dccccd3c2}\label{global_8h_aab8464c573d90df82a079c3dccccd3c2} 
+\index{global.h@{global.h}!service\_state\_t@{service\_state\_t}}
+\index{service\_state\_t@{service\_state\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{service\_state\_t}{service\_state\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{global_8h_aab8464c573d90df82a079c3dccccd3c2}{service\+\_\+state\+\_\+t}}}
+
+
+
+Services states. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{service\_UNDEFINED@{service\_UNDEFINED}!global.h@{global.h}}\index{global.h@{global.h}!service\_UNDEFINED@{service\_UNDEFINED}}}\Hypertarget{global_8h_aab8464c573d90df82a079c3dccccd3c2a8a31eedcb780dde27fdceb7d2d75394c}\label{global_8h_aab8464c573d90df82a079c3dccccd3c2a8a31eedcb780dde27fdceb7d2d75394c} 
+service\+\_\+\+UNDEFINED&Undefined state. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{service\_READY@{service\_READY}!global.h@{global.h}}\index{global.h@{global.h}!service\_READY@{service\_READY}}}\Hypertarget{global_8h_aab8464c573d90df82a079c3dccccd3c2ab0c11dcfaa51c2ea78621c5b7aca6ea3}\label{global_8h_aab8464c573d90df82a079c3dccccd3c2ab0c11dcfaa51c2ea78621c5b7aca6ea3} 
+service\+\_\+\+READY&Service is ready. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{service\_BUSY@{service\_BUSY}!global.h@{global.h}}\index{global.h@{global.h}!service\_BUSY@{service\_BUSY}}}\Hypertarget{global_8h_aab8464c573d90df82a079c3dccccd3c2a09ac01f090273bc22d752b9475fff4d6}\label{global_8h_aab8464c573d90df82a079c3dccccd3c2a09ac01f090273bc22d752b9475fff4d6} 
+service\+\_\+\+BUSY&Service is busy. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{service\_UNAVAILABLE@{service\_UNAVAILABLE}!global.h@{global.h}}\index{global.h@{global.h}!service\_UNAVAILABLE@{service\_UNAVAILABLE}}}\Hypertarget{global_8h_aab8464c573d90df82a079c3dccccd3c2acb314ab0fd9c55a0619cca0e9b727f09}\label{global_8h_aab8464c573d90df82a079c3dccccd3c2acb314ab0fd9c55a0619cca0e9b727f09} 
+service\+\_\+\+UNAVAILABLE&Service is unavailable. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{global_8h_a5d843bf15562d770b398a6af350dbcf2}\label{global_8h_a5d843bf15562d770b398a6af350dbcf2} 
+\index{global.h@{global.h}!transmission\_state\_t@{transmission\_state\_t}}
+\index{transmission\_state\_t@{transmission\_state\_t}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{transmission\_state\_t}{transmission\_state\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{global_8h_a5d843bf15562d770b398a6af350dbcf2}{transmission\+\_\+state\+\_\+t}}}
+
+
+
+Transmission states for communication services. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{transmission\_UNDEFINED@{transmission\_UNDEFINED}!global.h@{global.h}}\index{global.h@{global.h}!transmission\_UNDEFINED@{transmission\_UNDEFINED}}}\Hypertarget{global_8h_a5d843bf15562d770b398a6af350dbcf2a7100e422011170bf46fa6af8ea4f2a05}\label{global_8h_a5d843bf15562d770b398a6af350dbcf2a7100e422011170bf46fa6af8ea4f2a05} 
+transmission\+\_\+\+UNDEFINED&Undefined state. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{transmission\_PENDING@{transmission\_PENDING}!global.h@{global.h}}\index{global.h@{global.h}!transmission\_PENDING@{transmission\_PENDING}}}\Hypertarget{global_8h_a5d843bf15562d770b398a6af350dbcf2a232c8c9f728fe933f761c2f3b41b3552}\label{global_8h_a5d843bf15562d770b398a6af350dbcf2a232c8c9f728fe933f761c2f3b41b3552} 
+transmission\+\_\+\+PENDING&Request is pending. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{transmission\_ACTIVE@{transmission\_ACTIVE}!global.h@{global.h}}\index{global.h@{global.h}!transmission\_ACTIVE@{transmission\_ACTIVE}}}\Hypertarget{global_8h_a5d843bf15562d770b398a6af350dbcf2ab883de580d4af0ff107b3e7cf608c42e}\label{global_8h_a5d843bf15562d770b398a6af350dbcf2ab883de580d4af0ff107b3e7cf608c42e} 
+transmission\+\_\+\+ACTIVE&Request is currently processed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{transmission\_COMPLETED@{transmission\_COMPLETED}!global.h@{global.h}}\index{global.h@{global.h}!transmission\_COMPLETED@{transmission\_COMPLETED}}}\Hypertarget{global_8h_a5d843bf15562d770b398a6af350dbcf2ac9a507c08859762fceacc746bdaa87fe}\label{global_8h_a5d843bf15562d770b398a6af350dbcf2ac9a507c08859762fceacc746bdaa87fe} 
+transmission\+\_\+\+COMPLETED&Request is completed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{transmission\_ERROR@{transmission\_ERROR}!global.h@{global.h}}\index{global.h@{global.h}!transmission\_ERROR@{transmission\_ERROR}}}\Hypertarget{global_8h_a5d843bf15562d770b398a6af350dbcf2a42c11dc659939699890c7d20d78963cc}\label{global_8h_a5d843bf15562d770b398a6af350dbcf2a42c11dc659939699890c7d20d78963cc} 
+transmission\+\_\+\+ERROR&Request failed due to communication error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{transmission\_ABORTED@{transmission\_ABORTED}!global.h@{global.h}}\index{global.h@{global.h}!transmission\_ABORTED@{transmission\_ABORTED}}}\Hypertarget{global_8h_a5d843bf15562d770b398a6af350dbcf2a2dfd8ef86d69aa24a3ccafb0e7ff1f3e}\label{global_8h_a5d843bf15562d770b398a6af350dbcf2a2dfd8ef86d69aa24a3ccafb0e7ff1f3e} 
+transmission\+\_\+\+ABORTED&Request was aborted. \\
+\hline
+
+\end{DoxyEnumFields}
